@@ -151,6 +151,14 @@
             }
         },
         {
+            "Key": "c06765c6-4e6c-407f-9d9d-d36a2399087e",
+            "Value": {
+                "id": "ed840865-c389-4973-befd-dde220495e44",
+                "resourcePath": "objects\\oMPHandlerC\\oMPHandlerC.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "cc98d028-7bdd-4680-85f3-c87a7baa481e",
             "Value": {
                 "id": "b3d7c65a-1eaf-454f-ab7f-b9413fbda1a2",
