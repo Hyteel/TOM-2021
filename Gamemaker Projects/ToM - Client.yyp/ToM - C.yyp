@@ -1,6 +1,9 @@
 {
   "resources": [
+    {"id":{"name":"sPacketReceptionC","path":"scripts/sPacketReceptionC/sPacketReceptionC.yy",},"order":0,},
     {"id":{"name":"oMPHandlerC","path":"objects/oMPHandlerC/oMPHandlerC.yy",},"order":1,},
+    {"id":{"name":"oMain","path":"objects/oMain/oMain.yy",},"order":2,},
+    {"id":{"name":"fMain","path":"fonts/fMain/fMain.yy",},"order":0,},
     {"id":{"name":"rMain","path":"rooms/rMain/rMain.yy",},"order":1,},
   ],
   "Options": [

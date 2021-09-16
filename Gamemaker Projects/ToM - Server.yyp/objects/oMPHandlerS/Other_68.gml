@@ -8,7 +8,7 @@ switch (EventType)
 		ds_list_add(PlayerSockets, CurrentSocket);
 		break;
 		
-	case network_type_connect:
+	case network_type_disconnect:
 		CurrentSocket = ds_map_find_value(async_load, "socket");
 		ds_list_delete(PlayerSockets, ds_list_find_index(PlayerSockets, CurrentSocket));
 		break;
