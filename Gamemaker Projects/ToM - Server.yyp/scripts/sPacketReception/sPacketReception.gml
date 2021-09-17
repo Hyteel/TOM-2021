@@ -5,12 +5,15 @@ function sPacketReception(ScBuffer, ScSocket) {
 	switch (MsgType)
 	{
 		case Network.ReceiveInputOtP:
-			var Input = buffer_read(ScBuffer, buffer_string);
-			buffer_seek(ServerBuffer, buffer_seek_start, 0);
-			buffer_write(ServerBuffer, buffer_u8, Network.ReceiveInputOtP);
-			buffer_write(ServerBuffer, buffer_string, Input);
-			network_send_packet(PlayerSockets[| sGetOppositePlayer(ScSocket, PlayerSockets)], ServerBuffer, buffer_tell(ServerBuffer));
-			break;
+			if !(ds_list_size(PlayerSockets) <= 1)
+				{
+				var Input = buffer_read(ScBuffer, buffer_u8);
+				buffer_seek(ServerBuffer, buffer_seek_start, 0);
+				buffer_write(ServerBuffer, buffer_u8, Network.ReceiveInputOtP);
+				buffer_write(ServerBuffer, buffer_u8, Input);
+				network_send_packet(PlayerSockets[| sGetOppositePlayer(ScSocket, PlayerSockets)], ServerBuffer, buffer_tell(ServerBuffer));
+				break;
+				}
 	}
 
 

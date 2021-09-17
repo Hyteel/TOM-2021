@@ -1,3 +1,3 @@
 //Initialization
-LastInput = "";
-LastInputOtP = "";
+LastInput = 0;
+LastInputOtP = 0;
