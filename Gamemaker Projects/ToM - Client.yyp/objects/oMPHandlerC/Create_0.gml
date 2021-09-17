@@ -18,3 +18,5 @@ enum Network
 
 //Instances
 global.InstMain = instance_create_depth(0, 0, 0, oMain);
+global.InstLocalPlayer = instance_create_depth(0, 0, 0, oLocalPlayer);
+global.InstOtPlayer = instance_create_depth(0, 0, 0, oOtPlayer);

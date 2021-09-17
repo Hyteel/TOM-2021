@@ -1,7 +1,11 @@
 {
   "resources": [
+    {"id":{"name":"sOtPlayer","path":"sprites/sOtPlayer/sOtPlayer.yy",},"order":1,},
+    {"id":{"name":"sLocalPlayer","path":"sprites/sLocalPlayer/sLocalPlayer.yy",},"order":0,},
+    {"id":{"name":"oOtPlayer","path":"objects/oOtPlayer/oOtPlayer.yy",},"order":0,},
     {"id":{"name":"sPacketReceptionC","path":"scripts/sPacketReceptionC/sPacketReceptionC.yy",},"order":0,},
     {"id":{"name":"oMPHandlerC","path":"objects/oMPHandlerC/oMPHandlerC.yy",},"order":1,},
+    {"id":{"name":"oLocalPlayer","path":"objects/oLocalPlayer/oLocalPlayer.yy",},"order":1,},
     {"id":{"name":"oMain","path":"objects/oMain/oMain.yy",},"order":2,},
     {"id":{"name":"fMain","path":"fonts/fMain/fMain.yy",},"order":0,},
     {"id":{"name":"rMain","path":"rooms/rMain/rMain.yy",},"order":1,},
@@ -37,6 +41,7 @@
     {"folderPath":"folders/Extensions.yy","order":23,"resourceVersion":"1.0","name":"Extensions","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sequences.yy","order":1,"resourceVersion":"1.0","name":"Sequences","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Animation Curves.yy","order":1,"resourceVersion":"1.0","name":"Animation Curves","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Objects/ogPlayers.yy","order":5,"resourceVersion":"1.0","name":"ogPlayers","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
