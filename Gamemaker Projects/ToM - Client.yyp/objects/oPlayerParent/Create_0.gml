@@ -1,7 +1,7 @@
 //Initialization
 ovarLastInput = 0;
-MaxMovementSpeed = 100;
-Acceleration = 10;
-BaseMovementSpeed = 70;
+MaxMovementSpeed = 25;
+Acceleration = 2.5;
+BaseMovementSpeed = 10;
 CurrentMovementSpeed = BaseMovementSpeed;
 LastDirection = 0;

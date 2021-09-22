@@ -5,7 +5,11 @@ function sPacketReceptionC(ScBuffer){
 	switch(MsgType)
 	{
 		case Network.ReceiveInputOtP:
-			global.InstMain.LastInputOtP = buffer_read(ScBuffer, buffer_u8);
+			global.InstLocalPlayer.ovarLastInput = buffer_read(ScBuffer, buffer_u8);
+			break;
+		
+		case Network.ConfirmInput:
+			global.InstOtPlayer.ovarLastInput = buffer_read(ScBuffer, buffer_u8);
 			break;
 	}
 	

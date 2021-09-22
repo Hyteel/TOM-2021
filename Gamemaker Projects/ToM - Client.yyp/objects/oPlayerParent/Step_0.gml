@@ -1,5 +1,4 @@
-//Movement
-show_debug_message("GOTTHISFAR");
+//Movement	
 if ((ovarLastInput == 37) || (ovarLastInput == 39)) 
 	{
 	if (LastDirection != ovarLastInput)
@@ -16,7 +15,7 @@ if ((ovarLastInput == 37) || (ovarLastInput == 39))
 		}
 	}
 	
-show_debug_message("GOTTHISFAR2");
+
 if (ovarLastInput != 0) 
 	{
 	if (LastDirection == 37) {var Direction = -1; }
