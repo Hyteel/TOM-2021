@@ -6,6 +6,10 @@ switch (EventType)
 	case network_type_connect:
 		CurrentSocket = ds_map_find_value(async_load, "socket");
 		ds_list_add(PlayerSockets, CurrentSocket);
+		buffer_seek(ServerBuffer, buffer_seek_start, 0);
+		buffer_write(ServerBuffer, buffer_u8, Network.ConfirmConnect);
+		buffer_write(ServerBuffer, buffer_u8, CurrentSocket);
+		network_send_packet(CurrentSocket, ServerBuffer, buffer_tell(ServerBuffer));
 		break;
 		
 	case network_type_disconnect:

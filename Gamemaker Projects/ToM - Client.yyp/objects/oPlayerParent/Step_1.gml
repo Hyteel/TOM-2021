@@ -13,13 +13,9 @@ if ((ovarLastInput == 37) || (ovarLastInput == 39))
 			CurrentMovementSpeed += Acceleration;
 			}
 		}
-	}
-	
-
-if (ovarLastInput != 0) 
-	{
 	if (LastDirection == 37) {var Direction = -1; }
 	else {Direction = 1; }
 	x += CurrentMovementSpeed * Direction;
 	}
-else {LastDirection = 0;}
+else {LastDirection = 0;}	
+

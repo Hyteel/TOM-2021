@@ -13,7 +13,9 @@ global.ClientBuffer = buffer_create(1024, buffer_fixed, 1);
 enum Network
 {
 	ReceiveInputOtP,
-	ConfirmInput
+	ConfirmInput,
+	ConfirmConnect,
+	GlobalizePos
 }
 
 

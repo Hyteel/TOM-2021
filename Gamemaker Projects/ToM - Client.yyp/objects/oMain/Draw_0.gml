@@ -4,3 +4,11 @@ draw_set_color(c_aqua);
 draw_text(room_width/4,  (room_height/6)*2, "LocalhostInput : " + string(global.InstLocalPlayer.ovarLastInput));
 draw_set_color(c_red);
 draw_text(room_width/4, (room_height/6)*3, "OtherPlayerInput : " + string(global.InstOtPlayer.ovarLastInput));
+draw_set_color(c_white);
+draw_text((room_width/4)*3,  (room_height/6)*2, "ID : " + string(Identification));
+draw_set_color(c_orange)
+draw_text(room_width/4, (room_height/6)*4, "Pos Localhost : " + string(oLocalPlayer.x) + " , " + string(oLocalPlayer.y));
+draw_text(room_width/4, (room_height/6)*5, "Pos OtP : " + string(oOtPlayer.x) + " , " + string(oOtPlayer.y));
+draw_set_color(c_white)
+draw_text((room_width/4)*3, (room_height/6)*5, "Key : " + string(keyboard_key));
+draw_text((room_width/4)*3, (room_height/6)*4, "LastInput : " + string(LastInput));
