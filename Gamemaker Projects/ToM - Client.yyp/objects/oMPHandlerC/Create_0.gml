@@ -8,7 +8,6 @@ Server = network_connect(global.ClientSocket, "127.0.0.1", Port);
 
 global.ClientBuffer = buffer_create(1024, buffer_fixed, 1);
 
-
 //Enum
 enum Network
 {

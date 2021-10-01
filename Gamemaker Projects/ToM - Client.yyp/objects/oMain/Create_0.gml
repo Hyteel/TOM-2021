@@ -1,7 +1,7 @@
 //Initialization
 LastInput = 0;
 Identification = 0;
-GlobaPosInter = 5;
+GlobaPosInter = 1;
 
 
 //Globalizer
