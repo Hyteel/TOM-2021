@@ -21,16 +21,21 @@ else {LastDirection = 0;}
 
 if (LagX != 0)
 	{
-		if (((LagX + LagXSpeed) > 0) || ((LagX - LagXSpeed) < 0)) { LagX = 0;}
-		else if (LagX > 0)
+		if (LagX > 0)
 			{
-			x += LagXSpeed;
-			LagX += LagXSpeed;
+			if ((LagX - LagXSpeed) > 0)
+				{
+				x += LagXSpeed;
+				LagX -= LagXSpeed;
+				}
 			}
 		else
 			{
-			x -= LagXSpeed;
-			LagX -= LagXSpeed;
+			if ((LagX + LagXSpeed) < 0)
+				{
+				x -= LagXSpeed;
+				LagX += LagXSpeed;
+				}
 			}
 	}
 
