@@ -19,3 +19,32 @@ if ((ovarLastInput == 37) || (ovarLastInput == 39))
 	}
 else {LastDirection = 0;}	
 
+if (LagX != 0)
+	{
+		if (((LagX + LagXSpeed) > 0) || ((LagX - LagXSpeed) < 0)) { LagX = 0;}
+		else if (LagX > 0)
+			{
+			x += LagXSpeed;
+			LagX += LagXSpeed;
+			}
+		else
+			{
+			x -= LagXSpeed;
+			LagX -= LagXSpeed;
+			}
+	}
+
+if (LagY != 0)
+	{
+		if (((LagY + LagYSpeed) > 0) || ((LagY - LagYSpeed) < 0)) { LagY = 0;}
+		else if (LagY > 0)
+			{
+			y += LagYSpeed;
+			LagY += LagYSpeed;
+			}
+		else
+			{
+			y -= LagYSpeed;
+			LagY -= LagYSpeed;
+			}
+	}

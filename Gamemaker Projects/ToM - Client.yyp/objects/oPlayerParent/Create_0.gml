@@ -8,5 +8,5 @@ LastDirection = 0;
 
 LagX = 0;
 LagY = 0;
-LagXAccel = 0.1;
-LagYAccel = 0.1;
+LagXSpeed = 0.1;
+LagYSpeed = 0.1;

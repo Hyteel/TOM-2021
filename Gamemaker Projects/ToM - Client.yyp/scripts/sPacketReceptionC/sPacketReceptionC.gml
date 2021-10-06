@@ -19,8 +19,8 @@ function sPacketReceptionC(ScBuffer){
 		case Network.GlobalizePos:
 			global.InstOtPlayer.LagX = buffer_read(ScBuffer, buffer_u16) - global.InstOtPlayer.x;
 			global.InstOtPlayer.LagY = buffer_read(ScBuffer, buffer_u16) - global.InstOtPlayer.y;
-			global.InstLocalPlayer.LagX = buffer_read(ScBuffer, buffer_u16 - global.InstLocalPlayer.x);	
-			global.InstLocalPlayer.LagY = buffer_read(ScBuffer, buffer_u16 - global.InstLocalPlayer.y);
+			global.InstLocalPlayer.LagX = buffer_read(ScBuffer, buffer_u16) - global.InstLocalPlayer.x;	
+			global.InstLocalPlayer.LagY = buffer_read(ScBuffer, buffer_u16) - global.InstLocalPlayer.y;
 			break;
 			
 	}
