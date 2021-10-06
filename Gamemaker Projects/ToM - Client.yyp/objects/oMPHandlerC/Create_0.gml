@@ -1,7 +1,6 @@
 //Initialization
 Port = 25565
 
-
 //Networking
 global.ClientSocket = network_create_socket(network_socket_tcp);
 Server = network_connect(global.ClientSocket, "127.0.0.1", Port);
