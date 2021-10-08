@@ -6,6 +6,9 @@ BaseMovementSpeed = 2;
 CurrentMovementSpeed = BaseMovementSpeed;
 LastDirection = 0;
 
+ActiveCommands = ds_list_create();
+
+
 LagX = 0;
 LagY = 0;
 LagXSpeed = 0.1;
