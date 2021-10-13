@@ -1,5 +1,8 @@
-//Movement	
-if ((ovarLastInput == 37) || (ovarLastInput == 39)) 
+#macro sLIDE sListIndexDoesExist
+
+
+//Horizontal Movement	
+if (sLIDE(ActiveCommands, PCommands.MoveLeft)) || (sLIDE(ActiveCommands, PCommands.MoveRight)) 
 	{
 	if (LastDirection != ovarLastInput)
 		{
@@ -13,12 +16,14 @@ if ((ovarLastInput == 37) || (ovarLastInput == 39))
 			CurrentMovementSpeed += Acceleration;
 			}
 		}
-	if (LastDirection == 37) {var Direction = -1; }
+	if (sLIDE(ActiveCommands, PCommands.MoveLeft)) {var Direction = -1; }
 	else {Direction = 1; }
 	x += CurrentMovementSpeed * Direction;
 	}
 else {LastDirection = 0;}	
 
+
+//LagCompensation
 if (LagX != 0)
 	{
 		if (LagX > 0)
