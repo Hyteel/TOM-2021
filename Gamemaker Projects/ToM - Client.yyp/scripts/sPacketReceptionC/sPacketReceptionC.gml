@@ -5,30 +5,39 @@ function sPacketReceptionC(ScBuffer){
 	switch(MsgType)
 	{
 		case Network.SendCurrentInput:
-			show_debug_message("ERROR AT SENCDUCCRENTINPUT");
+			show_debug_message("SendCurrentInput");
 			CommandCount = buffer_read(ScBuffer, buffer_u8);
 			if (CommandCount != 0)
 				{
-				for (var i = 0; i = CommandCount; i++)
+				ds_list_clear(global.InstOtPlayer.ActiveCommands);
+				for (var i = 0; i < CommandCount; i++)
 					{
-					show_debug_message("I-NUMBER: " + i);
 					ds_list_add(global.InstOtPlayer.ActiveCommands, buffer_read(ScBuffer, buffer_u8));		
 					}
+				}
+			else
+				{
+				ds_list_clear(global.InstOtPlayer.ActiveCommands);
+				ds_list_add(global.InstOtPlayer.ActiveCommands, PCommands.NoInput);	
 				}
 			break;
 		
 		
 		case Network.ConfirmInput:
-			show_debug_message("ERROR AT CONFIRMINPUT");
+			show_debug_message("ConfirmInput");
 			CommandCount = buffer_read(ScBuffer, buffer_u8);
-			show_debug_message("GOT PAST COMMANDCOUNT");
 			if (CommandCount != 0)
 				{
-				for (var i = 0; i = CommandCount; i++)
+				ds_list_clear(global.InstLocalPlayer.ActiveCommands);
+				for (var i = 0; i < CommandCount; i++)
 					{
-					show_debug_message("I-NUMBER: " + i);
 					ds_list_add(global.InstLocalPlayer.ActiveCommands, buffer_read(ScBuffer, buffer_u8));		
 					}
+				}
+			else
+				{
+				ds_list_clear(global.InstLocalPlayer.ActiveCommands);
+				ds_list_add(global.InstLocalPlayer.ActiveCommands, PCommands.NoInput);	
 				}
 			break;
 		

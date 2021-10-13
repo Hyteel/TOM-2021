@@ -1,6 +1,7 @@
 #macro sLIDE sListIndexDoesExist
 
-//Movement	
+
+//Horizontal Movement	
 if (sLIDE(ActiveCommands, PCommands.MoveLeft)) || (sLIDE(ActiveCommands, PCommands.MoveRight)) 
 	{
 	if (LastDirection != ovarLastInput)
@@ -21,6 +22,8 @@ if (sLIDE(ActiveCommands, PCommands.MoveLeft)) || (sLIDE(ActiveCommands, PComman
 	}
 else {LastDirection = 0;}	
 
+
+//LagCompensation
 if (LagX != 0)
 	{
 		if (((LagX + LagXSpeed) > 0) || ((LagX - LagXSpeed) < 0)) { LagX = 0;}

@@ -1,4 +1,3 @@
-show_debug_message(Identification);
 if (Identification == 1)
 	{
 	buffer_seek(global.ClientBuffer, buffer_seek_start, 0);

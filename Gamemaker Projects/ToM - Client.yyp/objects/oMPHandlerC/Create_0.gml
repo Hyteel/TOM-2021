@@ -28,7 +28,8 @@ enum PCommands
 	MoveLeft,
 	MoveRight,
 	MoveDown,
-	MoveUp
+	MoveUp,
+	NoInput
 
 
 }

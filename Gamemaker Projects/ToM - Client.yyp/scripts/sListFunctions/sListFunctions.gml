@@ -4,7 +4,7 @@ function sListCompare(List1, List2){
 	if (List1Size != List2Size) {return false;}
 	else
 		{
-		for (var i = 0; i = List1Size; i++)
+		for (var i = 0; i < List1Size; i++)
 			{
 			if (List1[|i] != List2[|2]) {return false;}
 			}
