@@ -5,7 +5,6 @@ function sPacketReceptionC(ScBuffer){
 	switch(MsgType)
 	{
 		case Network.SendCurrentInput:
-			show_debug_message("SendCurrentInput");
 			CommandCount = buffer_read(ScBuffer, buffer_u8);
 			if (CommandCount != 0)
 				{
@@ -24,7 +23,7 @@ function sPacketReceptionC(ScBuffer){
 		
 		
 		case Network.ConfirmInput:
-			show_debug_message("ConfirmInput");
+			global.LocalTime = get_timer();
 			CommandCount = buffer_read(ScBuffer, buffer_u8);
 			if (CommandCount != 0)
 				{
