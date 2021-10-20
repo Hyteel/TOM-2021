@@ -29,8 +29,8 @@ function sPacketReception(ScBuffer, ScSocket) {
 							buffer_write(ServerBufferSameSend, buffer_u8, CurrentBuffer);	
 							}
 						}
-				
-				
+						
+		
 					//Sendoff
 					network_send_packet(PlayerSockets[| sGetOppositePlayer(ScSocket, PlayerSockets)], ServerBuffer, buffer_tell(ServerBuffer));
 					network_send_packet(ScSocket, ServerBufferSameSend, buffer_tell(ServerBufferSameSend));	
@@ -44,6 +44,7 @@ function sPacketReception(ScBuffer, ScSocket) {
 					buffer_seek(ServerBuffer, buffer_seek_start, 0);
 					buffer_write(ServerBuffer, buffer_u8, Network.SendCurrentInput);
 					buffer_write(ServerBuffer, buffer_u8, CommandCount);
+					
 					
 					network_send_packet(PlayerSockets[| sGetOppositePlayer(ScSocket, PlayerSockets)], ServerBuffer, buffer_tell(ServerBuffer));
 					network_send_packet(ScSocket, ServerBufferSameSend, buffer_tell(ServerBufferSameSend));	

@@ -10,7 +10,6 @@ if (!(sListCompare(OldInputs, CurrentInputs)))
 	{
 	if (Size != 0)
 		{
-		show_debug_message(Size);
 		buffer_seek(global.ClientBuffer, buffer_seek_start, 0);
 		buffer_write(global.ClientBuffer, buffer_u8, Network.SendCurrentInput);
 		buffer_write(global.ClientBuffer, buffer_u8, Size);
@@ -19,6 +18,7 @@ if (!(sListCompare(OldInputs, CurrentInputs)))
 			buffer_write(global.ClientBuffer, buffer_u8, CurrentInputs[| i]);
 			}
 		network_send_packet(global.ClientSocket, global.ClientBuffer, buffer_tell(global.ClientBuffer));
+		Sendofftime = get_timer();
 		}
 	else
 		{
@@ -26,6 +26,7 @@ if (!(sListCompare(OldInputs, CurrentInputs)))
 		buffer_write(global.ClientBuffer, buffer_u8, Network.SendCurrentInput);
 		buffer_write(global.ClientBuffer, buffer_u8, 0);
 		network_send_packet(global.ClientSocket, global.ClientBuffer, buffer_tell(global.ClientBuffer));
+		Sendofftime = get_timer();
 		}
 		
 	ds_list_copy(OldInputs, CurrentInputs);
