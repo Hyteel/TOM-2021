@@ -1,12 +1,12 @@
 //New Input sys
-sInputCheck(37, PCommands.MoveLeft);
-sInputCheck(38, PCommands.MoveUp);
-sInputCheck(39, PCommands.MoveRight);
-sInputCheck(40, PCommands.MoveDown);
+scInputCheck(37, PCommands.MoveLeft);
+scInputCheck(38, PCommands.MoveUp);
+scInputCheck(39, PCommands.MoveRight); 
+scInputCheck(40, PCommands.MoveDown);
 
 var Size = ds_list_size(CurrentInputs);
 
-if (!(sListCompare(OldInputs, CurrentInputs)))
+if (!(scListCompare(OldInputs, CurrentInputs)))
 	{
 	if (Size != 0)
 		{

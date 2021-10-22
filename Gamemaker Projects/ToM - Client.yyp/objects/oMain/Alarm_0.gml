@@ -9,4 +9,4 @@ if (Identification == 1)
 	network_send_packet(global.ClientSocket, global.ClientBuffer, buffer_tell(global.ClientBuffer));
 	
 	alarm[0] = room_speed*GlobaPosInter;
-	}
+	} 

@@ -1,4 +1,4 @@
-function sPacketReception(ScBuffer, ScSocket) {
+function scPacketReception(ScBuffer, ScSocket) {
 	MsgType = buffer_read(ScBuffer, buffer_u8);
 
 	switch (MsgType)
@@ -32,7 +32,8 @@ function sPacketReception(ScBuffer, ScSocket) {
 						
 		
 					//Sendoff
-					network_send_packet(PlayerSockets[| sGetOppositePlayer(ScSocket, PlayerSockets)], ServerBuffer, buffer_tell(ServerBuffer));
+					var SameSendSocket = PlayerSockets[| scGetOppositePlayer(ScSocket, PlayerSockets)];
+					network_send_packet(SameSendSocket, ServerBuffer, buffer_tell(ServerBuffer));
 					network_send_packet(ScSocket, ServerBufferSameSend, buffer_tell(ServerBufferSameSend));	
 					}
 				else
@@ -46,7 +47,8 @@ function sPacketReception(ScBuffer, ScSocket) {
 					buffer_write(ServerBuffer, buffer_u8, CommandCount);
 					
 					
-					network_send_packet(PlayerSockets[| sGetOppositePlayer(ScSocket, PlayerSockets)], ServerBuffer, buffer_tell(ServerBuffer));
+					var SameSendSocket = PlayerSockets[| scGetOppositePlayer(ScSocket, PlayerSockets)];
+					network_send_packet(SameSendSocket, ServerBuffer, buffer_tell(ServerBuffer));
 					network_send_packet(ScSocket, ServerBufferSameSend, buffer_tell(ServerBufferSameSend));	
 					}
 				}
@@ -68,7 +70,7 @@ function sPacketReception(ScBuffer, ScSocket) {
 				buffer_write(ServerBuffer, buffer_u16, SenderY);
 				buffer_write(ServerBuffer, buffer_u16, ReceiverX);
 				buffer_write(ServerBuffer, buffer_u16, ReceiverY);
-				network_send_packet(PlayerSockets[| sGetOppositePlayer(ScSocket, PlayerSockets)], ServerBuffer, buffer_tell(ServerBuffer));
+				network_send_packet(PlayerSockets[| scGetOppositePlayer(ScSocket, PlayerSockets)], ServerBuffer, buffer_tell(ServerBuffer));
 			}
 			
 			break;

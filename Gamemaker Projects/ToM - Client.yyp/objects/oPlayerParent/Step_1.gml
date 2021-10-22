@@ -1,4 +1,4 @@
-#macro sLIDE sListIndexDoesExist
+#macro sLIDE scListIndexDoesExist
 
 
 //Horizontal Movement	
@@ -7,26 +7,31 @@ if (sLIDE(ActiveCommands, PCommands.MoveLeft)) || (sLIDE(ActiveCommands, PComman
 	if (LastDirection != ovarLastInput)
 		{
 		LastDirection = ovarLastInput;
-		CurrentMovementSpeed = BaseMovementSpeed;
+		HorizontalSpeed = BaseHorizontalSpeed;
 		}
 	else
 		{
-		if (CurrentMovementSpeed != MaxMovementSpeed)
+		if (HorizontalSpeed != MaxHorizontalSpeed)
 			{
-			CurrentMovementSpeed += Acceleration;
+			HorizontalSpeed += Acceleration;
 			}
 		}
-	if (sLIDE(ActiveCommands, PCommands.MoveLeft)) {var Direction = -1; }
-	else {Direction = 1; }
-	x += CurrentMovementSpeed * Direction;
+	if (sLIDE(ActiveCommands, PCommands.MoveLeft)) {var Direction = -1; if (scCollisionCheck("Left")) { HorizontalSpeed = 0;} }
+	else {Direction = 1; if (scCollisionCheck("Right")) { HorizontalSpeed = 0;}}
+	x += HorizontalSpeed * Direction;
 	}
 else 
 	{
 	LastDirection = 0; 
-	CurrentMovementSpeed -= Decceleration;
-	if (CurrentMovementSpeed - Decceleration < 0) {CurrentMovementSpeed = 0; }
-	else {x += CurrentMovementSpeed; }
 	}	
+
+
+//Gravity
+if !(CurrentlyJumping)
+	{
+	if (scCollisionCheck("Down")) { VerticalSpeed = 0; }
+	else { y += VerticalSpeed; VerticalSpeed += Gravity; }
+	}
 
 
 //LagCompensation

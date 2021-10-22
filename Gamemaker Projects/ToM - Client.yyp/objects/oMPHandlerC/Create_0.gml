@@ -37,5 +37,5 @@ enum PCommands
 
 //Instances
 global.InstMain = instance_create_depth(0, 0, 0, oMain);
-global.InstLocalPlayer = instance_create_depth(0, 0, 0, oLocalPlayer);
-global.InstOtPlayer = instance_create_depth(0, 0, 0, oOtPlayer);
+global.InstLocalPlayer = instance_create_depth(room_width/2, 0, 0, oLocalPlayer);
+global.InstOtPlayer = instance_create_depth(room_width/2, 0, 0, oOtPlayer);

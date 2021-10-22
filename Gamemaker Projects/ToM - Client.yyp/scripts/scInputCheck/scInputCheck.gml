@@ -1,4 +1,4 @@
-function sInputCheck(CharValue, Command){
+function scInputCheck(CharValue, Command){
 	var ExistingIndex = ds_list_find_index(CurrentInputs, Command);
 	if (keyboard_check(CharValue)) 
 		{ 

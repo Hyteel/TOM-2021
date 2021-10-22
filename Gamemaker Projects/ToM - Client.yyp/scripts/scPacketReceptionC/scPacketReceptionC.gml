@@ -1,4 +1,4 @@
-function sPacketReceptionC(ScBuffer){
+function scPacketReceptionC(ScBuffer){
 	var MsgType = buffer_read(ScBuffer, buffer_u8);
 	
 	

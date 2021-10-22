@@ -21,7 +21,7 @@ switch (EventType)
 		Buffer = ds_map_find_value(async_load, "buffer");
 		CurrentSocket = ds_map_find_value(async_load, "id");
 		buffer_seek(Buffer, buffer_seek_start, 0);
-		sPacketReception(Buffer, CurrentSocket);
+		scPacketReception(Buffer, CurrentSocket);
 		break;
 
 
