@@ -1,4 +1,4 @@
-function sListCompare(List1, List2){
+function scListCompare(List1, List2){
 	var List1Size = ds_list_size(List1);
 	var List2Size = ds_list_size(List2);
 	if (List1Size != List2Size) {return false;}
@@ -12,7 +12,7 @@ function sListCompare(List1, List2){
 	return true;
 }
 
-function sListIndexDoesExist(List, Value){
+function scListIndexDoesExist(List, Value){
 	if (ds_list_find_index(List, Value) == -1) {return false; }
 	else {return true;}
 }
