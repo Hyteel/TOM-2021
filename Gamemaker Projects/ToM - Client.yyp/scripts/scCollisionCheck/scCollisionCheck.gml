@@ -5,7 +5,7 @@ function scCollisionCheck(Direction){
 	if (Direction == "Down")
 		{
 		//show_debug_message("IntoCollision");
-		if ((tilemap_get_at_pixel(CollisionTileMap, bbox_left, bbox_bottom + 1) != 0) || (tilemap_get_at_pixel(CollisionTileMap, bbox_right, bbox_bottom + 1) != 0)) { return(true); }
+		if ((tilemap_get_at_pixel(CollisionTileMap, bbox_left + 1, bbox_bottom + 1) != 0) || (tilemap_get_at_pixel(CollisionTileMap, bbox_right - 1, bbox_bottom + 1) != 0)) { return(true); }
 		else
 			{
 			

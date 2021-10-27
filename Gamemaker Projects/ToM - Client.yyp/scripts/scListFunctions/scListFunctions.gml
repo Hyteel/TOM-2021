@@ -6,7 +6,7 @@ function scListCompare(List1, List2){
 		{
 		for (var i = 0; i < List1Size; i++)
 			{
-			if (List1[|i] != List2[|2]) {return false;}
+			if (List1[|i] != List2[|i]) { return false;}
 			}
 		}
 	return true;

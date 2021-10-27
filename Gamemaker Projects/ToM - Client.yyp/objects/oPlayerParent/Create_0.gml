@@ -1,18 +1,20 @@
 //Initialization
 ovarLastInput = 0;
-MaxHorizontalSpeed = 2;
+MaxHorizontalSpeed = 10;
 Acceleration = 0.1;
-BaseHorizontalSpeed = 2;
+BaseHorizontalSpeed = 6;
 HorizontalSpeed = BaseHorizontalSpeed;
 LastDirection = 0;
-Decceleration = 0.5;
 VerticalSpeed = 0;
 Gravity = 0.1;
 CurrentlyJumping = false;
-
+InitialJumpHeight = 30;
+AdditionalJumpHeight = 10;
+MaxJumpFrames = 20;
+CurrentJumpFrame = 0;
 
 ActiveCommands = ds_list_create();
-
+ActiveHeldCommands = ds_list_create();
 
 LagX = 0;
 LagY = 0;

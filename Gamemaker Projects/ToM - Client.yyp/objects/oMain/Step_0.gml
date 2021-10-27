@@ -8,6 +8,8 @@ var Size = ds_list_size(CurrentInputs);
 
 if (!(scListCompare(OldInputs, CurrentInputs)))
 	{
+	//CurrentSentInputs += 1;
+	//show_debug_message("CurrentSentInputs: " + string(CurrentSentInputs));
 	if (Size != 0)
 		{
 		buffer_seek(global.ClientBuffer, buffer_seek_start, 0);
@@ -28,6 +30,6 @@ if (!(scListCompare(OldInputs, CurrentInputs)))
 		network_send_packet(global.ClientSocket, global.ClientBuffer, buffer_tell(global.ClientBuffer));
 		Sendofftime = get_timer();
 		}
-		
+	
 	ds_list_copy(OldInputs, CurrentInputs);
 	}

@@ -11,26 +11,27 @@ function scPacketReception(ScBuffer, ScSocket) {
 				if (CommandCount != 0)
 					{
 					//Dual Buffers	
+					var CurrentTime = get_timer();
+					var TimeToSet = floor(CurrentTime/100000) + 5;
+					
 					buffer_seek(ServerBufferSameSend, buffer_seek_start, 0);
 					buffer_write(ServerBufferSameSend, buffer_u8, Network.ConfirmInput);
 					buffer_write(ServerBufferSameSend, buffer_u8, CommandCount);
+					buffer_write(ServerBufferSameSend, buffer_u16, TimeToSet);
 				
 					buffer_seek(ServerBuffer, buffer_seek_start, 0);
 					buffer_write(ServerBuffer, buffer_u8, Network.SendCurrentInput);
 					buffer_write(ServerBuffer, buffer_u8, CommandCount);
-				
-					if (CommandCount != 0)
+					buffer_write(ServerBuffer, buffer_u16, TimeToSet);
+
+					for (var i = 0; i < CommandCount; i++)
 						{
-						for (var i = 0; i < CommandCount; i++)
-							{
-							var CurrentBuffer = buffer_read(ScBuffer, buffer_u8);
+						var CurrentBuffer = buffer_read(ScBuffer, buffer_u8);
 						
-							buffer_write(ServerBuffer, buffer_u8, CurrentBuffer);		
-							buffer_write(ServerBufferSameSend, buffer_u8, CurrentBuffer);	
-							}
+						buffer_write(ServerBuffer, buffer_u8, CurrentBuffer);		
+						buffer_write(ServerBufferSameSend, buffer_u8, CurrentBuffer);	
 						}
 						
-		
 					//Sendoff
 					var SameSendSocket = PlayerSockets[| scGetOppositePlayer(ScSocket, PlayerSockets)];
 					network_send_packet(SameSendSocket, ServerBuffer, buffer_tell(ServerBuffer));
@@ -38,14 +39,19 @@ function scPacketReception(ScBuffer, ScSocket) {
 					}
 				else
 					{ //Case 0
-					buffer_seek(ServerBufferSameSend, buffer_seek_start, 0);
-					buffer_write(ServerBufferSameSend, buffer_u8, Network.ConfirmInput);
-					buffer_write(ServerBufferSameSend, buffer_u8, CommandCount);
-				
+					show_debug_message("Case 0");
+					var CurrentTime = get_timer();
+					var TimeToSet = round(CurrentTime/100000) + 5;
+						
 					buffer_seek(ServerBuffer, buffer_seek_start, 0);
 					buffer_write(ServerBuffer, buffer_u8, Network.SendCurrentInput);
 					buffer_write(ServerBuffer, buffer_u8, CommandCount);
+					buffer_write(ServerBuffer, buffer_u16, TimeToSet);
 					
+					buffer_seek(ServerBufferSameSend, buffer_seek_start, 0);
+					buffer_write(ServerBufferSameSend, buffer_u8, Network.ConfirmInput);
+					buffer_write(ServerBufferSameSend, buffer_u8, CommandCount);
+					buffer_write(ServerBufferSameSend, buffer_u16, TimeToSet);
 					
 					var SameSendSocket = PlayerSockets[| scGetOppositePlayer(ScSocket, PlayerSockets)];
 					network_send_packet(SameSendSocket, ServerBuffer, buffer_tell(ServerBuffer));

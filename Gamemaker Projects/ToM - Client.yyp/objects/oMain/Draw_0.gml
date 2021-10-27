@@ -1,9 +1,9 @@
 //Draw Both player input
 draw_set_font(fMain);
 draw_set_color(c_aqua);
-draw_text(room_width/4,  (room_height/6)*2, "OtPTime : ");
+draw_text(room_width/4,  (room_height/6)*2, "CurrentHoldArrayTime: " + string(CurrentHeldArrayTime));
 draw_set_color(c_red);
-draw_text(room_width/4, (room_height/6)*3, "CurrentTime : " + string(global.LocalTime - Sendofftime));
+draw_text(room_width/4, (room_height/6)*2.5, "ConnectedTimeServer : " + string(ConnectedTimeServer));
 draw_set_color(c_white);
 draw_text((room_width/4)*3,  (room_height/6)*2, "ID : " + string(Identification));
 draw_set_color(c_orange)
@@ -11,7 +11,7 @@ draw_text(room_width/4, (room_height/6)*4, "Pos Localhost : " + string(oLocalPla
 draw_text(room_width/4, (room_height/6)*5, "Pos OtP : " + string(oOtPlayer.x) + " , " + string(oOtPlayer.y));
 draw_set_color(c_white)
 draw_text((room_width/4)*3, (room_height/6)*5, "Key : " + string(keyboard_key));
-draw_text((room_width/4)*3, (room_height/6)*4, "CurrentTime : ");
+draw_text((room_width/4)*2.5, (room_height/6)*4, "ConnectedTime : " + string(ConnectedTime));
 draw_set_color(c_olive);
 draw_text(room_width/4, (room_height/12)*1, "OtP LagX : " + string(global.InstOtPlayer.LagX));
 draw_text(room_width/4, (room_height/12)*2, "OtP LagY : " + string(global.InstOtPlayer.LagY));

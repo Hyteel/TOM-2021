@@ -1,59 +1,11 @@
-#macro sLIDE scListIndexDoesExist
-
-
-//Horizontal Movement	
-if (sLIDE(ActiveCommands, PCommands.MoveLeft)) || (sLIDE(ActiveCommands, PCommands.MoveRight)) 
+show_debug_message(string(ActiveHeldCommands[|0]));
+show_debug_message(string(ActiveCommands[|0]));
+if !(scListCompare(ActiveCommands, ActiveHeldCommands))
 	{
-	if (LastDirection != ovarLastInput)
+	show_debug_message("!EQUAL");
+	if (global.InstMain.ConnectedTimeDifference + get_timer() >= global.InstMain.CurrentHeldArrayTime)
 		{
-		LastDirection = ovarLastInput;
-		HorizontalSpeed = BaseHorizontalSpeed;
+		show_debug_message("SETTO" + string(ActiveHeldCommands[|0]));
+		ds_list_copy(ActiveCommands, ActiveHeldCommands);
 		}
-	else
-		{
-		if (HorizontalSpeed != MaxHorizontalSpeed)
-			{
-			HorizontalSpeed += Acceleration;
-			}
-		}
-	if (sLIDE(ActiveCommands, PCommands.MoveLeft)) {var Direction = -1; if (scCollisionCheck("Left")) { HorizontalSpeed = 0;} }
-	else {Direction = 1; if (scCollisionCheck("Right")) { HorizontalSpeed = 0;}}
-	x += HorizontalSpeed * Direction;
 	}
-else 
-	{
-	LastDirection = 0; 
-	}	
-
-
-//Gravity
-if !(CurrentlyJumping)
-	{
-	if (scCollisionCheck("Down")) { VerticalSpeed = 0; }
-	else { y += VerticalSpeed; VerticalSpeed += Gravity; }
-	}
-
-
-//LagCompensation
-if (LagX != 0)
-	{
-		if (LagX > 0) 
-			{
-			if (LagX - LagXSpeed < 0) { LagX = 0; }
-			else
-				{
-				x += LagXSpeed;
-				LagX -= LagXSpeed;
-				}
-			}
-		else
-			{
-			if (LagX + LagXSpeed > 0) { LagX = 0; }
-			else
-				{
-				x -= LagXSpeed;
-				LagX += LagXSpeed;
-				}
-			}
-	}
-
