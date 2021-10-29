@@ -9,6 +9,7 @@ ConnectedTimeServer = 0;
 ConnectedTimeDifference = 0;
 CurrentHeldArrayTime = 0;
 CurrentSentInputs = 0;
+DebugMode = 0;
 
 
 //Globalizer

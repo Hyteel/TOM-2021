@@ -14,9 +14,10 @@ MaxJumpFrames = 20;
 CurrentJumpFrame = 0;
 
 ActiveCommands = ds_list_create();
-ActiveHeldCommands = ds_list_create();
+QueuedCommands = ds_grid_create(2, 11);
+CurrentCommandIndex = 0;
+CurrentCommandPosition = 10;
 
-ReadyForInput = true;
 CurrentHeldArrayTime = 0;
 
 LagX = 0;

@@ -33,3 +33,9 @@ if (!(scListCompare(OldInputs, CurrentInputs)))
 	
 	ds_list_copy(OldInputs, CurrentInputs);
 	}
+
+if (keyboard_check_pressed(ord("P")))
+	{
+	if (DebugMode == 0) { DebugMode = 1}
+	else {DebugMode = 0; }
+	}

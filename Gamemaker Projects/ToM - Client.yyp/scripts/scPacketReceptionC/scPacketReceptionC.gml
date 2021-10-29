@@ -5,46 +5,48 @@ function scPacketReceptionC(ScBuffer){
 	switch(MsgType)
 	{
 		case Network.SendCurrentInput:
-
-				global.InstOtPlayer.ReadyForInput = false;
-				var CommandCount = buffer_read(ScBuffer, buffer_u8);
-				global.InstOtPlayer.CurrentHeldArrayTime = buffer_read(ScBuffer, buffer_u16)*100000;
-				if (CommandCount != 0)
+			var CommandCount = buffer_read(ScBuffer, buffer_u8);
+			global.InstOtPlayer.QueuedCommands[# 1, global.InstOtPlayer.CurrentCommandIndex] = buffer_read(ScBuffer, buffer_u16)*100000;
+			if (CommandCount != 0)
+				{
+				ds_list_clear(global.InstOtPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex]);
+				for (var i = 0; i < CommandCount; i++)
 					{
-					ds_list_clear(global.InstOtPlayer.ActiveHeldCommands);
-					for (var i = 0; i < CommandCount; i++)
-						{
-						ds_list_add(global.InstOtPlayer.ActiveHeldCommands, buffer_read(ScBuffer, buffer_u8));		
-						}
+					ds_list_add(global.InstOtPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex], buffer_read(ScBuffer, buffer_u8));		
 					}
-				else
-					{
-					ds_list_clear(global.InstOtPlayer.ActiveHeldCommands);
-					ds_list_add(global.InstOtPlayer.ActiveHeldCommands, PCommands.NoInput);	
-					}
-
+				}
+			else
+				{
+				ds_list_clear(global.InstOtPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex]);
+				ds_list_add(global.InstOtPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex], PCommands.NoInput);	
+				}
+			
+			if (global.InstOtPlayer.CurrentCommandIndex >= 10) {global.InstOtPlayer.CurrentCommandIndex = 0;}
+			else {global.InstOtPlayer.CurrentCommandIndex++;}
+			
 			break;
 		
 		
 		case Network.ConfirmInput:
-
-				global.InstLocalPlayer.ReadyForInput = false;
-				var CommandCount = buffer_read(ScBuffer, buffer_u8);
-				global.InstLocalPlayer.CurrentHeldArrayTime = buffer_read(ScBuffer, buffer_u16)*100000;
-				if (CommandCount != 0)
+			var CommandCount = buffer_read(ScBuffer, buffer_u8);
+			global.InstLocalPlayer.QueuedCommands[# 1, global.InstLocalPlayer.CurrentCommandIndex] = buffer_read(ScBuffer, buffer_u16)*100000;
+			if (CommandCount != 0)
+				{
+				ds_list_clear(global.InstLocalPlayer.QueuedCommands[# 0, global.InstLocalPlayer.CurrentCommandIndex]);
+				for (var i = 0; i < CommandCount; i++)
 					{
-					ds_list_clear(global.InstLocalPlayer.ActiveHeldCommands);
-					for (var i = 0; i < CommandCount; i++)
-						{
-						ds_list_add(global.InstLocalPlayer.ActiveHeldCommands, buffer_read(ScBuffer, buffer_u8));		
-						}
+					ds_list_add(global.InstLocalPlayer.QueuedCommands[# 0, global.InstLocalPlayer.CurrentCommandIndex], buffer_read(ScBuffer, buffer_u8));		
 					}
-				else
-					{
-					ds_list_clear(global.InstLocalPlayer.ActiveHeldCommands);
-					ds_list_add(global.InstLocalPlayer.ActiveHeldCommands, PCommands.NoInput);	
-					}
+				}
+			else
+				{
+				ds_list_clear(global.InstLocalPlayer.QueuedCommands[# 0, global.InstLocalPlayer.CurrentCommandIndex]);
+				ds_list_add(global.InstLocalPlayer.QueuedCommands[# 0, global.InstLocalPlayer.CurrentCommandIndex], PCommands.NoInput);	
+				}
 				
+			if (global.InstLocalPlayer.CurrentCommandIndex >= 10) {global.InstLocalPlayer.CurrentCommandIndex = 0;}
+			else {global.InstLocalPlayer.CurrentCommandIndex++;}
+			
 			break;
 		
 		case Network.ConfirmConnect:

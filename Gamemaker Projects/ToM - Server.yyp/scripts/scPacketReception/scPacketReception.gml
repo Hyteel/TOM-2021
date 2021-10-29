@@ -12,7 +12,7 @@ function scPacketReception(ScBuffer, ScSocket) {
 					{
 					//Dual Buffers	
 					var CurrentTime = get_timer();
-					var TimeToSet = floor(CurrentTime/100000) + 5;
+					var TimeToSet = floor(CurrentTime/100000) + 50;
 					
 					buffer_seek(ServerBufferSameSend, buffer_seek_start, 0);
 					buffer_write(ServerBufferSameSend, buffer_u8, Network.ConfirmInput);
@@ -41,7 +41,7 @@ function scPacketReception(ScBuffer, ScSocket) {
 					{ //Case 0
 					show_debug_message("Case 0");
 					var CurrentTime = get_timer();
-					var TimeToSet = round(CurrentTime/100000) + 5;
+					var TimeToSet = round(CurrentTime/100000) + 50;
 						
 					buffer_seek(ServerBuffer, buffer_seek_start, 0);
 					buffer_write(ServerBuffer, buffer_u8, Network.SendCurrentInput);
