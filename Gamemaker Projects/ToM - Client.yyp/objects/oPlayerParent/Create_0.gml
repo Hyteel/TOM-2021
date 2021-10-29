@@ -16,6 +16,9 @@ CurrentJumpFrame = 0;
 ActiveCommands = ds_list_create();
 ActiveHeldCommands = ds_list_create();
 
+ReadyForInput = true;
+CurrentHeldArrayTime = 0;
+
 LagX = 0;
 LagY = 0;
 LagXSpeed = 0.1;
