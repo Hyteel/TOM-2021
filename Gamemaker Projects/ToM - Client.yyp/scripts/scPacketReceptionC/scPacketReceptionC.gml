@@ -7,9 +7,11 @@ function scPacketReceptionC(ScBuffer){
 		case Network.SendCurrentInput:
 			var CommandCount = buffer_read(ScBuffer, buffer_u8);
 			global.InstOtPlayer.QueuedCommands[# 1, global.InstOtPlayer.CurrentCommandIndex] = buffer_read(ScBuffer, buffer_u16)*100000;
+			if (scListExists(global.InstOtPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex])) { ds_list_clear(global.InstOtPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex]); show_debug_message("DOESEXIST")}
+			else { var NewList = ds_list_create(); global.InstOtPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex] = NewList; show_debug_message("DOESNOTEXIST")}
+			
 			if (CommandCount != 0)
 				{
-				ds_list_clear(global.InstOtPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex]);
 				for (var i = 0; i < CommandCount; i++)
 					{
 					ds_list_add(global.InstOtPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex], buffer_read(ScBuffer, buffer_u8));		
@@ -17,10 +19,9 @@ function scPacketReceptionC(ScBuffer){
 				}
 			else
 				{
-				ds_list_clear(global.InstOtPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex]);
 				ds_list_add(global.InstOtPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex], PCommands.NoInput);	
 				}
-			
+				
 			if (global.InstOtPlayer.CurrentCommandIndex >= 10) {global.InstOtPlayer.CurrentCommandIndex = 0;}
 			else {global.InstOtPlayer.CurrentCommandIndex++;}
 			
@@ -30,9 +31,11 @@ function scPacketReceptionC(ScBuffer){
 		case Network.ConfirmInput:
 			var CommandCount = buffer_read(ScBuffer, buffer_u8);
 			global.InstLocalPlayer.QueuedCommands[# 1, global.InstLocalPlayer.CurrentCommandIndex] = buffer_read(ScBuffer, buffer_u16)*100000;
+			if (scListExists(global.InstOtPlayer.QueuedCommands[# 0, global.InstLocalPlayer.CurrentCommandIndex])) { ds_list_clear(global.InstLocalPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex]); }
+			else { var NewList = ds_list_create(); global.InstLocalPlayer.QueuedCommands[# 0, global.InstLocalPlayer.CurrentCommandIndex] = NewList; }
+				
 			if (CommandCount != 0)
 				{
-				ds_list_clear(global.InstLocalPlayer.QueuedCommands[# 0, global.InstLocalPlayer.CurrentCommandIndex]);
 				for (var i = 0; i < CommandCount; i++)
 					{
 					ds_list_add(global.InstLocalPlayer.QueuedCommands[# 0, global.InstLocalPlayer.CurrentCommandIndex], buffer_read(ScBuffer, buffer_u8));		
@@ -40,7 +43,6 @@ function scPacketReceptionC(ScBuffer){
 				}
 			else
 				{
-				ds_list_clear(global.InstLocalPlayer.QueuedCommands[# 0, global.InstLocalPlayer.CurrentCommandIndex]);
 				ds_list_add(global.InstLocalPlayer.QueuedCommands[# 0, global.InstLocalPlayer.CurrentCommandIndex], PCommands.NoInput);	
 				}
 				

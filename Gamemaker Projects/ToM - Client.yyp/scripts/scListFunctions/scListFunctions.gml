@@ -12,8 +12,14 @@ function scListCompare(List1, List2){
 	return true;
 }
 
+
 function scListIndexDoesExist(List, Value){
 	if (ds_list_find_index(List, Value) == -1) {return false; }
 	else {return true;}
 }
 
+
+function scListExists(List){
+	if (ds_list_find_value(List, 0) == undefined) {return false; }
+	else {return true; }
+}

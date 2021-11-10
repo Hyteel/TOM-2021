@@ -15,4 +15,3 @@ DebugMode = 0;
 //Globalizer
 alarm[0] = room_speed*GlobaPosInter;
 
-
