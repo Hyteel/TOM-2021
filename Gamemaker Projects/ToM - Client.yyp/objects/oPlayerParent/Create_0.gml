@@ -15,8 +15,17 @@ CurrentJumpFrame = 0;
 
 ActiveCommands = ds_list_create();
 QueuedCommands = ds_grid_create(2, 11);
+
+for (var i = 0; i < 11; i++)
+	{
+		var TempList = ds_list_create();
+		TempList[|0] = PCommands.NoInput; 
+		QueuedCommands[# 0, i] = TempList;
+	}
+
+
 CurrentCommandIndex = 0;
-CurrentCommandPosition = 10;
+CurrentCommandPosition = 9;
 
 CurrentHeldArrayTime = 0;
 
