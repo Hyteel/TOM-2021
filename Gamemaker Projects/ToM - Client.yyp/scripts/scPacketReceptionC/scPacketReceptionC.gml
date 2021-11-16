@@ -5,48 +5,32 @@ function scPacketReceptionC(ScBuffer){
 	switch(MsgType)
 	{
 		case Network.SendCurrentInput:
+			var Player = buffer_read(ScBuffer, buffer_bool);
 			var CommandCount = buffer_read(ScBuffer, buffer_u8);
-			global.InstOtPlayer.QueuedCommands[# 1, global.InstOtPlayer.CurrentCommandIndex] = buffer_read(ScBuffer, buffer_u16)*100000;
-			ds_list_clear(global.InstOtPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex]);
+			var TimeToExecute = buffer_read(ScBuffer, buffer_u16)*100000;
+			var CommandList = ds_list_create();
+			CombineArray[0] = TimeToExecute;
 			
 			if (CommandCount != 0)
 				{
 				for (var i = 0; i < CommandCount; i++)
 					{
-					ds_list_add(global.InstOtPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex], buffer_read(ScBuffer, buffer_u8));		
+					ds_list_add(CommandList, buffer_read(ScBuffer, buffer_u8));		
 					}
 				}
 			else
 				{
-				ds_list_add(global.InstOtPlayer.QueuedCommands[# 0, global.InstOtPlayer.CurrentCommandIndex], PCommands.NoInput);	
+				ds_list_add(CommandList, PCommands.NoInput);	
 				}
-				
-			if (global.InstOtPlayer.CurrentCommandIndex >= 9) {global.InstOtPlayer.CurrentCommandIndex = 0;}
-			else {global.InstOtPlayer.CurrentCommandIndex++;}
 			
+			CombineArray[1] = CommandList;
+			
+			if (Player) { ds_queue_enqueue(global.InstLocalPlayer.CommandQueue, CombineArray); }
+			else { ds_queue_enqueue(global.InstOtPlayer.CommandQueue, CombineArray); }
 			break;
-		
+			
 		
 		case Network.ConfirmInput:
-			var CommandCount = buffer_read(ScBuffer, buffer_u8);
-			global.InstLocalPlayer.QueuedCommands[# 1, global.InstLocalPlayer.CurrentCommandIndex] = buffer_read(ScBuffer, buffer_u16)*100000;
-			ds_list_clear(global.InstLocalPlayer.QueuedCommands[# 0, global.InstLocalPlayer.CurrentCommandIndex]);
-			
-			if (CommandCount != 0)
-				{
-				for (var i = 0; i < CommandCount; i++)
-					{
-					ds_list_add(global.InstLocalPlayer.QueuedCommands[# 0, global.InstLocalPlayer.CurrentCommandIndex], buffer_read(ScBuffer, buffer_u8));		
-					}
-				}
-			else
-				{
-				ds_list_add(global.InstLocalPlayer.QueuedCommands[# 0, global.InstLocalPlayer.CurrentCommandIndex], PCommands.NoInput);	
-				}
-				
-			if (global.InstLocalPlayer.CurrentCommandIndex >= 9) {global.InstLocalPlayer.CurrentCommandIndex = 0;}
-			else {global.InstLocalPlayer.CurrentCommandIndex++;}
-			
 			break;
 		
 		

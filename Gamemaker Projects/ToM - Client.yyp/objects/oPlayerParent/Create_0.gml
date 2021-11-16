@@ -14,14 +14,10 @@ MaxJumpFrames = 20;
 CurrentJumpFrame = 0;
 
 ActiveCommands = ds_list_create();
-QueuedCommands = ds_grid_create(2, 11);
+ActiveArray[0] = 0;
+ActiveArray[1] = 0;
+CommandQueue = ds_queue_create();
 
-for (var i = 0; i < 11; i++)
-	{
-		var TempList = ds_list_create();
-		TempList[|0] = PCommands.NoInput; 
-		QueuedCommands[# 0, i] = TempList;
-	}
 
 
 CurrentCommandIndex = 0;

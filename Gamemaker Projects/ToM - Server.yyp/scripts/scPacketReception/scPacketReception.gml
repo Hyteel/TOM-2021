@@ -15,15 +15,17 @@ function scPacketReception(ScBuffer, ScSocket) {
 					var CurrentTime = get_timer();
 					var TimeToSet = floor(CurrentTime/100000) + Extratime;
 					
-					buffer_seek(ServerBufferSameSend, buffer_seek_start, 0);
-					buffer_write(ServerBufferSameSend, buffer_u8, Network.ConfirmInput);
-					buffer_write(ServerBufferSameSend, buffer_u8, CommandCount);
-					buffer_write(ServerBufferSameSend, buffer_u16, TimeToSet);
-				
 					buffer_seek(ServerBuffer, buffer_seek_start, 0);
 					buffer_write(ServerBuffer, buffer_u8, Network.SendCurrentInput);
+					buffer_write(ServerBuffer, buffer_bool, false);
 					buffer_write(ServerBuffer, buffer_u8, CommandCount);
 					buffer_write(ServerBuffer, buffer_u16, TimeToSet);
+					
+					buffer_seek(ServerBufferSameSend, buffer_seek_start, 0);
+					buffer_write(ServerBufferSameSend, buffer_u8, Network.SendCurrentInput);
+					buffer_write(ServerBufferSameSend, buffer_bool, true);
+					buffer_write(ServerBufferSameSend, buffer_u8, CommandCount);
+					buffer_write(ServerBufferSameSend, buffer_u16, TimeToSet);
 
 					for (var i = 0; i < CommandCount; i++)
 						{
@@ -46,11 +48,13 @@ function scPacketReception(ScBuffer, ScSocket) {
 						
 					buffer_seek(ServerBuffer, buffer_seek_start, 0);
 					buffer_write(ServerBuffer, buffer_u8, Network.SendCurrentInput);
+					buffer_write(ServerBuffer, buffer_bool, false);
 					buffer_write(ServerBuffer, buffer_u8, CommandCount);
 					buffer_write(ServerBuffer, buffer_u16, TimeToSet);
 					
 					buffer_seek(ServerBufferSameSend, buffer_seek_start, 0);
-					buffer_write(ServerBufferSameSend, buffer_u8, Network.ConfirmInput);
+					buffer_write(ServerBufferSameSend, buffer_u8, Network.SendCurrentInput);
+					buffer_write(ServerBufferSameSend, buffer_bool, true);
 					buffer_write(ServerBufferSameSend, buffer_u8, CommandCount);
 					buffer_write(ServerBufferSameSend, buffer_u16, TimeToSet);
 					

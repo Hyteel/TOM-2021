@@ -34,14 +34,14 @@ else if (DebugMode == 1)
 	draw_text(room_width/2.5, 0, "LOCAL PLAYER")
 	for (var i = 0; i < 10; i++)
 		{
-		draw_text(room_width/16, (room_height/10)*i, "[ " + string(global.InstLocalPlayer.QueuedCommands[# 1, i]) + " , S:" + string(ds_list_size(global.InstLocalPlayer.QueuedCommands[# 0, i])) + " , " + string(global.InstLocalPlayer.QueuedCommands[# 0, i][| 0]) + " ]")
+		//draw_text(room_width/16, (room_height/10)*i, "[ " + string(global.InstLocalPlayer.QueuedCommands[# 1, i]) + " , S:" + string(ds_list_size(global.InstLocalPlayer.QueuedCommands[# 0, i])) + " , " + string(global.InstLocalPlayer.QueuedCommands[# 0, i][| 0]) + " ]")
 		}
 	
 	draw_set_color(c_orange);
 	draw_text(room_width/2.5, room_height/10, "OT PLAYER")
 	for (var i = 0; i < 10; i++)
 		{
-		draw_text((room_width/4)*2.5, (room_height/10)*i, "[ " + string(global.InstOtPlayer.QueuedCommands[# 1, i]) + " , S:" + string(ds_list_size(global.InstOtPlayer.QueuedCommands[# 0, i])) + " , " + string(global.InstOtPlayer.QueuedCommands[# 0, i][| 0]) + " ]")
+		//draw_text((room_width/4)*2.5, (room_height/10)*i, "[ " + string(global.InstOtPlayer.QueuedCommands[# 1, i]) + " , S:" + string(ds_list_size(global.InstOtPlayer.QueuedCommands[# 0, i])) + " , " + string(global.InstOtPlayer.QueuedCommands[# 0, i][| 0]) + " ]")
 		}
 	
 	draw_set_color(c_white);
