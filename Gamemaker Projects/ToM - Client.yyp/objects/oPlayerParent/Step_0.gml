@@ -16,8 +16,8 @@ if (sLIDE(ActiveCommands, PCommands.MoveLeft)) || (sLIDE(ActiveCommands, PComman
 			HorizontalSpeed += Acceleration;
 			}
 		}
-	if (sLIDE(ActiveCommands, PCommands.MoveLeft)) {var Direction = -1; if (scCollisionCheck("Left")) { HorizontalSpeed = 0;} }
-	else {Direction = 1; if (scCollisionCheck("Right")) { HorizontalSpeed = 0;}}
+	if (sLIDE(ActiveCommands, PCommands.MoveLeft)) {var Direction = -1; if (scCollisionCheck("Left")) { Direction = 0;} }
+	else {Direction = 1; if (scCollisionCheck("Right")) { Direction = 0;}}
 	x += HorizontalSpeed * Direction;
 	}
 else 
@@ -29,7 +29,7 @@ else
 //Jumping
 if (sLIDE(ActiveCommands, PCommands.MoveUp))
 	{
-	if (!(CurrentlyJumping) && (tilemap_get_at_pixel(CollisionTileMap, bbox_left + 1, bbox_bottom + 1) != 0) || (tilemap_get_at_pixel(CollisionTileMap, bbox_right - 1, bbox_bottom + 1) != 0))
+	if (!(CurrentlyJumping) && (scCollisionCheck("Down")))
 		{
 		CurrentlyJumping = true;
 		y -= InitialJumpHeight;
@@ -49,10 +49,14 @@ else
 
 
 //Gravity
-if !(CurrentlyJumping)
+if (scCollisionCheck("Down")) { VerticalSpeed = 0; }
+else
 	{
-	if (scCollisionCheck("Down")) { VerticalSpeed = 0; }
-	else { y += VerticalSpeed; VerticalSpeed += Gravity; }
+	if !(CurrentlyJumping)
+		{
+		if !(VerticalSpeed + Gravity >= MaxGravity) { VerticalSpeed += Gravity;}
+		y += VerticalSpeed;  
+		}
 	}
 
 

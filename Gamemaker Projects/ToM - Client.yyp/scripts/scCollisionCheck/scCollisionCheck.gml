@@ -35,9 +35,9 @@ function scCollisionCheck(Direction){
 		if ((tilemap_get_at_pixel(CollisionTileMap, bbox_left - 1, bbox_bottom - 1) != 0) || (tilemap_get_at_pixel(CollisionTileMap, bbox_left - 1, bbox_top + 1) != 0)) { return(true); }
 		else
 			{
-			if ((tilemap_get_at_pixel(CollisionTileMap, bbox_left + HorizontalSpeed, bbox_bottom - 1) != 0) || (tilemap_get_at_pixel(CollisionTileMap, bbox_left + HorizontalSpeed, bbox_top + 1) != 0))
+			if ((tilemap_get_at_pixel(CollisionTileMap, bbox_left - HorizontalSpeed, bbox_bottom - 1) != 0) || (tilemap_get_at_pixel(CollisionTileMap, bbox_left - HorizontalSpeed, bbox_top + 1) != 0))
 				{
-				x = floor((bbox_left + HorizontalSpeed)/16) * 16 + bbox_right - bbox_left;
+				x = floor((bbox_left - HorizontalSpeed)/16) * 16 + 16;
 				return(true);
 				}
 			}
@@ -50,7 +50,7 @@ function scCollisionCheck(Direction){
 			{
 			if ((tilemap_get_at_pixel(CollisionTileMap, bbox_right + HorizontalSpeed, bbox_bottom - 1) != 0) || (tilemap_get_at_pixel(CollisionTileMap, bbox_right + HorizontalSpeed, bbox_top + 1) != 0))
 				{
-				x = floor((bbox_right + HorizontalSpeed)/16) * 16 - (bbox_right - bbox_left);
+				x = floor((bbox_right + HorizontalSpeed)/16) * 16 - (bbox_right - bbox_left) - 1;
 				return(true);
 				}
 			}

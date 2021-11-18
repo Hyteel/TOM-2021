@@ -31,26 +31,52 @@ draw_text((room_width/4)*3, (room_height/12)*2, "Local LagY : " + string(global.
 else if (DebugMode == 1)
 	{
 	draw_set_color(c_aqua);
-	draw_text(room_width/2.5, 0, "LOCAL PLAYER")
-	for (var i = 0; i < 10; i++)
+	draw_text(room_width/2.5, 0, "LOCAL PLAYER");
+	if !(is_undefined(ds_queue_head(global.InstLocalPlayer.CommandQueue)))
 		{
-		//draw_text(room_width/16, (room_height/10)*i, "[ " + string(global.InstLocalPlayer.QueuedCommands[# 1, i]) + " , S:" + string(ds_list_size(global.InstLocalPlayer.QueuedCommands[# 0, i])) + " , " + string(global.InstLocalPlayer.QueuedCommands[# 0, i][| 0]) + " ]")
+		LocPHead = "HEAD : " + string(ds_queue_head(global.InstLocalPlayer.CommandQueue)[0]) + " , " + string(ds_queue_head(global.InstLocalPlayer.CommandQueue)[1]);
+		LocPHeadList = "HEAD LIST : " + string(ds_list_find_value(ds_queue_head(global.InstLocalPlayer.CommandQueue)[1], 0)) + " , " + 
+		string(ds_list_find_value(ds_queue_head(global.InstLocalPlayer.CommandQueue)[1], 1)) + " , " + string(ds_list_find_value(ds_queue_head(global.InstLocalPlayer.CommandQueue)[1], 2));
+		LocPAAT = "ACTIVEARRAY TIME : " + string(global.InstLocalPlayer.ActiveArray[0]);
+		LocPTail = "TAIL : " + string(ds_queue_tail(global.InstLocalPlayer.CommandQueue)[0]) + " , " + string(ds_queue_tail(global.InstLocalPlayer.CommandQueue)[1]);
+		LocPTailList = "TAIL LIST : " + string(ds_list_find_value(ds_queue_tail(global.InstLocalPlayer.CommandQueue)[1], 0)) + " , " + 
+		string(ds_list_find_value(ds_queue_tail(global.InstLocalPlayer.CommandQueue)[1], 1)) + " , " + string(ds_list_find_value(ds_queue_tail(global.InstLocalPlayer.CommandQueue)[1], 2));
 		}
+	draw_text(room_width/16, room_height/10, LocPHead);
+	draw_text(room_width/16, (room_height/10)*2, LocPHeadList);
+	draw_text(room_width/16, (room_height/10)*3, LocPAAT);
+	draw_text(room_width/16, (room_height/10)*4, LocPTail);
+	draw_text(room_width/16, (room_height/10)*5, LocPTailList);
+	draw_text(room_width/16, (room_height/10)*6, "LocalVerticalSpeed : " + string(global.InstLocalPlayer.VerticalSpeed));
+	
 	
 	draw_set_color(c_orange);
-	draw_text(room_width/2.5, room_height/10, "OT PLAYER")
-	for (var i = 0; i < 10; i++)
+	draw_text(room_width/2.5, room_height/10, "OT PLAYER");
+	if !(is_undefined(ds_queue_head(global.InstOtPlayer.CommandQueue)))
 		{
-		//draw_text((room_width/4)*2.5, (room_height/10)*i, "[ " + string(global.InstOtPlayer.QueuedCommands[# 1, i]) + " , S:" + string(ds_list_size(global.InstOtPlayer.QueuedCommands[# 0, i])) + " , " + string(global.InstOtPlayer.QueuedCommands[# 0, i][| 0]) + " ]")
+		OtPHead = "HEAD : " + string(ds_queue_head(global.InstOtPlayer.CommandQueue)[0]) + " , " + string(ds_queue_head(global.InstOtPlayer.CommandQueue)[1]);
+		OtPHeadList = "HEAD LIST : " + string(ds_list_find_value(ds_queue_head(global.InstOtPlayer.CommandQueue)[1], 0)) + " , " + 
+		string(ds_list_find_value(ds_queue_head(global.InstOtPlayer.CommandQueue)[1], 1)) + " , " + string(ds_list_find_value(ds_queue_head(global.InstOtPlayer.CommandQueue)[1], 2));
+		OtPAAT = "ACTIVEARRAY TIME : " + string(global.InstOtPlayer.ActiveArray[0]);
+		OtPTail = "TAIL : " + string(ds_queue_tail(global.InstOtPlayer.CommandQueue)[0]) + " , " + string(ds_queue_tail(global.InstOtPlayer.CommandQueue)[1]);
+		OtPTailList = "TAIL LIST : " + string(ds_list_find_value(ds_queue_tail(global.InstOtPlayer.CommandQueue)[1], 0)) + " , " + 
+		string(ds_list_find_value(ds_queue_tail(global.InstOtPlayer.CommandQueue)[1], 1)) + " , " + string(ds_list_find_value(ds_queue_tail(global.InstOtPlayer.CommandQueue)[1], 2));
 		}
+	draw_text((room_width /4)*2.5, room_height/10, OtPHead);
+	draw_text((room_width /4)*2.5, (room_height/10)*2, OtPHeadList);
+	draw_text((room_width /4)*2.5, (room_height/10)*3, OtPAAT);
+	draw_text((room_width /4)*2.5, (room_height/10)*4, OtPTail);
+	draw_text((room_width /4)*2.5, (room_height/10)*5, OtPTailList);
+	draw_text((room_width /4)*2.5, (room_height/10)*6, "OtPVerticalSpeed : " + string(global.InstOtPlayer.VerticalSpeed));
+	
 	
 	draw_set_color(c_white);
 	draw_text((room_width/4)*1.5, (room_height/6)*4, "CT : " + string(get_timer()));
 	draw_text((room_width/4)*1.5, (room_height/6)*4.5, "CTDif : " + string(ConnectedTimeDifference));
 	draw_text((room_width/4)*1.5, (room_height/6)*5, "CTTot : " + string(ConnectedTimeDifference + get_timer()));
 	
-	draw_text((room_width/4)*1.5, (room_height/6)*1, "CurComPos OTP : " + string(global.InstOtPlayer.CurrentCommandPosition));
-	draw_text((room_width/4)*1.5, (room_height/6)*1.5, "CurComPos LOC : " + string(global.InstLocalPlayer.CurrentCommandPosition));
+	draw_text((room_width/4)*1.5, (room_height/6)*1, "QueueSize OtP : " + string(ds_queue_size(global.InstOtPlayer.CommandQueue)));
+	draw_text((room_width/4)*1.5, (room_height/6)*1.5, "QueueSize LOC : " + string(ds_queue_size(global.InstLocalPlayer.CommandQueue)));
 	draw_text((room_width/4)*1.5, (room_height/6)*2, "CurComInx OTP : " + string(global.InstOtPlayer.CurrentCommandIndex));
 	draw_text((room_width/4)*1.5, (room_height/6)*2.5, "CurComInx LOC : " + string(global.InstLocalPlayer.CurrentCommandIndex));
 	}

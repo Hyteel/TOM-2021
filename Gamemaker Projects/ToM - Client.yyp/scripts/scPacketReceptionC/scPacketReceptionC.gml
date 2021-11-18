@@ -5,10 +5,12 @@ function scPacketReceptionC(ScBuffer){
 	switch(MsgType)
 	{
 		case Network.SendCurrentInput:
+			
 			var Player = buffer_read(ScBuffer, buffer_bool);
 			var CommandCount = buffer_read(ScBuffer, buffer_u8);
 			var TimeToExecute = buffer_read(ScBuffer, buffer_u16)*100000;
 			var CommandList = ds_list_create();
+			var CombineArray = 0;
 			CombineArray[0] = TimeToExecute;
 			
 			if (CommandCount != 0)

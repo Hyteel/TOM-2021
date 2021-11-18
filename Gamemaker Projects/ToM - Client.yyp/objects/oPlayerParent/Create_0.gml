@@ -6,7 +6,8 @@ BaseHorizontalSpeed = 6;
 HorizontalSpeed = BaseHorizontalSpeed;
 LastDirection = 0;
 VerticalSpeed = 0;
-Gravity = 0.1;
+Gravity = 0.2;
+MaxGravity = 10;
 CurrentlyJumping = false;
 InitialJumpHeight = 30;
 AdditionalJumpHeight = 10;
@@ -17,7 +18,7 @@ ActiveCommands = ds_list_create();
 ActiveArray[0] = 0;
 ActiveArray[1] = 0;
 CommandQueue = ds_queue_create();
-
+LastCopy = true;
 
 
 CurrentCommandIndex = 0;
