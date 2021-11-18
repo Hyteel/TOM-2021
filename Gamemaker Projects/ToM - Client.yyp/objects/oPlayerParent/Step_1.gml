@@ -22,6 +22,3 @@ if (get_timer() + global.InstMain.ConnectedTimeDifference > ActiveArray[0])
 			}
 		}
 	}
-
-
-	
