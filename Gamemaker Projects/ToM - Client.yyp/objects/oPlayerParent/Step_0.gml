@@ -31,6 +31,7 @@ if (sLIDE(ActiveCommands, PCommands.MoveUp))
 	{
 	if (!(CurrentlyJumping) && (scCollisionCheck("Down")))
 		{
+		VerticalSpeed = 0;
 		CurrentlyJumping = true;
 		y -= InitialJumpHeight;
 		CurrentJumpFrame = 0;

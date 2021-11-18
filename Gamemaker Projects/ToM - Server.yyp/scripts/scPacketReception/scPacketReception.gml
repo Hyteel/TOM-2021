@@ -4,7 +4,7 @@ function scPacketReception(ScBuffer, ScSocket) {
 	switch (MsgType)
 	{
 		case Network.SendCurrentInput:
-			var Extratime = 10;
+			var Extratime = 1;
 			if (ds_list_size(PlayerSockets) > 1)
 				{
 				var CommandCount = buffer_read(ScBuffer, buffer_u8);
