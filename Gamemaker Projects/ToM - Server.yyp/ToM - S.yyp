@@ -1,8 +1,8 @@
 {
   "resources": [
     {"id":{"name":"fMain","path":"fonts/fMain/fMain.yy",},"order":0,},
-    {"id":{"name":"sPacketReception","path":"scripts/sPacketReception/sPacketReception.yy",},"order":1,},
-    {"id":{"name":"sGetOppositePlayer","path":"scripts/sGetOppositePlayer/sGetOppositePlayer.yy",},"order":2,},
+    {"id":{"name":"scPacketReception","path":"scripts/scPacketReception/scPacketReception.yy",},"order":1,},
+    {"id":{"name":"scGetOppositePlayer","path":"scripts/scGetOppositePlayer/scGetOppositePlayer.yy",},"order":2,},
     {"id":{"name":"oMPHandlerS","path":"objects/oMPHandlerS/oMPHandlerS.yy",},"order":0,},
     {"id":{"name":"rMain","path":"rooms/rMain/rMain.yy",},"order":1,},
   ],
@@ -46,7 +46,7 @@
   ],
   "IncludedFiles": [],
   "MetaData": {
-    "IDEVersion": "2.3.4.583",
+    "IDEVersion": "2.3.3.570",
   },
   "resourceVersion": "1.4",
   "name": "ToM - S",

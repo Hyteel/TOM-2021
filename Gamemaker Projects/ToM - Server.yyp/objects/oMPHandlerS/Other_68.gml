@@ -9,6 +9,7 @@ switch (EventType)
 		buffer_seek(ServerBuffer, buffer_seek_start, 0);
 		buffer_write(ServerBuffer, buffer_u8, Network.ConfirmConnect);
 		buffer_write(ServerBuffer, buffer_u8, CurrentSocket);
+		buffer_write(ServerBuffer, buffer_u32, round(get_timer()/1000));
 		network_send_packet(CurrentSocket, ServerBuffer, buffer_tell(ServerBuffer));
 		break;
 		
@@ -21,7 +22,7 @@ switch (EventType)
 		Buffer = ds_map_find_value(async_load, "buffer");
 		CurrentSocket = ds_map_find_value(async_load, "id");
 		buffer_seek(Buffer, buffer_seek_start, 0);
-		sPacketReception(Buffer, CurrentSocket);
+		scPacketReception(Buffer, CurrentSocket);
 		break;
 
 

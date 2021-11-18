@@ -1,15 +1,36 @@
 //Initialization
 ovarLastInput = 0;
-MaxMovementSpeed = 2;
+MaxHorizontalSpeed = 10;
 Acceleration = 0.1;
-BaseMovementSpeed = 2;
-CurrentMovementSpeed = BaseMovementSpeed;
+BaseHorizontalSpeed = 6;
+HorizontalSpeed = BaseHorizontalSpeed;
 LastDirection = 0;
+VerticalSpeed = 0;
+Gravity = 0.2;
+MaxGravity = 10;
+CurrentlyJumping = false;
+InitialJumpHeight = 30;
+AdditionalJumpHeight = 10;
+MaxJumpFrames = 20;
+CurrentJumpFrame = 0;
 
 ActiveCommands = ds_list_create();
+ActiveArray[0] = 0;
+ActiveArray[1] = 0;
+CommandQueue = ds_queue_create();
+LastCopy = true;
 
+
+CurrentCommandIndex = 0;
+CurrentCommandPosition = 9;
+
+CurrentHeldArrayTime = 0;
 
 LagX = 0;
 LagY = 0;
 LagXSpeed = 0.1;
 LagYSpeed = 0.1;
+
+
+CollisionLayer = layer_get_id("tmCollision")
+CollisionTileMap = layer_tilemap_get_id(CollisionLayer);

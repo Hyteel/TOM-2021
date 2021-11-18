@@ -1,60 +1,24 @@
-#macro sLIDE sListIndexDoesExist
-
-
-//Horizontal Movement	
-if (sLIDE(ActiveCommands, PCommands.MoveLeft)) || (sLIDE(ActiveCommands, PCommands.MoveRight)) 
+if (get_timer() + global.InstMain.ConnectedTimeDifference > ActiveArray[0])
 	{
-	if (LastDirection != ovarLastInput)
+	if (ds_queue_size(CommandQueue) > 0)
 		{
-		LastDirection = ovarLastInput;
-		CurrentMovementSpeed = BaseMovementSpeed;
+		if (ActiveArray[0] == 0)
+			{
+			ActiveArray = ds_queue_dequeue(CommandQueue);
+			}
+		else
+			{
+			ds_list_copy(ActiveCommands, ActiveArray[1]);
+			ActiveArray = ds_queue_dequeue(CommandQueue);
+			LastCopy = false;
+			}
 		}
 	else
 		{
-		if (CurrentMovementSpeed != MaxMovementSpeed)
+		if !(LastCopy)
 			{
-			CurrentMovementSpeed += Acceleration;
+			ds_list_copy(ActiveCommands, ActiveArray[1]);
+			LastCopy = true;
 			}
 		}
-	if (sLIDE(ActiveCommands, PCommands.MoveLeft)) {var Direction = -1; }
-	else {Direction = 1; }
-	x += CurrentMovementSpeed * Direction;
-	}
-else {LastDirection = 0;}	
-
-
-//LagCompensation
-if (LagX != 0)
-	{
-		if (LagX > 0)
-			{
-			if ((LagX - LagXSpeed) > 0)
-				{
-				x += LagXSpeed;
-				LagX -= LagXSpeed;
-				}
-			}
-		else
-			{
-			if ((LagX + LagXSpeed) < 0)
-				{
-				x -= LagXSpeed;
-				LagX += LagXSpeed;
-				}
-			}
-	}
-
-if (LagY != 0)
-	{
-		if (((LagY + LagYSpeed) > 0) || ((LagY - LagYSpeed) < 0)) { LagY = 0;}
-		else if (LagY > 0)
-			{
-			y += LagYSpeed;
-			LagY += LagYSpeed;
-			}
-		else
-			{
-			y -= LagYSpeed;
-			LagY -= LagYSpeed;
-			}
 	}
