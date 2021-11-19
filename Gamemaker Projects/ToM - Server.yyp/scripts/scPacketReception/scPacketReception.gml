@@ -4,7 +4,7 @@ function scPacketReception(ScBuffer, ScSocket) {
 	switch (MsgType)
 	{
 		case Network.SendCurrentInput:
-			var Extratime = 1;
+			var Extratime = 2;
 			if (ds_list_size(PlayerSockets) > 1)
 				{
 				var CommandCount = buffer_read(ScBuffer, buffer_u8);
@@ -13,7 +13,7 @@ function scPacketReception(ScBuffer, ScSocket) {
 					{
 					//Dual Buffers	
 					var CurrentTime = get_timer();
-					var TimeToSet = floor(CurrentTime/100000) + Extratime;
+					var TimeToSet = floor(CurrentTime/10000) + Extratime;
 					
 					buffer_seek(ServerBuffer, buffer_seek_start, 0);
 					buffer_write(ServerBuffer, buffer_u8, Network.SendCurrentInput);
@@ -44,7 +44,7 @@ function scPacketReception(ScBuffer, ScSocket) {
 					{ //Case 0
 					show_debug_message("Case 0");
 					var CurrentTime = get_timer();
-					var TimeToSet = round(CurrentTime/100000) + Extratime;
+					var TimeToSet = round(CurrentTime/10000) + Extratime;
 						
 					buffer_seek(ServerBuffer, buffer_seek_start, 0);
 					buffer_write(ServerBuffer, buffer_u8, Network.SendCurrentInput);
