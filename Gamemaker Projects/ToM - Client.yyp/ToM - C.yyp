@@ -13,6 +13,7 @@
     {"id":{"name":"tsCollision","path":"tilesets/tsCollision/tsCollision.yy",},"order":0,},
     {"id":{"name":"oLocalPlayer","path":"objects/oLocalPlayer/oLocalPlayer.yy",},"order":1,},
     {"id":{"name":"oMain","path":"objects/oMain/oMain.yy",},"order":2,},
+    {"id":{"name":"scAnimationProperties","path":"scripts/scAnimationProperties/scAnimationProperties.yy",},"order":5,},
     {"id":{"name":"NEXTTIME","path":"notes/NEXTTIME/NEXTTIME.yy",},"order":0,},
     {"id":{"name":"scListFunctions","path":"scripts/scListFunctions/scListFunctions.yy",},"order":3,},
     {"id":{"name":"fMain","path":"fonts/fMain/fMain.yy",},"order":0,},

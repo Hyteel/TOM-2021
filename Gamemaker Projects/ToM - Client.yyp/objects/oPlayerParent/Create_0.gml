@@ -20,11 +20,13 @@ ActiveArray[1] = 0;
 CommandQueue = ds_queue_create();
 LastCopy = true;
 
-
 CurrentCommandIndex = 0;
 CurrentCommandPosition = 9;
-
 CurrentHeldArrayTime = 0;
+
+Animated = false;
+CurrentAnimation = 0;
+CurrentFrame = 0;
 
 LagX = 0;
 LagY = 0;

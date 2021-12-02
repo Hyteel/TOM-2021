@@ -61,26 +61,33 @@ else
 	}
 
 
-//LagCompensation
-/*if (LagX != 0)
+//Animation
+var CAP = scAnimationProperties(CurrentAnimation);
+if (CurrentFrame > CAP[0])
 	{
-		if (LagX > 0) 
-			{
-			if (LagX - LagXSpeed < 0) { LagX = 0; }
-			else
-				{
-				x += LagXSpeed;
-				LagX -= LagXSpeed;
-				}
-			}
-		else
-			{
-			if (LagX + LagXSpeed > 0) { LagX = 0; }
-			else
-				{
-				x -= LagXSpeed;
-				LagX += LagXSpeed;
-				}
-			}
+	if ((sLIDE(ActiveCommands, PCommands.MoveLeft)) && !(sLIDE(ActiveCommands, PCommands.MoveRight))) { CurrentAnimation = Animations.MoveLeft; }
+	if (!(sLIDE(ActiveCommands, PCommands.MoveLeft)) && (sLIDE(ActiveCommands, PCommands.MoveRight))) { CurrentAnimation = Animations.MoveRight; }
+	
 	}
-*/
+else
+	{
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
