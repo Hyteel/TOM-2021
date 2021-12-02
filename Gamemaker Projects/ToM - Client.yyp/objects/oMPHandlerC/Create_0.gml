@@ -17,7 +17,6 @@ else
 enum Network
 {
 	SendCurrentInput,
-	ConfirmInput,
 	ConfirmConnect,
 	GlobalizePos
 }

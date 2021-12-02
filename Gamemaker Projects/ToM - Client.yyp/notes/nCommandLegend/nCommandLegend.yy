@@ -1,7 +1,7 @@
 {
   "parent": {
-    "name": "ogPlayers",
-    "path": "folders/Objects/ogPlayers.yy",
+    "name": "Notes",
+    "path": "folders/Notes.yy",
   },
   "resourceVersion": "1.1",
   "name": "nCommandLegend",

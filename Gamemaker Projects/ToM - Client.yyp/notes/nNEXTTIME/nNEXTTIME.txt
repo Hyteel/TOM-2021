@@ -12,3 +12,7 @@ if (Viss animation)
 			Cancel Animation
 			}
 		}
+		
+		
+		
+REPLACE scANIMATIONPROPERTIES WITH STANDALONE FILE

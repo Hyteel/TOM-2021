@@ -1,8 +1,7 @@
 //Initialization
 Identification = 0;
 GlobaPosInter = 5;
-CurrentInputs = ds_list_create();
-OldInputs = ds_list_create();
+OldInput = 0;
 Sendofftime = 0;
 ConnectedTime = 0;
 ConnectedTimeServer = 0;

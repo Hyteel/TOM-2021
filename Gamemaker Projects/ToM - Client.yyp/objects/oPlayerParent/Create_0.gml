@@ -14,7 +14,7 @@ AdditionalJumpHeight = 10;
 MaxJumpFrames = 20;
 CurrentJumpFrame = 0;
 
-ActiveCommands = ds_list_create();
+ActiveCommand = 0;
 ActiveArray[0] = 0;
 ActiveArray[1] = 0;
 CommandQueue = ds_queue_create();

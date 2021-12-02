@@ -15,7 +15,6 @@ ServerBufferSameSend = buffer_create(16, buffer_grow, 1);
 enum Network
 {
 	SendCurrentInput,
-	ConfirmInput,
 	ConfirmConnect,
 	GlobalizePos
 }

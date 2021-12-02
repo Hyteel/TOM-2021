@@ -1,3 +1,4 @@
+/*
 //New Input sys
 scInputCheck(37, PCommands.MoveLeft);
 scInputCheck(38, PCommands.MoveUp);
@@ -33,6 +34,22 @@ if (!(scListCompare(OldInputs, CurrentInputs)))
 	
 	ds_list_copy(OldInputs, CurrentInputs);
 	}
+
+
+*/
+
+//NEW2 INPUT SYS
+var Input = scCompileInputs();
+
+if (Input != OldInput)
+	{
+	buffer_seek(global.ClientBuffer, buffer_seek_start, 0);
+	buffer_write(global.ClientBuffer, buffer_u8, Network.SendCurrentInput);
+	buffer_write(global.ClientBuffer, buffer_u8, Input);	
+	network_send_packet(global.ClientSocket, global.ClientBuffer, buffer_tell(global.ClientBuffer));
+	Sendofftime = get_timer();
+	}
+
 
 if (keyboard_check_pressed(ord("P")))
 	{

@@ -8,7 +8,7 @@ if (get_timer() + global.InstMain.ConnectedTimeDifference > ActiveArray[0])
 			}
 		else
 			{
-			ds_list_copy(ActiveCommands, ActiveArray[1]);
+			ActiveCommand = ActiveArray[1];
 			ActiveArray = ds_queue_dequeue(CommandQueue);
 			LastCopy = false;
 			}
@@ -17,7 +17,7 @@ if (get_timer() + global.InstMain.ConnectedTimeDifference > ActiveArray[0])
 		{
 		if !(LastCopy)
 			{
-			ds_list_copy(ActiveCommands, ActiveArray[1]);
+			ActiveCommand = ActiveArray[1];
 			LastCopy = true;
 			}
 		}

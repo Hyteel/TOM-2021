@@ -1,6 +1,5 @@
-#macro sLIDE scListIndexDoesExist
 
-
+/*
 //Horizontal Movement	
 if (sLIDE(ActiveCommands, PCommands.MoveLeft)) || (sLIDE(ActiveCommands, PCommands.MoveRight)) 
 	{
@@ -75,10 +74,12 @@ else
 	}
 
 
+*/
 
 
-
-
+//NEW MOVEMENT
+if (ActiveCommand == 37) { x -= 1; }
+else if (ActiveCommand == 39) { x += 1; }
 
 
 
