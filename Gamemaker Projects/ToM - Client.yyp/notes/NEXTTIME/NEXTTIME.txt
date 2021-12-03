@@ -1,1 +1,14 @@
-Fix Queue
+LIMIT AMOUNT OF INPUT PER MINUTE
+ANIMATION BASED INPUTS
+
+
+CHECK FOR MOVEMENT IN ANIMATION
+
+if (Viss animation)
+	do {
+		Movement
+		if (Collison)
+			{
+			Cancel Animation
+			}
+		}
