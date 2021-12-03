@@ -11,6 +11,11 @@ function scPacketReceptionC(ScBuffer){
 			CombineArray[0] = TimeToExecute;
 			CombineArray[1] = buffer_read(ScBuffer, buffer_u8);
 			
+			var File = file_text_open_append(working_directory + "\Inputs" + string(Player) + ".txt");
+			var StringToWrite = string(CombineArray[0]) + " " + string(CombineArray[1]) + "\n";
+			file_text_write_string(File, StringToWrite);
+			file_text_close(File);
+			
 			if (Player) { ds_queue_enqueue(global.InstLocalPlayer.CommandQueue, CombineArray); }
 			else { ds_queue_enqueue(global.InstOtPlayer.CommandQueue, CombineArray); }
 			break;

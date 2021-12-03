@@ -78,8 +78,8 @@ else
 
 
 //NEW MOVEMENT
-if (ActiveCommand == 37) { x -= 1; }
-else if (ActiveCommand == 39) { x += 1; }
+if (ActiveCommand == 70) { x -= 1; }
+else if (ActiveCommand == 80) { x += 1; }
 
 
 
