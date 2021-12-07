@@ -1,9 +1,19 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scAnimationProperties(AnimationToGet){
-	var TempVar = 0;
-	TempVar[0] = 3;
-	TempVar[1] = 2;
+	var TempList = ds_list_create();
 	
-	return (TempVar);
+	switch (AnimationToGet)
+		{
+			case 70: //Run Left
+				ds_list_add(TempList, 
+				5, //Frames
+				true, //Continous
+				false, //Breakable
+				true, //Movement / Ability
+				-5, 
+				)
+				break;
+		
+		}
+	
+	return (TempList);
 }

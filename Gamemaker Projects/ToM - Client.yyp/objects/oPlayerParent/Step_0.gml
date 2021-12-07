@@ -78,9 +78,7 @@ else
 
 
 //NEW MOVEMENT
-if (ActiveCommand == 70) { x -= 1; }
-else if (ActiveCommand == 80) { x += 1; }
-
+if (CurrentFrame == CurrentAnimation[|0]) { ds_list_copy(scAnimationProperties(ActiveCommand), CurrentAnimation)}
 
 
 
