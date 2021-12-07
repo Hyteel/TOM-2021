@@ -78,9 +78,22 @@ else
 
 
 //NEW MOVEMENT
-if (CurrentFrame == CurrentAnimation[|0]) { ds_list_copy(scAnimationProperties(ActiveCommand), CurrentAnimation)}
+if (((CurrentFrame >= CurrentAnimation[|0]) && (ActiveCommand != 0)) 
+|| ((ActiveCommand == 0) && (CurrentAnimation[|3]) && (CurrentAnimation[|1] != 0))) { ds_list_copy(scAnimationProperties(ActiveCommand), CurrentAnimation)}
 
-
+if (CurrentAnimation[|1] != 0)
+	{
+	if (CurrentAnimation[|5]) //Simplified
+		{
+		var Xval = CurrentAnimation[|6]/CurrentAnimation[|0];
+		var Yval = CurrentAnimation[|7]/CurrentAnimation[|0];
+		
+		if !(scCollisionCheck("X", Xval)) { x += Xval; }
+		if !(scCollisionCheck("Y", Yval)) { y += Yval; }
+		
+		CurrentFrame += 1;
+		}
+	}
 
 
 
