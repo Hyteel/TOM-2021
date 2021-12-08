@@ -61,7 +61,7 @@ else
 
 
 //Animation
-var CAP = scAnimationProperties(CurrentAnimation);
+var CAP = scGetAnimProp(CurrentAnimation);
 if (CurrentFrame > CAP[0])
 	{
 	if ((sLIDE(ActiveCommands, PCommands.MoveLeft)) && !(sLIDE(ActiveCommands, PCommands.MoveRight))) { CurrentAnimation = Animations.MoveLeft; }
@@ -78,24 +78,52 @@ else
 
 
 //NEW MOVEMENT
-if (((CurrentFrame >= CurrentAnimation[|0]) && (ActiveCommand != 0)) 
-|| ((ActiveCommand == 0) && (CurrentAnimation[|3]) && (CurrentAnimation[|1] != 0))) { ds_list_copy(scAnimationProperties(ActiveCommand), CurrentAnimation)}
-
-if (CurrentAnimation[|1] != 0)
-	{
-	if (CurrentAnimation[|5]) //Simplified
+if (CurrentFrame >= CurrentAnimation[|0]) 
+	{ 
+	if (CurrentAnimation[|0] == ActiveCommand)
 		{
-		var Xval = CurrentAnimation[|6]/CurrentAnimation[|0];
-		var Yval = CurrentAnimation[|7]/CurrentAnimation[|0];
-		
-		if !(scCollisionCheck("X", Xval)) { x += Xval; }
-		if !(scCollisionCheck("Y", Yval)) { y += Yval; }
-		
-		CurrentFrame += 1;
+		if (ActiveCommand != 0) 
+			{
+			CurrentFrame = 0;
+			}
+		}
+	else
+		{
+		ds_list_copy(CurrentAnimation, scGetAnimProp(ActiveCommand)); 
+		CurrentFrame = 0;
+		CurrentAnimationFrame = CurrentAnimation[|8];
 		}
 	}
 
 
+var Timer = get_timer();
+
+if (Timer > SlowDownVar + 100000)
+	{
+	SlowDownVar = Timer
+	if (CurrentAnimation[|1] != 0)
+		{
+		if (CurrentAnimation[|4]) //Simplified
+			{
+			var Xval = CurrentAnimation[|5]/CurrentAnimation[|0];
+			var Yval = CurrentAnimation[|6]/CurrentAnimation[|0];
+		
+			if !(scCollisionCheck("X", Xval)) { x += Xval; }
+			if !(scCollisionCheck("Y", Yval)) { y += Yval; }
+		
+		
+			if (CurrentAnimationFrame >= CurrentAnimation[|8]) {CurrentAnimationFrame = CurrentAnimation[|7]; }
+			else { CurrentAnimationFrame += 1; } 
+		
+			image_index = CurrentAnimationFrame;
+			CurrentFrame += 1;
+			}
+		}
+	else
+		{
+		image_index = 0;
+		}
+	}
 
 
 

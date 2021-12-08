@@ -7,6 +7,8 @@ VerticalSpeed = 0;
 CurrentAnimation = ds_list_create();
 ds_list_add(CurrentAnimation, 0);
 CurrentFrame = 0;
+CurrentAnimationFrame = 0;
+SlowDownVar = 0;
 
 
 //Commandbackend

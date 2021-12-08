@@ -9,6 +9,7 @@ if (DebugMode == 0)
 		}
 	draw_text(room_width/16, room_height/10, LocPHead);
 	draw_text(room_width/16, (room_height/10)*2, LocPAAT);
+	draw_text(room_width/16, (room_height/10)*3, "Current Frame " + string(global.InstLocalPlayer.CurrentFrame));
 
 	
 	draw_set_color(c_orange);
@@ -18,8 +19,9 @@ if (DebugMode == 0)
 		OtPHead = "HEAD : " + string(ds_queue_head(global.InstOtPlayer.CommandQueue)[0]) + " , " + string(ds_queue_head(global.InstOtPlayer.CommandQueue)[1]);
 		OtPAAT = "ACTIVEARRAY TIME : " + string(global.InstOtPlayer.ActiveArray[0]);
 		}
-	draw_text((room_width /4)*2.5, room_height/10, OtPHead);
-	draw_text((room_width /4)*2.5, (room_height/10)*2, OtPAAT);
+	draw_text((room_width/4)*2.5, room_height/10, OtPHead);
+	draw_text((room_width/4)*2.5, (room_height/10)*2, OtPAAT);
+	draw_text((room_width/4)*2.5, (room_height/10)*3, "Current Frame " + string(global.InstOtPlayer.CurrentFrame));
 	
 	
 	draw_set_color(c_white);
