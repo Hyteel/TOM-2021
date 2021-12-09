@@ -105,18 +105,25 @@ if (Timer > SlowDownVar + 100000)
 		{
 		if (CurrentAnimation[|4]) //Simplified
 			{
-			var Xval = CurrentAnimation[|5]/CurrentAnimation[|0];
-			var Yval = CurrentAnimation[|6]/CurrentAnimation[|0];
+			if !(CurrentAnimation[|3])
+				{
+				
+				}
+			else
+				{
+				var Xval = CurrentAnimation[|5]/CurrentAnimation[|0];
+				var Yval = CurrentAnimation[|6]/CurrentAnimation[|0];
 		
-			if !(scCollisionCheck("X", Xval)) { x += Xval; }
-			if !(scCollisionCheck("Y", Yval)) { y += Yval; }
+				if !(scCollisionCheck("X", Xval)) { x += Xval; }
+				if !(scCollisionCheck("Y", Yval)) { y += Yval; }
 		
 		
-			if (CurrentAnimationFrame >= CurrentAnimation[|8]) {CurrentAnimationFrame = CurrentAnimation[|7]; }
-			else { CurrentAnimationFrame += 1; } 
-		
-			image_index = CurrentAnimationFrame;
-			CurrentFrame += 1;
+				if (CurrentAnimationFrame >= CurrentAnimation[|8]) {CurrentAnimationFrame = CurrentAnimation[|7]; }
+				else { CurrentAnimationFrame += 1; } 
+				
+				image_index = CurrentAnimationFrame;
+				CurrentFrame += 1;
+				}
 			}
 		}
 	else

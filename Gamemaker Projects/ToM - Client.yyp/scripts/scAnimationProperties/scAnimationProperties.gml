@@ -20,12 +20,12 @@ function scGetAnimProp(AnimationToGet){
 			
 			case 70: //Run Left
 				ds_list_add(TempList, 
-				100, //Frames
+				6, //Frames
 				70, //ID
 				true, //Continous
 				true, //Simplified
 				true, //Movement / Ability
-				-100,  //MovementX
+				-6,  //MovementX
 				0, //MovementY
 				1, //Animation Start (Frame)
 				3 //Animation End (Frame)
@@ -35,12 +35,12 @@ function scGetAnimProp(AnimationToGet){
 				
 			case 80: //Run Left
 				ds_list_add(TempList, 
-				100, //Frames
+				6, //Frames
 				70, //ID
 				true, //Continous
 				true, //Simplified
 				true, //Movement / Ability
-				100,  //MovementX
+				6,  //MovementX
 				0, //MovementY
 				4, //Animation Start (Frame)
 				6 //Animation End (Frame)
