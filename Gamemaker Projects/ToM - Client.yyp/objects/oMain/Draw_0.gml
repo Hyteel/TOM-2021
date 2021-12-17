@@ -28,6 +28,8 @@ if (DebugMode == 0)
 	draw_text((room_width/4)*1.5, (room_height/6)*4, "CT : " + string(get_timer()));
 	draw_text((room_width/4)*1.5, (room_height/6)*4.5, "CTDif : " + string(ConnectedTimeDifference));
 	draw_text((room_width/4)*1.5, (room_height/6)*5, "CTTot : " + string(ConnectedTimeDifference + get_timer()));
+	draw_text((room_width/4)*2, (room_height/6)*5.5, "MX : " + string(mouse_x));
+	draw_text((room_width/4)*1, (room_height/6)*5.5, "MY : " + string(mouse_y));
 	
 	draw_text((room_width/4)*1.5, (room_height/6)*1, "QueueSize OtP : " + string(ds_queue_size(global.InstOtPlayer.CommandQueue)));
 	draw_text((room_width/4)*1.5, (room_height/6)*1.5, "QueueSize LOC : " + string(ds_queue_size(global.InstLocalPlayer.CommandQueue)));

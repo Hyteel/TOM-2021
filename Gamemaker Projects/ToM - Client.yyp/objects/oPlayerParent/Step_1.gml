@@ -24,3 +24,10 @@ if (get_timer() + global.InstMain.ConnectedTimeDifference > ActiveArray[0])
 			}
 		}
 	}
+
+
+if ((Id == 1) || (Id == 0))
+	{
+	if (Id == 0) { Id = global.InstOtPlayer; }
+	else { Id = global.InstLocalPlayer; }
+	}

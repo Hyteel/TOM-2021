@@ -1,18 +1,16 @@
-LIMIT AMOUNT OF INPUT PER MINUTE
-ANIMATION BASED INPUTS
+ at gml_Script_scHitscan (line 3) - 	else { var TrueRange = CurrentAnimation[9]; var BBOX = bbox_right; }
 
 
-CHECK FOR MOVEMENT IN ANIMATION
 
-if (Viss animation)
-	do {
-		Movement
-		if (Collison)
-			{
-			Cancel Animation
-			}
-		}
-		
-		
-		
-REPLACE scANIMATIONPROPERTIES WITH STANDALONE FILE
+
+
+
+
+
+
+
+
+Implement directioncheck BEFORE animation, split animations
+Standardize the attack/movement arrays
+Implement non simplified animations
+Better attack collision 

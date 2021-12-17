@@ -1,6 +1,9 @@
 //Movement
-HorizontalSpeed = 0
-VerticalSpeed = 0;
+Id = 0;
+BaseGravity = 5;
+Gravity = BaseGravity;
+MaxGravity = 10;
+GravityAcceleration = 0.1;
 
 
 //Animation
@@ -9,6 +12,10 @@ ds_list_add(CurrentAnimation, 0);
 CurrentFrame = 0;
 CurrentAnimationFrame = 0;
 SlowDownVar = 0;
+
+
+//Stats
+Health = 100;
 
 
 //Commandbackend
