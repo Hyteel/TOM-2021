@@ -7,11 +7,11 @@ GravityAcceleration = 0.1;
 
 
 //Animation
-CurrentAnimation = ds_list_create();
+CurrentAnimation = [];
 ds_list_add(CurrentAnimation, 0);
 CurrentFrame = 0;
-CurrentAnimationFrame = 0;
 SlowDownVar = 0;
+SlowDownConstant = 100000;
 
 
 //Stats

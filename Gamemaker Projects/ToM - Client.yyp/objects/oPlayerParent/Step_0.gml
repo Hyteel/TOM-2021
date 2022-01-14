@@ -1,3 +1,7 @@
+#macro GetFrame CurrentAnimation[3][CurrentFrame]
+
+#region Oldcode
+/*
 //NEW MOVEMENT
 if (CurrentFrame >= CurrentAnimation[|0]) 
 	{ 
@@ -123,7 +127,58 @@ if (Timer > SlowDownVar + 100000)
 		}
 	}
 
+*/
+#endregion
 
+//New Movement #2
+//Animation Start
+if (CurrentFrame >= CurrentAnimation[1]) 
+	{ 
+	if (CurrentAnimation[0] == ActiveCommand)
+		{
+		if (ActiveCommand != 0) 
+			{
+			CurrentFrame = 0;
+			}
+		}
+	else
+		{
+		CurrentAnimation = scGetAnimProp(ActiveCommand); 
+		CurrentFrame = 0;
+		}
+	}
+
+
+//Animation
+var Timer = get_timer();
+
+if (Timer > SlowDownVar + SlowDownConstant)
+	{
+	SlowDownVar = Timer
+	if (CurrentAnimation[0] == 0)
+		{
+		image_index = 0;
+		}
+	else
+		{
+		var Xval = GetFrame[2];
+		var Yval = GetFrame[3];
+			
+		if !(scCollisionCheck("X", Xval)) { x += Xval; }
+		if !(scCollisionCheck("Y", Yval)) { y += Yval; }
+			
+		if (x < oOtPlayer.x) { image_index = GetFrame[1]; }
+		else { image_index = GetFrame[0]; }	
+		
+		if (CurrentAnimation[2] == 1) //Combat
+			{
+			if (x < oOtPlayer.x) { if (GetFrame[4]) { scHitscan(1, GetFrame[5], GetFrame[6], GetFrame[7], GetFrame[8], GetFrame[9], GetFrame[10]); }} //Attacking Right
+			else { if (GetFrame[4]) { scHitscan(-1, GetFrame[5], GetFrame[6], GetFrame[7], GetFrame[8], GetFrame[9], GetFrame[10]); }}
+			}
+		}
+	}
+	
+	
 //Gravity
 if !(scCollisionCheck("Y", Gravity)) 
 	{ 

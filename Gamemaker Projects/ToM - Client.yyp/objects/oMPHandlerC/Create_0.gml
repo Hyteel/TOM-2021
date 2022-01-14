@@ -18,7 +18,8 @@ enum Network
 {
 	SendCurrentInput,
 	ConfirmConnect,
-	GlobalizePos
+	GlobalizePos,
+	SendAttack
 }
 
 //Player Commands

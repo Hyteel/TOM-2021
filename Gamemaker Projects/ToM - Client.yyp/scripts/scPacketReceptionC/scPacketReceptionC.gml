@@ -19,7 +19,10 @@ function scPacketReceptionC(ScBuffer){
 			if (Player) { ds_queue_enqueue(global.InstLocalPlayer.CommandQueue, CombineArray); }
 			else { ds_queue_enqueue(global.InstOtPlayer.CommandQueue, CombineArray); }
 			break;
-			
+		
+		
+		case Network.SendAttack:
+			break;
 		
 		
 		case Network.ConfirmConnect:

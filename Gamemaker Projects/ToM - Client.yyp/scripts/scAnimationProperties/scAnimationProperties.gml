@@ -1,7 +1,6 @@
 function scGetAnimProp(AnimationToGet){
-	var TempList = ds_list_create();
-	
-	switch (AnimationToGet)
+#region OldCode
+/*	switch (AnimationToGet)
 		{
 			case 0: //Nothing
 				ds_list_add(TempList, 
@@ -113,4 +112,81 @@ function scGetAnimProp(AnimationToGet){
 	
 	return (TempList);
 }
+*/
+#endregion
 
+//New Properties
+switch (AnimationToGet)
+		{
+			//Movement
+			#region 0
+			case 0: //Nothing
+				var APArray = [0, 0, 0, 0];
+				break;
+			#endregion
+				
+				
+			#region	RunLeft
+			case 70:
+				var Frame1 = [
+				1, //SpriteID x >= oOtPlayer.x
+				4, //SpriteID x < oOtPlayer.x 
+				-1, //TransX
+				0 //TransY
+				];
+				var Frame2 = [2, 5, -1, 0];
+				var Frame3 = [3, 6, -1, 0];
+				var Frame4 = [1, 4, -1, 0];
+				var Frame5 = [2, 5, -1, 0];
+				var Frame6 = [3, 6, -1, 0];
+				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
+				var APArray = [
+				70, //ID
+				3, //FrameCount
+				0, //Animtype, 0 = Movement
+				Frames //Frames
+				];
+				break;
+			#endregion
+				
+			
+			#region RunRight
+			case 80: 
+				var Frame1 = [7, 10, 1, 0];
+				var Frame2 = [8, 11, 1, 0];
+				var Frame3 = [9, 12, 1, 0];
+				var Frame4 = [7, 10, 1, 0];
+				var Frame5 = [8, 11, 1, 0];
+				var Frame6 = [9, 12, 1, 0];
+				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
+				var APArray = [80, 3, 0, Frames];
+				break;
+			#endregion	
+			
+			
+			//Attacks
+			#region Jab
+			case 1: 
+				var Frame1 = [
+				13, //SpriteID
+				16, //-SpriteID
+				0, //TransX 
+				0, //TransY
+				false, //AttackFrame
+				0, //HitboxX
+				0, //HitboxY
+				0, //HitboxH
+				0, //HitboxW
+				0, //KnockBackIntensity
+				0 //Damage
+				];
+				var Frame2 = [14, 17, 0, 0, true, 40, 0, 10, 10, 1, 10];
+				var Frame2 = [15, 18, 0, 0, true, 40, 0, 10, 10, 1, 10];
+				var Frames = [Frame1, Frame2, Frame3];
+				var APArray = [1, 3, 1, Frames];
+				break;
+			#endregion
+		}
+		
+	return (APArray);
+}
