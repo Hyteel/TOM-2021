@@ -7,8 +7,8 @@ GravityAcceleration = 0.1;
 
 
 //Animation
-CurrentAnimation = [];
-ds_list_add(CurrentAnimation, 0);
+CurrentAnimation[0] = 0;
+CurrentAnimation[1] = 0;
 CurrentFrame = 0;
 SlowDownVar = 0;
 SlowDownConstant = 100000;
@@ -21,7 +21,6 @@ Health = 100;
 //Commandbackend
 ActiveCommand = 0;
 ActiveArray[0] = 0;
-ActiveArray[1] = 0;
 CommandQueue = ds_queue_create();
 LastCopy = true;
 

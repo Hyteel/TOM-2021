@@ -164,6 +164,23 @@ switch (AnimationToGet)
 			#endregion	
 			
 			
+			#region KnockBack Int1 Left
+			case 1001: 
+				var Frame1 = [23, 23, -1, -5];
+				var Frame2 = [24, 24, -1, -5];
+				var Frame3 = [25, 25, -1, -2];
+				var Frame4 = [26, 26, -1, -2];
+				var Frame5 = [27, 27, -1, -2];
+				var Frame6 = [28, 28, -1, -2];
+				var Frame7 = [29, 29, -1, -2];
+				var Frame8 = [30, 30, -1, -2];
+				var Frame9 = [31, 31, -1, -2];
+				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8, Frame9];
+				var APArray = [1001, 12, 0, Frames];
+				break;
+			#endregion	
+			
+			
 			//Attacks
 			#region Jab
 			case 1: 

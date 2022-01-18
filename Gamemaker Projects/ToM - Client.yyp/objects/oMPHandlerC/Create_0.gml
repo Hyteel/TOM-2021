@@ -18,8 +18,7 @@ enum Network
 {
 	SendCurrentInput,
 	ConfirmConnect,
-	GlobalizePos,
-	SendAttack
+	GlobalizePos
 }
 
 //Player Commands
@@ -30,8 +29,6 @@ enum PCommands
 	MoveDown,
 	MoveUp,
 	NoInput
-
-
 }
 
 //Player Commands
@@ -42,7 +39,6 @@ enum Animations
 	MoveDown,
 	MoveUp,
 	NoInput
-
 }
 
 //Instances

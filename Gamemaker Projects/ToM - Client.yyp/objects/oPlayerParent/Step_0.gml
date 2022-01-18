@@ -172,8 +172,8 @@ if (Timer > SlowDownVar + SlowDownConstant)
 		
 		if (CurrentAnimation[2] == 1) //Combat
 			{
-			if (x < oOtPlayer.x) { if (GetFrame[4]) { scHitscan(1, GetFrame[5], GetFrame[6], GetFrame[7], GetFrame[8], GetFrame[9], GetFrame[10]); }} //Attacking Right
-			else { if (GetFrame[4]) { scHitscan(-1, GetFrame[5], GetFrame[6], GetFrame[7], GetFrame[8], GetFrame[9], GetFrame[10]); }}
+			if (x < oOtPlayer.x) { if (GetFrame[4]) { scHitscan(10, GetFrame[5], GetFrame[6], GetFrame[7], GetFrame[8], GetFrame[9], GetFrame[10]); }} //Attacking Right
+			else { if (GetFrame[4]) { scHitscan(0, GetFrame[5], GetFrame[6], GetFrame[7], GetFrame[8], GetFrame[9], GetFrame[10]); }}
 			}
 		}
 	}

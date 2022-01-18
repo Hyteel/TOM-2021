@@ -7,10 +7,10 @@ function scHitscan(Dir, HitBoxX, HitBoxY, HitBoxH, HitBoxW, KnockBackIntensity, 
 	oOtPlayer, false, true);
 	
 	if (Inst != noone)
-		{
+		{	
 		buffer_seek(global.ClientBuffer, buffer_seek_start, 0);
-		buffer_write(global.ClientBuffer, buffer_u8, Network.SendAttack);
-		buffer_write(global.ClientBuffer, buffer_u8, KnockBackIntensity);	
+		buffer_write(global.ClientBuffer, buffer_u8, Network.SendCurrentInput);
+		buffer_write(global.ClientBuffer, buffer_u8, 1000 + KnockBackIntensity + Dir);
 		buffer_write(global.ClientBuffer, buffer_u8, Damage);
 		network_send_packet(global.ClientSocket, global.ClientBuffer, buffer_tell(global.ClientBuffer));
 		}

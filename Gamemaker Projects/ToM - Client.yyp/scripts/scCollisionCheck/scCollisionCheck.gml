@@ -4,7 +4,6 @@ function scCollisionCheck(Axis, Movement){
 	
 	if ((Axis == "Y") && (Movement > 0))
 		{
-		//show_debug_message("IntoCollision");
 		if ((tilemap_get_at_pixel(CollisionTileMap, bbox_left + 1, bbox_bottom + 1) != 0) || (tilemap_get_at_pixel(CollisionTileMap, bbox_right - 1, bbox_bottom + 1) != 0)) { return(true); }
 		else
 			{

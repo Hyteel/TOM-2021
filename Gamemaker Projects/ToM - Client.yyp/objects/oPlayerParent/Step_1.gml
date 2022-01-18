@@ -8,10 +8,19 @@ if (get_timer() + global.InstMain.ConnectedTimeDifference > ActiveArray[0])
 			}
 		else
 			{
-			ActiveCommand = ActiveArray[1];
-			ActiveArray = ds_queue_dequeue(CommandQueue);
-			LastCopy = false;
-			show_debug_message(ActiveCommand);
+			var DeQ = ds_queue_dequeue(CommandQueue);
+			if (floor(DeQ/1000) != 0)
+				{
+				CurrentFrame = 0;
+				CurrentAnimation = scGetAnimProp(DeQ[1]);
+				Health -= DeQ[2];
+				}
+			else
+				{
+				ActiveCommand = ActiveArray[1];
+				ActiveArray = DeQ;
+				LastCopy = false;
+				}
 			}
 		}
 	else
@@ -20,7 +29,6 @@ if (get_timer() + global.InstMain.ConnectedTimeDifference > ActiveArray[0])
 			{
 			ActiveCommand = ActiveArray[1];
 			LastCopy = true;
-			show_debug_message(ActiveCommand);
 			}
 		}
 	}

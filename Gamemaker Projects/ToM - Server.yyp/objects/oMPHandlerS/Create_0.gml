@@ -16,6 +16,5 @@ enum Network
 {
 	SendCurrentInput,
 	ConfirmConnect,
-	GlobalizePos,
-	SendAttack
+	GlobalizePos
 }
