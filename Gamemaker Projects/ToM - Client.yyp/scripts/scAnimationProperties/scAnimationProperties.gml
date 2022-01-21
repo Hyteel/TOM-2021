@@ -164,7 +164,7 @@ switch (AnimationToGet)
 			#endregion	
 			
 			
-			#region KnockBack Int1 Left
+			#region KnockBack Intensity 1 Left
 			case 1001: 
 				var Frame1 = [23, 23, -1, -5];
 				var Frame2 = [24, 24, -1, -5];
