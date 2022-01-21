@@ -115,6 +115,7 @@ function scGetAnimProp(AnimationToGet){
 */
 #endregion
 
+show_debug_message(AnimationToGet);
 //New Properties
 switch (AnimationToGet)
 		{
@@ -176,7 +177,24 @@ switch (AnimationToGet)
 				var Frame8 = [30, 30, -1, -2];
 				var Frame9 = [31, 31, -1, -2];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8, Frame9];
-				var APArray = [1001, 12, 0, Frames];
+				var APArray = [1001, 9, 0, Frames];
+				break;
+			#endregion	
+			
+			
+			#region KnockBack Intensity 1 Right
+			case 1011: 
+				var Frame1 = [32, 32, 1, -5];
+				var Frame2 = [33, 33, 1, -5];
+				var Frame3 = [34, 34, 1, -2];
+				var Frame4 = [35, 35, 1, -2];
+				var Frame5 = [36, 36, 1, -2];
+				var Frame6 = [37, 37, 1, -2];
+				var Frame7 = [38, 38, 1, -2];
+				var Frame8 = [39, 39, 1, -2];
+				var Frame9 = [40, 40, 1, -2];
+				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8, Frame9];
+				var APArray = [1011, 9, 0, Frames];
 				break;
 			#endregion	
 			
