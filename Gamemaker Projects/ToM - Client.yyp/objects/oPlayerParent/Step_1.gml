@@ -9,7 +9,7 @@ if (get_timer() + global.InstMain.ConnectedTimeDifference > ActiveArray[0])
 		else
 			{
 			var DeQ = ds_queue_dequeue(CommandQueue);
-			if (floor(DeQ/1000) != 0)
+			if (floor(DeQ[1]/1000) != 0)
 				{
 				CurrentFrame = 0;
 				CurrentAnimation = scGetAnimProp(DeQ[1]);

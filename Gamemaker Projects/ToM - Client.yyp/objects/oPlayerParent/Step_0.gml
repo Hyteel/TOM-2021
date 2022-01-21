@@ -134,6 +134,7 @@ if (Timer > SlowDownVar + 100000)
 //Animation Start
 if (CurrentFrame >= CurrentAnimation[1]) 
 	{ 
+	AttackHit = false;
 	if (CurrentAnimation[0] == ActiveCommand)
 		{
 		if (ActiveCommand != 0) 
@@ -170,12 +171,13 @@ if (Timer > SlowDownVar + SlowDownConstant)
 		if (x < oOtPlayer.x) { image_index = GetFrame[1]; }
 		else { image_index = GetFrame[0]; }	
 		
-		if (CurrentAnimation[2] == 1) //Combat
+		if ((CurrentAnimation[2] == 1) && !(AttackHit)) //Combat
 			{
 			if (x < oOtPlayer.x) { if (GetFrame[4]) { scHitscan(10, GetFrame[5], GetFrame[6], GetFrame[7], GetFrame[8], GetFrame[9], GetFrame[10]); }} //Attacking Right
 			else { if (GetFrame[4]) { scHitscan(0, GetFrame[5], GetFrame[6], GetFrame[7], GetFrame[8], GetFrame[9], GetFrame[10]); }}
 			}
 		}
+	CurrentFrame += 1;
 	}
 	
 	

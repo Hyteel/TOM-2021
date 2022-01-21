@@ -8,6 +8,8 @@ function scHitscan(Dir, HitBoxX, HitBoxY, HitBoxH, HitBoxW, KnockBackIntensity, 
 	
 	if (Inst != noone)
 		{	
+		show_message("HIT");
+		AttackHit = true;
 		buffer_seek(global.ClientBuffer, buffer_seek_start, 0);
 		buffer_write(global.ClientBuffer, buffer_u8, Network.SendCurrentInput);
 		buffer_write(global.ClientBuffer, buffer_u8, 1000 + KnockBackIntensity + Dir);
