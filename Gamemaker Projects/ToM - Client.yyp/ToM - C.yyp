@@ -1,6 +1,5 @@
 {
   "resources": [
-    {"id":{"name":"sOtPlayer","path":"sprites/sOtPlayer/sOtPlayer.yy",},"order":1,},
     {"id":{"name":"sLocalPlayer","path":"sprites/sLocalPlayer/sLocalPlayer.yy",},"order":0,},
     {"id":{"name":"scInputCheck","path":"scripts/scInputCheck/scInputCheck.yy",},"order":1,},
     {"id":{"name":"sCollision","path":"sprites/sCollision/sCollision.yy",},"order":2,},
@@ -16,6 +15,7 @@
     {"id":{"name":"oMain","path":"objects/oMain/oMain.yy",},"order":2,},
     {"id":{"name":"scAnimationProperties","path":"scripts/scAnimationProperties/scAnimationProperties.yy",},"order":5,},
     {"id":{"name":"Sprite4","path":"sprites/Sprite4/Sprite4.yy",},"order":3,},
+    {"id":{"name":"sOtPlayer","path":"sprites/sOtPlayer/sOtPlayer.yy",},"order":4,},
     {"id":{"name":"nNEXTTIME","path":"notes/nNEXTTIME/nNEXTTIME.yy",},"order":0,},
     {"id":{"name":"scListFunctions","path":"scripts/scListFunctions/scListFunctions.yy",},"order":3,},
     {"id":{"name":"scCompileInputs","path":"scripts/scCompileInputs/scCompileInputs.yy",},"order":6,},
