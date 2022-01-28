@@ -1,0 +1,16 @@
+ at gml_Script_scHitscan (line 3) - 	else { var TrueRange = CurrentAnimation[9]; var BBOX = bbox_right; }
+
+
+
+
+SENDATTACK!!! 
+
+
+
+
+
+
+Implement directioncheck BEFORE animation, split animations
+Standardize the attack/movement arrays
+Implement non simplified animations
+Better attack collision 

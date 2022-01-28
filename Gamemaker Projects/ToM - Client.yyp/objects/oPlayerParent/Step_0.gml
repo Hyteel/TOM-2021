@@ -1,92 +1,196 @@
-#macro sLIDE scListIndexDoesExist
+#macro GetFrame CurrentAnimation[3][CurrentFrame]
 
-
-//Horizontal Movement	
-if (sLIDE(ActiveCommands, PCommands.MoveLeft)) || (sLIDE(ActiveCommands, PCommands.MoveRight)) 
-	{
-	if (LastDirection != ovarLastInput)
+#region Oldcode
+/*
+//NEW MOVEMENT
+if (CurrentFrame >= CurrentAnimation[|0]) 
+	{ 
+	if (CurrentAnimation[|0] == ActiveCommand)
 		{
-		LastDirection = ovarLastInput;
-		HorizontalSpeed = BaseHorizontalSpeed;
+		if (ActiveCommand != 0) 
+			{
+			CurrentFrame = 0;
+			}
 		}
 	else
 		{
-		if (HorizontalSpeed != MaxHorizontalSpeed)
-			{
-			HorizontalSpeed += Acceleration;
+		ds_list_copy(CurrentAnimation, scGetAnimProp(ActiveCommand)); 
+		CurrentFrame = 0;
+		if (CurrentAnimation[|4]) 
+			{ 
+			if ((x > Id.x) && !(CurrentAnimation[|10]) || (x < Id.x) && (CurrentAnimation[|10])) { CurrentAnimationFrame = CurrentAnimation[|11]; }
+			else { CurrentAnimationFrame = CurrentAnimation[|7]; }
+			}
+		else 
+			{ 
+			if ((x < Id.x) && (CurrentAnimation[|13])) || ((x > Id.x) && !(CurrentAnimation[|13])) {CurrentAnimationFrame = CurrentAnimation[|14]; }
+			else { CurrentAnimationFrame = CurrentAnimation[|11];}
 			}
 		}
-	if (sLIDE(ActiveCommands, PCommands.MoveLeft)) {var Direction = -1; if (scCollisionCheck("Left")) { Direction = 0;} }
-	else {Direction = 1; if (scCollisionCheck("Right")) { Direction = 0;}}
-	x += HorizontalSpeed * Direction;
 	}
-else 
-	{
-	LastDirection = 0; 
-	}	
 
 
-//Jumping
-if (sLIDE(ActiveCommands, PCommands.MoveUp))
+var Timer = get_timer();
+
+if (Timer > SlowDownVar + 100000)
 	{
-	if (!(CurrentlyJumping) && (scCollisionCheck("Down")))
+	SlowDownVar = Timer
+	if (CurrentAnimation[|1] != 0)
 		{
-		VerticalSpeed = 0;
-		CurrentlyJumping = true;
-		y -= InitialJumpHeight;
-		CurrentJumpFrame = 0;
+		if (CurrentAnimation[|3]) //Simplified
+			{
+			if !(CurrentAnimation[|4]) //Combat
+				{
+				show_debug_message("COMBAT");
+				if (CurrentAnimation[|12]) //If directional attack
+					{
+					if ((x > Id.x) && !(CurrentAnimation[|13])) //Right of OtP moving right
+						{
+						if (CurrentAnimationFrame >= CurrentAnimation[|15]) {CurrentAnimationFrame = CurrentAnimation[|14]; }
+						else 
+							{ 
+							CurrentAnimationFrame += 1; 
+							scHitscan(CurrentAnimation, 0); 
+							} 
+						}
+					else if ((x < Id.x) && (CurrentAnimation[|13])) //Left of OtP moving left
+						{
+						if (CurrentAnimationFrame >= CurrentAnimation[|15]) {CurrentAnimationFrame = CurrentAnimation[|14]; }
+						else 
+							{ 
+							CurrentAnimationFrame += 1;
+							scHitscan(CurrentAnimation, 1); 
+							} 
+						}
+					else //Moving in destined direction
+						{
+						if (CurrentAnimationFrame >= CurrentAnimation[|12]) {CurrentAnimationFrame = CurrentAnimation[|11]; }
+						else { CurrentAnimationFrame += 1; }
+						if (CurrentAnimation[|13]) { scHitscan(CurrentAnimation, 0); }
+						else { scHitscan(CurrentAnimation, 1); }
+						}
+					}
+				else
+					{
+					if (CurrentAnimationFrame >= CurrentAnimation[|12]) {CurrentAnimationFrame = CurrentAnimation[|11]; }
+					else { CurrentAnimationFrame += 1; } 
+					if (CurrentAnimation[|13]) { scHitscan(CurrentAnimation, 0); }
+					else { scHitscan(CurrentAnimation, 1); }
+					}
+				}
+			else
+				{
+				var Xval = CurrentAnimation[|5]/CurrentAnimation[|0];
+				var Yval = CurrentAnimation[|6]/CurrentAnimation[|0];
+		
+				if !(scCollisionCheck("X", Xval)) { x += Xval; }
+				if !(scCollisionCheck("Y", Yval)) { y += Yval; }
+		
+				if (CurrentAnimation[|9])
+					{
+					if ((x > Id.x) && !(CurrentAnimation[|10])) //Right of OtP moving right
+						{
+						if ((CurrentAnimationFrame >= CurrentAnimation[|12]) || (CurrentAnimationFrame == undefined)) {CurrentAnimationFrame = CurrentAnimation[|11]; }
+						else 
+							{ 
+							CurrentAnimationFrame += 1; 
+							} 
+						}
+					else if ((x < Id.x) && (CurrentAnimation[|10])) //Left of OtP moving left
+						{
+						if (CurrentAnimationFrame >= CurrentAnimation[|12]) {CurrentAnimationFrame = CurrentAnimation[|11]; }
+						else 
+							{ 
+							CurrentAnimationFrame += 1; 
+							} 
+						}
+					else //Moving in destined direction
+						{
+						if (CurrentAnimationFrame >= CurrentAnimation[|8]) {CurrentAnimationFrame = CurrentAnimation[|7]; }
+						else { CurrentAnimationFrame += 1; } 
+						}
+					}
+				else
+					{
+					if (CurrentAnimationFrame >= CurrentAnimation[|8]) {CurrentAnimationFrame = CurrentAnimation[|7]; }
+					else { CurrentAnimationFrame += 1; } 
+					}
+				}
+			}
+		
+		image_index = CurrentAnimationFrame;
+		CurrentFrame += 1;
 		}
-	else if (CurrentlyJumping)
+	else
 		{
-		y -= AdditionalJumpHeight;
-		CurrentJumpFrame += 1;
-		if (CurrentJumpFrame >= MaxJumpFrames) { CurrentlyJumping = false; }
+		image_index = 0;
 		}
 	}
-else
-	{
-	CurrentlyJumping = false;	
-	}
 
+*/
+#endregion
 
-//Gravity
-if (scCollisionCheck("Down")) { VerticalSpeed = 0; }
-else
-	{
-	if !(CurrentlyJumping)
+//New Movement #2
+//Animation Start
+if (CurrentFrame >= CurrentAnimation[1]) 
+	{ 
+	AttackHit = false;
+	if (CurrentAnimation[0] == ActiveCommand)
 		{
-		if !(VerticalSpeed + Gravity >= MaxGravity) { VerticalSpeed += Gravity;}
-		y += VerticalSpeed;  
+		if (ActiveCommand != 0) 
+			{
+			CurrentFrame = 0;
+			}
+		}
+	else
+		{
+		CurrentAnimation = scGetAnimProp(ActiveCommand); 
+		CurrentFrame = 0;
 		}
 	}
 
 
 //Animation
-var CAP = scAnimationProperties(CurrentAnimation);
-if (CurrentFrame > CAP[0])
+var Timer = get_timer();
+
+if (Timer > SlowDownVar + SlowDownConstant)
 	{
-	if ((sLIDE(ActiveCommands, PCommands.MoveLeft)) && !(sLIDE(ActiveCommands, PCommands.MoveRight))) { CurrentAnimation = Animations.MoveLeft; }
-	if (!(sLIDE(ActiveCommands, PCommands.MoveLeft)) && (sLIDE(ActiveCommands, PCommands.MoveRight))) { CurrentAnimation = Animations.MoveRight; }
+	SlowDownVar = Timer
+	if (CurrentAnimation[0] == 0)
+		{
+		image_index = 0;
+		}
+	else
+		{
+		var Xval = GetFrame[2];
+		var Yval = GetFrame[3];
+			
+		if !(scCollisionCheck("X", Xval)) { x += Xval; }
+		if !(scCollisionCheck("Y", Yval)) { y += Yval; }
+			
+		if (x < oOtPlayer.x) { image_index = GetFrame[1]; }
+		else { image_index = GetFrame[0]; }	
+		
+		if ((CurrentAnimation[2] == 1) && !(AttackHit)) //Combat
+			{
+			if (x < oOtPlayer.x) { if (GetFrame[4]) { scHitscan(1, GetFrame[5], GetFrame[6], GetFrame[7], GetFrame[8], GetFrame[9], GetFrame[10]); }} //Attacking Right
+			else { if (GetFrame[4]) { scHitscan(-1, GetFrame[5], GetFrame[6], GetFrame[7], GetFrame[8], GetFrame[9], GetFrame[10]); }}
+			}
+		}
+	CurrentFrame += 1;
+	}
 	
+	
+//Gravity
+if !(scCollisionCheck("Y", Gravity)) 
+	{ 
+	y += Gravity; 
+	if (Gravity < MaxGravity) { Gravity += GravityAcceleration; }
 	}
 else
 	{
-		
+	Gravity = BaseGravity;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

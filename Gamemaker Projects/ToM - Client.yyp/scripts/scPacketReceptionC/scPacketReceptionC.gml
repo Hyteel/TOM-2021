@@ -5,35 +5,33 @@ function scPacketReceptionC(ScBuffer){
 	switch(MsgType)
 	{
 		case Network.SendCurrentInput:
-			
 			var Player = buffer_read(ScBuffer, buffer_bool);
-			var CommandCount = buffer_read(ScBuffer, buffer_u8);
 			var TimeToExecute = buffer_read(ScBuffer, buffer_u16)*10000;
-			var CommandList = ds_list_create();
 			var CombineArray = 0;
 			CombineArray[0] = TimeToExecute;
+			CombineArray[1] = buffer_read(ScBuffer, buffer_u8);
 			
-			if (CommandCount != 0)
-				{
-				for (var i = 0; i < CommandCount; i++)
-					{
-					ds_list_add(CommandList, buffer_read(ScBuffer, buffer_u8));		
-					}
-				}
-			else
-				{
-				ds_list_add(CommandList, PCommands.NoInput);	
-				}
+			/*var File = file_text_open_append(working_directory + "\Inputs" + string(Player) + ".txt");
+			var StringToWrite = string(CombineArray[0]) + " " + string(CombineArray[1]) + "\n";
+			file_text_write_string(File, StringToWrite);
+			file_text_close(File);*/
 			
-			CombineArray[1] = CommandList;
-			show_debug_message(string(CombineArray[0]) + " , " + string(CombineArray[1][|0]));
-			
-			if (Player) { ds_queue_enqueue(global.InstLocalPlayer.CommandQueue, CombineArray); }
+			if (Player) {  ds_queue_enqueue(global.InstLocalPlayer.CommandQueue, CombineArray); }
 			else { ds_queue_enqueue(global.InstOtPlayer.CommandQueue, CombineArray); }
 			break;
 			
-		
-		case Network.ConfirmInput:
+			
+		case Network.SendAttack:
+			show_debug_message("RECIVEDSENDATTACK");
+			var Player = buffer_read(ScBuffer, buffer_bool);
+			var TimeToExecute = buffer_read(ScBuffer, buffer_u16)*10000;
+			var CombineArray = 0;
+			CombineArray[0] = TimeToExecute;
+			CombineArray[1] = buffer_read(ScBuffer, buffer_u8) + 1000;
+			CombineArray[2] = buffer_read(ScBuffer, buffer_u8);
+			
+			if (Player) {  ds_queue_enqueue(global.InstLocalPlayer.CommandQueue, CombineArray); }
+			else { ds_queue_enqueue(global.InstOtPlayer.CommandQueue, CombineArray); }
 			break;
 		
 		
