@@ -4,8 +4,9 @@ BaseGravity = 5;
 Gravity = BaseGravity;
 MaxGravity = 10;
 GravityAcceleration = 0.1;
+NoGrav = false;
 
-
+ 
 //Animation
 CurrentAnimation = [0, 0];
 CurrentFrame = 0;

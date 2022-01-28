@@ -135,11 +135,11 @@ switch (AnimationToGet)
 				-1, //TransX
 				0 //TransY
 				];
-				var Frame2 = [2, 5, -1, 0];
-				var Frame3 = [3, 6, -1, 0];
-				var Frame4 = [1, 4, -1, 0];
-				var Frame5 = [2, 5, -1, 0];
-				var Frame6 = [3, 6, -1, 0];
+				var Frame2 = [2, 5, -10, 0];
+				var Frame3 = [3, 6, -10, 0];
+				var Frame4 = [1, 4, -10, 0];
+				var Frame5 = [2, 5, -10, 0];
+				var Frame6 = [3, 6, -10, 0];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
 				var APArray = [
 				70, //ID
@@ -153,12 +153,12 @@ switch (AnimationToGet)
 			
 			#region RunRight
 			case 80: 
-				var Frame1 = [7, 10, 1, 0];
-				var Frame2 = [8, 11, 1, 0];
-				var Frame3 = [9, 12, 1, 0];
-				var Frame4 = [7, 10, 1, 0];
-				var Frame5 = [8, 11, 1, 0];
-				var Frame6 = [9, 12, 1, 0];
+				var Frame1 = [7, 10, 10, 0];
+				var Frame2 = [8, 11, 10, 0];
+				var Frame3 = [9, 12, 10, 0];
+				var Frame4 = [7, 10, 10, 0];
+				var Frame5 = [8, 11, 10, 0];
+				var Frame6 = [9, 12, 10, 0];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
 				var APArray = [80, 3, 0, Frames];
 				break;
@@ -167,34 +167,36 @@ switch (AnimationToGet)
 			
 			#region KnockBack Intensity 1 Left
 			case 1001: 
-				var Frame1 = [23, 23, -1, -5];
-				var Frame2 = [24, 24, -1, -5];
-				var Frame3 = [25, 25, -1, -2];
-				var Frame4 = [26, 26, -1, -2];
-				var Frame5 = [27, 27, -1, -2];
-				var Frame6 = [28, 28, -1, -2];
-				var Frame7 = [29, 29, -1, -2];
-				var Frame8 = [30, 30, -1, -2];
-				var Frame9 = [31, 31, -1, -2];
+				var Frame1 = [23, 23, -10, -50];
+				var Frame2 = [24, 24, -10, -50];
+				var Frame3 = [25, 25, -10, -20];
+				var Frame4 = [26, 26, -10, -20];
+				var Frame5 = [27, 27, -10, -20];
+				var Frame6 = [28, 28, -10, -20];
+				var Frame7 = [29, 29, -10, -20];
+				var Frame8 = [30, 30, -10, -20];
+				var Frame9 = [31, 31, -10, -20];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8, Frame9];
 				var APArray = [1001, 9, 0, Frames];
+				NoGrav = true;
 				break;
 			#endregion	
 			
 			
 			#region KnockBack Intensity 1 Right
 			case 1011: 
-				var Frame1 = [32, 32, 1, 5];
-				var Frame2 = [33, 33, 1, 5];
-				var Frame3 = [34, 34, 1, 2];
-				var Frame4 = [35, 35, 1, 2];
-				var Frame5 = [36, 36, 1, 2];
-				var Frame6 = [37, 37, 1, 2];
-				var Frame7 = [38, 38, 1, 2];
-				var Frame8 = [39, 39, 1, 2];
-				var Frame9 = [40, 40, 1, 2];
+				var Frame1 = [32, 32, 10, -50];
+				var Frame2 = [33, 33, 10, -50];
+				var Frame3 = [34, 34, 10, -20];
+				var Frame4 = [35, 35, 10, -20];
+				var Frame5 = [36, 36, 10, -20];
+				var Frame6 = [37, 37, 10, -20];
+				var Frame7 = [38, 38, 10, -20];
+				var Frame8 = [39, 39, 10, -20];
+				var Frame9 = [40, 40, 10, -20];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8, Frame9];
 				var APArray = [1011, 9, 0, Frames];
+				NoGrav = true;
 				break;
 			#endregion	
 			

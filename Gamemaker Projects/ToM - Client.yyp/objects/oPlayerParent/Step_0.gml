@@ -134,6 +134,7 @@ if (Timer > SlowDownVar + 100000)
 //Animation Start
 if (CurrentFrame >= CurrentAnimation[1]) 
 	{ 
+	NoGrav = false;
 	AttackHit = false;
 	if (CurrentAnimation[0] == ActiveCommand)
 		{
@@ -182,7 +183,7 @@ if (Timer > SlowDownVar + SlowDownConstant)
 	
 	
 //Gravity
-if !(scCollisionCheck("Y", Gravity)) 
+if (!(scCollisionCheck("Y", Gravity)) && !(NoGrav))
 	{ 
 	y += Gravity; 
 	if (Gravity < MaxGravity) { Gravity += GravityAcceleration; }
@@ -191,7 +192,5 @@ else
 	{
 	Gravity = BaseGravity;
 	}
-
-
 
 
