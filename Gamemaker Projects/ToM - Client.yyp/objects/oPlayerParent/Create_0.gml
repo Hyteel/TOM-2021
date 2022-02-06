@@ -11,7 +11,7 @@ NoGrav = false;
 CurrentAnimation = [0, 0];
 CurrentFrame = 0;
 SlowDownVar = 0;
-SlowDownConstant = 100000;
+SlowDownConstant = 40000;
 AttackHit = false;
 
 

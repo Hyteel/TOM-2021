@@ -132,18 +132,18 @@ switch (AnimationToGet)
 				var Frame1 = [
 				1, //SpriteID x >= oOtPlayer.x
 				4, //SpriteID x < oOtPlayer.x 
-				-1, //TransX
+				-10, //TransX
 				0 //TransY
 				];
-				var Frame2 = [2, 5, -10, 0];
-				var Frame3 = [3, 6, -10, 0];
-				var Frame4 = [1, 4, -10, 0];
-				var Frame5 = [2, 5, -10, 0];
+				var Frame2 = [1, 4, -10, 0];
+				var Frame3 = [2, 5, -10, 0];
+				var Frame4 = [2, 5, -10, 0];
+				var Frame5 = [3, 6, -10, 0];
 				var Frame6 = [3, 6, -10, 0];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
 				var APArray = [
 				70, //ID
-				3, //FrameCount
+				6, //FrameCount
 				0, //Animtype, 0 = Movement
 				Frames //Frames
 				];
@@ -154,13 +154,13 @@ switch (AnimationToGet)
 			#region RunRight
 			case 80: 
 				var Frame1 = [7, 10, 10, 0];
-				var Frame2 = [8, 11, 10, 0];
-				var Frame3 = [9, 12, 10, 0];
-				var Frame4 = [7, 10, 10, 0];
-				var Frame5 = [8, 11, 10, 0];
+				var Frame2 = [7, 10, 10, 0];
+				var Frame3 = [8, 11, 10, 0];
+				var Frame4 = [8, 11, 10, 0];
+				var Frame5 = [9, 12, 10, 0];
 				var Frame6 = [9, 12, 10, 0];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
-				var APArray = [80, 3, 0, Frames];
+				var APArray = [80, 6, 0, Frames];
 				break;
 			#endregion	
 			
