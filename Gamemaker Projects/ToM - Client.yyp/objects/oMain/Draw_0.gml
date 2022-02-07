@@ -27,7 +27,9 @@ if (DebugMode == 0)
 	draw_set_color(c_white);
 	draw_text((room_width/4)*1.5, (room_height/6)*4, "CT : " + string(get_timer()));
 	draw_text((room_width/4)*1.5, (room_height/6)*4.5, "CTDif : " + string(ConnectedTimeDifference));
-	draw_text((room_width/4)*1.5, (room_height/6)*5, "CTTot : " + string(ConnectedTimeDifference + get_timer()));
+	draw_text((room_width/4)*1.5, (room_height/6)*3.5, "CTTot : " + string(ConnectedTimeDifference + get_timer()));
+	draw_text((room_width/4)*0.5, (room_height/6)*3.5, "LastAnimLOC : " + string(global.InstLocalPlayer.LastAnim));
+	draw_text((room_width/4)*2.5, (room_height/6)*3.5, "LastAnimOTP : " + string(global.InstOtPlayer.LastAnim));
 	draw_text((room_width/4)*2, (room_height/6)*5.5, "MX : " + string(mouse_x));
 	draw_text((room_width/4)*1, (room_height/6)*5.5, "MY : " + string(mouse_y));
 	

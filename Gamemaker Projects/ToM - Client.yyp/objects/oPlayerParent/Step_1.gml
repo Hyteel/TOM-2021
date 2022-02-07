@@ -5,6 +5,7 @@ if (get_timer() + global.InstMain.ConnectedTimeDifference > ActiveArray[0])
 		if (ActiveArray[0] == 0)
 			{
 			ActiveArray = ds_queue_dequeue(CommandQueue);
+			ActiveArray[0] += 500000;
 			}
 		else
 			{
@@ -21,6 +22,7 @@ if (get_timer() + global.InstMain.ConnectedTimeDifference > ActiveArray[0])
 				ActiveArray = DeQ;
 				LastCopy = false;
 				}
+			ActiveArray[0] += 500000;
 			}
 		}
 	else

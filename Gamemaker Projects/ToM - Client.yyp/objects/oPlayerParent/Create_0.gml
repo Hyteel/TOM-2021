@@ -5,10 +5,11 @@ Gravity = BaseGravity;
 MaxGravity = 10;
 GravityAcceleration = 0.1;
 NoGrav = false;
+LastAnim = 0;
 
  
 //Animation
-CurrentAnimation = [0, 0];
+CurrentAnimation = [0, 0, 0, 0, 0, 0];
 CurrentFrame = 0;
 SlowDownVar = 0;
 SlowDownConstant = 40000;

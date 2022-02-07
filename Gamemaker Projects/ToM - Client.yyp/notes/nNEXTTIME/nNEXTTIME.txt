@@ -1,4 +1,29 @@
 Not 100% Sync
-Fix Animation
 
-Manipulate Frames OR add between frame movement
+Weak link STEP
+
+
+Clean up properties
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fix Animation #
+Manipulate Frames OR add between frame movement #

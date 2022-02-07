@@ -147,6 +147,7 @@ if (CurrentFrame >= CurrentAnimation[1])
 		{
 		CurrentAnimation = scGetAnimProp(ActiveCommand); 
 		CurrentFrame = 0;
+		if (CurrentAnimation[0] != 0) { LastAnim = CurrentAnimation[0]; }
 		}
 	}
 
@@ -163,12 +164,6 @@ if (Timer > SlowDownVar + SlowDownConstant)
 		}
 	else
 		{
-		var Xval = GetFrame[2];
-		var Yval = GetFrame[3];
-			
-		if !(scCollisionCheck("X", Xval)) { x += Xval; }
-		if !(scCollisionCheck("Y", Yval)) { y += Yval; }
-			
 		if (x < oOtPlayer.x) { image_index = GetFrame[1]; }
 		else { image_index = GetFrame[0]; }	
 		
@@ -182,6 +177,19 @@ if (Timer > SlowDownVar + SlowDownConstant)
 	}
 	
 	
+//Movement
+
+if !((CurrentAnimation[4] == 0) && (CurrentAnimation[5] == 0))
+	{
+	var FrameSize = array_length(CurrentAnimation[3]);
+	var Xval = CurrentAnimation[4]/FrameSize;
+	var Yval = CurrentAnimation[5]/FrameSize;
+			
+	if !(scCollisionCheck("X", Xval)) { x += Xval; }
+	if !(scCollisionCheck("Y", Yval)) { y += Yval; } 
+	}
+
+
 //Gravity
 if (!(scCollisionCheck("Y", Gravity)) && !(NoGrav))
 	{ 
