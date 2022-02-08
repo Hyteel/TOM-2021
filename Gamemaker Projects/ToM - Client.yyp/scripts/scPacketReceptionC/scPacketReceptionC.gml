@@ -6,25 +6,37 @@ function scPacketReceptionC(ScBuffer){
 	{
 		case Network.SendCurrentInput:
 			var Player = buffer_read(ScBuffer, buffer_bool);
-			var TimeToExecute = buffer_read(ScBuffer, buffer_u16)*10000 + 50000;
-			var CombineArray = 0;
-			CombineArray[0] = TimeToExecute;
-			CombineArray[1] = buffer_read(ScBuffer, buffer_u8);
+			var TimeToExecute = buffer_read(ScBuffer, buffer_u16)*10000;
+			if (Player) { var LastInput = LastRecivedInputLoc; }
+			else { var LastInput = LastRecivedInputOtP; }
+			if (TimeToExecute - LastInput > 50000)
+				{
+				var CombineArray = 0;
+				CombineArray[0] = TimeToExecute;
+				CombineArray[1] = buffer_read(ScBuffer, buffer_u8);
 			
-			var File = file_text_open_append(working_directory + "\Inputs" + string(Player) + ".txt");
-			var StringToWrite = string(CombineArray[0]) + " " + string(CombineArray[1]) + "\n";
-			file_text_write_string(File, StringToWrite);
-			file_text_close(File);
+				/*var File = file_text_open_append(working_directory + "\Inputs" + string(Player) + ".txt");
+				var StringToWrite = string(CombineArray[0]) + " " + string(CombineArray[1]) + "\n";
+				file_text_write_string(File, StringToWrite);
+				file_text_close(File);*/
 			
-			if (Player) {  ds_queue_enqueue(global.InstLocalPlayer.CommandQueue, CombineArray); }
-			else { ds_queue_enqueue(global.InstOtPlayer.CommandQueue, CombineArray); }
+				if (Player) 
+					{  
+					ds_queue_enqueue(global.InstLocalPlayer.CommandQueue, CombineArray);
+					LastRecivedInputLoc = TimeToExecute;
+					}
+				else {
+					ds_queue_enqueue(global.InstOtPlayer.CommandQueue, CombineArray); 
+					LastRecivedInputOtP = TimeToExecute;
+					}
+				}
 			break;
 			
 			
 		case Network.SendAttack:
 			show_debug_message("RECIVEDSENDATTACK");
 			var Player = buffer_read(ScBuffer, buffer_bool);
-			var TimeToExecute = buffer_read(ScBuffer, buffer_u16)*10000 + 50000;
+			var TimeToExecute = buffer_read(ScBuffer, buffer_u16)*10000;
 			var CombineArray = 0;
 			CombineArray[0] = TimeToExecute;
 			CombineArray[1] = buffer_read(ScBuffer, buffer_u8) + 1000;

@@ -7,10 +7,13 @@ global.ClientSocket = network_create_socket(network_socket_tcp);
 Server = network_connect(global.ClientSocket, "127.0.0.1", Port);
 global.ClientBuffer = buffer_create(16, buffer_grow, 1);
 
-if (Server >= 0)
-    show_debug_message("Connected");
-else
-    game_end();
+if (Server >= 0) { show_debug_message("Connected"); }
+else { game_end(); }
+
+
+//Debug PackRec
+LastRecivedInputLoc = 0;
+LastRecivedInputOtP = 0;
 
 
 //Network Commands
