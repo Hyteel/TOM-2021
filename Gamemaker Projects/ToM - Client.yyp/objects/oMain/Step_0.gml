@@ -9,6 +9,7 @@ if (Input != OldInput)
 	network_send_packet(global.ClientSocket, global.ClientBuffer, buffer_tell(global.ClientBuffer));
 	Sendofftime = get_timer();
 	OldInput = Input;
+	show_debug_message("SEND " + string(Sendofftime));
 	}
 
 

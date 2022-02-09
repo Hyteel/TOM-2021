@@ -115,7 +115,6 @@ function scGetAnimProp(AnimationToGet){
 */
 #endregion
 
-show_debug_message("APARAAY" + string(AnimationToGet));
 //New Properties
 switch (AnimationToGet)
 		{

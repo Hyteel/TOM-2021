@@ -136,6 +136,7 @@ if (CurrentFrame >= CurrentAnimation[1])
 	{ 
 	NoGrav = false;
 	AttackHit = false;
+	AnimationDone = true;
 	if (CurrentAnimation[0] == ActiveCommand)
 		{
 		if (ActiveCommand != 0) 

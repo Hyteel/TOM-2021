@@ -6,6 +6,7 @@ MaxGravity = 10;
 GravityAcceleration = 0.1;
 NoGrav = false;
 LastAnim = 0;
+AnimationDone = true;
 
  
 //Animation
