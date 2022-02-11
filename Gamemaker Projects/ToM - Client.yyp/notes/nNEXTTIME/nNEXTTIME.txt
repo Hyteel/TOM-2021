@@ -5,24 +5,24 @@ Weak link BEGIN STEP //
 
 Clean up properties
 
+Input -> RecInp -> Step -> Anim
+Step <- Check if Anim <- Anim 
+
+Check if it is 5000 Time between input begin step
+if not then discard input OR if it is 0 remove continous , set continous on every non zero input
+
+Put inputs in a list with all the times
+When animation is done check for the closest input that corresponds to the time
+Slight delay between players in clock, might be worth checking into.
+
+Solve it in MpHandler?
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Animation done 
+Check list for tht time that fits best
+Do animation
+Skip already passed animations
+If the last one was 0 do 0 either way
 
 
 Fix Animation #

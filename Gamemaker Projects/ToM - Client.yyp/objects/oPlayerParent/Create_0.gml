@@ -6,7 +6,6 @@ MaxGravity = 10;
 GravityAcceleration = 0.1;
 NoGrav = false;
 LastAnim = 0;
-AnimationDone = true;
 
  
 //Animation
@@ -24,8 +23,12 @@ Health = 100;
 //Commandbackend
 ActiveCommand = 0;
 ActiveArray = [0];
-CommandQueue = ds_queue_create();
 LastCopy = true;
+var TempArr = [0, 0];
+InputList = ds_list_create();
+ds_list_add(InputList, TempArr);
+InputListPos = 0;
+NextAnim = [0, 0];
 
 
 //Lag

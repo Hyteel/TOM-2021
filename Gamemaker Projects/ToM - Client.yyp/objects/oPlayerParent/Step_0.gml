@@ -132,11 +132,10 @@ if (Timer > SlowDownVar + 100000)
 
 //New Movement #2
 //Animation Start
-if (CurrentFrame >= CurrentAnimation[1]) 
+/*if (CurrentFrame >= CurrentAnimation[1]) 
 	{ 
 	NoGrav = false;
 	AttackHit = false;
-	AnimationDone = true;
 	if (CurrentAnimation[0] == ActiveCommand)
 		{
 		if (ActiveCommand != 0) 
@@ -150,8 +149,37 @@ if (CurrentFrame >= CurrentAnimation[1])
 		CurrentFrame = 0;
 		if (CurrentAnimation[0] != 0) { LastAnim = CurrentAnimation[0]; }
 		}
-	}
+	}*/
 
+
+//Animation Start
+if (CurrentFrame >= CurrentAnimation[1])
+	{
+	NoGrav = false;
+	AttackHit = false;
+	if (ds_list_size(InputList) != InputListPos)
+		{
+		var CurrentTime = get_timer() + global.InstMain.ConnectedTimeDifference;
+		show_debug_message(ds_list_size(InputList));
+		if (CurrentTime >= NextAnim[0])
+			{
+			CurrentAnimation = scGetAnimProp(NextAnim[1]);
+			for (var i = 0; ds_list_size(InputList) > i && InputList[| i][0] < CurrentTime; i++)
+				{
+				InputListPos++;
+				NextAnim = InputList[|i];
+				}
+			}
+		else
+			{
+			CurrentAnimation = scGetAnimProp(0); 
+			}
+		}
+	else
+		{
+		CurrentFrame = 0;
+		}
+	}
 
 //Animation
 var Timer = get_timer();
