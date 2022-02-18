@@ -1,9 +1,4 @@
-Not 100% Sync
-
-Weak link BEGIN STEP //
-
-
-Clean up properties
+LOWPRIO Clean up properties
 
 
 

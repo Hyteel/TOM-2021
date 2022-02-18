@@ -131,34 +131,37 @@ if (Timer > SlowDownVar + 100000)
 #endregion
 
 //New Movement #2
+var TimerAtStart = get_timer();
+
 //Animation Start
 if (CurrentFrame >= CurrentAnimation[1]) 
 	{ 
 	NoGrav = false;
 	AttackHit = false;
-	AnimationDone = true;
 	if (CurrentAnimation[0] == ActiveCommand)
 		{
 		if (ActiveCommand != 0) 
 			{
 			CurrentFrame = 0;
+			CurentAnimTimeDiv = 0;
 			}
 		}
 	else
 		{
 		CurrentAnimation = scGetAnimProp(ActiveCommand); 
 		CurrentFrame = 0;
+		show_debug_message(CurrentAnimation[6]);
+		show_debug_message(CurrentAnimation[1]);
+		CurentAnimTimeDiv = CurrentAnimation[6]/CurrentAnimation[1];
+		show_debug_message(CurrentAnimTimeDiv);
 		if (CurrentAnimation[0] != 0) { LastAnim = CurrentAnimation[0]; }
 		}
 	}
 
 
 //Animation
-var Timer = get_timer();
-
-if (Timer > SlowDownVar + SlowDownConstant)
+if (TimerAtStart > NextFrameTime) 
 	{
-	SlowDownVar = Timer
 	if (CurrentAnimation[0] == 0)
 		{
 		image_index = 0;
@@ -175,10 +178,13 @@ if (Timer > SlowDownVar + SlowDownConstant)
 			}
 		}
 	CurrentFrame += 1;
+	//show_debug_message(CurrentFrame*CurrentAnimTimeDiv + TimerAtStart);
+	//NextFrameTime = CurrentFrame*CurrentAnimTimeDiv + TimerAtStart;
+	NextFrameTime = TimerAtStart + 50000;
 	}
 	
 	
-//Movement
+//Movement #FIX not same as anim
 
 if !((CurrentAnimation[4] == 0) && (CurrentAnimation[5] == 0))
 	{

@@ -121,11 +121,11 @@ switch (AnimationToGet)
 			//Movement
 			#region 0
 			case 0: //Nothing
-				var APArray = [0, 0, 0, 0, 0, 0];
+				var APArray = [0, 0, 0, 0, 0, 0, 0];
 				break;
 				
 			default:
-				var APArray = [0, 0, 0, 0, 0, 0];
+				var APArray = [0, 0, 0, 0, 0, 0, 0];
 				break;
 			#endregion
 				
@@ -149,8 +149,9 @@ switch (AnimationToGet)
 				6, //FrameCount
 				0, //Animtype, 0 = Movement
 				Frames, //Frames
-				-40,
-				0
+				-40, //Movement X
+				0, //Movement Y
+				80000000 //TimeToComplete
 				];
 				break;
 			#endregion
@@ -165,7 +166,7 @@ switch (AnimationToGet)
 				var Frame5 = [9, 12, 10, 0];
 				var Frame6 = [9, 12, 10, 0];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
-				var APArray = [80, 6, 0, Frames, 40, 0];
+				var APArray = [80, 6, 0, Frames, 40, 0, 8000];
 				break;
 			#endregion	
 			
@@ -182,7 +183,7 @@ switch (AnimationToGet)
 				var Frame8 = [30, 30, -10, -20];
 				var Frame9 = [31, 31, -10, -20];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8, Frame9];
-				var APArray = [1001, 9, 0, Frames, 0, 0];
+				var APArray = [1001, 9, 0, Frames, 0, 0, 8000];
 				NoGrav = true;
 				break;
 			#endregion	
@@ -200,7 +201,7 @@ switch (AnimationToGet)
 				var Frame8 = [39, 39, 10, -20];
 				var Frame9 = [40, 40, 10, -20];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8, Frame9];
-				var APArray = [1011, 9, 0, Frames, 0, 0];
+				var APArray = [1011, 9, 0, Frames, 0, 0, 8000];
 				NoGrav = true;
 				break;
 			#endregion	
@@ -225,7 +226,7 @@ switch (AnimationToGet)
 				var Frame2 = [17, 20, 0, 0, true, 40, 0, 10, 10, 1, 10];
 				var Frame3 = [18, 21, 0, 0, true, 40, 0, 10, 10, 1, 10];
 				var Frames = [Frame1, Frame2, Frame3];
-				var APArray = [1, 3, 1, Frames, 0, 0];
+				var APArray = [1, 3, 1, Frames, 0, 0, 8000];
 				break;
 			#endregion
 		}
