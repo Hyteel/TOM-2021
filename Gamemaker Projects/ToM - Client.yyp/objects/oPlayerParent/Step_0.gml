@@ -143,23 +143,29 @@ if (CurrentFrame >= CurrentAnimation[1])
 		if (ActiveCommand != 0) 
 			{
 			CurrentFrame = 0;
-			CurentAnimTimeDiv = 0;
 			}
 		}
 	else
 		{
+		//show_debug_message("HERE");
 		CurrentAnimation = scGetAnimProp(ActiveCommand); 
 		CurrentFrame = 0;
-		show_debug_message(CurrentAnimation[6]);
-		show_debug_message(CurrentAnimation[1]);
-		CurentAnimTimeDiv = CurrentAnimation[6]/CurrentAnimation[1];
-		show_debug_message(CurrentAnimTimeDiv);
-		if (CurrentAnimation[0] != 0) { LastAnim = CurrentAnimation[0]; }
+		if (CurrentAnimation[0] != 0) 
+			{ 
+				LastAnim = CurrentAnimation[0]; 
+				CurrentAnimTimeDiv = CurrentAnimation[6]/CurrentAnimation[1];
+			}
+		else
+			{
+			CurrentAnimTimeDiv = 0;
+			}
 		}
 	}
 
 
 //Animation
+//show_debug_message(NextFrameTime);
+
 if (TimerAtStart > NextFrameTime) 
 	{
 	if (CurrentAnimation[0] == 0)
@@ -179,23 +185,40 @@ if (TimerAtStart > NextFrameTime)
 		}
 	CurrentFrame += 1;
 	//show_debug_message(CurrentFrame*CurrentAnimTimeDiv + TimerAtStart);
-	//NextFrameTime = CurrentFrame*CurrentAnimTimeDiv + TimerAtStart;
-	NextFrameTime = TimerAtStart + 50000;
+	NextFrameTime = CurrentFrame*CurrentAnimTimeDiv + TimerAtStart;
+	//NextFrameTime = TimerAtStart + 50000;
+	
+	if !((CurrentAnimation[4] == 0) && (CurrentAnimation[5] == 0))
+		{
+		var FrameSize = array_length(CurrentAnimation[3]);
+		if (CurrentFrame <= FrameSize)
+			{
+			var Xval = CurrentAnimation[4]/FrameSize;
+			var Yval = CurrentAnimation[5]/FrameSize;
+			
+			if !(scCollisionCheck("X", Xval)) { x += Xval; }
+			if !(scCollisionCheck("Y", Yval)) { y += Yval; }
+			}
+		}
 	}
 	
 	
 //Movement #FIX not same as anim
-
-if !((CurrentAnimation[4] == 0) && (CurrentAnimation[5] == 0))
+/*if !((CurrentAnimation[4] == 0) && (CurrentAnimation[5] == 0))
 	{
-	var FrameSize = array_length(CurrentAnimation[3]);
-	var Xval = CurrentAnimation[4]/FrameSize;
-	var Yval = CurrentAnimation[5]/FrameSize;
+	if (TimerAtStart > NextFrameTime)
+		{
+		var FrameSize = array_length(CurrentAnimation[3]);
+		if (CurrentFrame <= FrameSize)
+			{
+			var Xval = CurrentAnimation[4]/FrameSize;
+			var Yval = CurrentAnimation[5]/FrameSize;
 			
-	if !(scCollisionCheck("X", Xval)) { x += Xval; }
-	if !(scCollisionCheck("Y", Yval)) { y += Yval; } 
-	}
-
+			if !(scCollisionCheck("X", Xval)) { x += Xval; }
+			if !(scCollisionCheck("Y", Yval)) { y += Yval; }
+			}
+		}
+	}*/
 
 //Gravity
 if (!(scCollisionCheck("Y", Gravity)) && !(NoGrav))

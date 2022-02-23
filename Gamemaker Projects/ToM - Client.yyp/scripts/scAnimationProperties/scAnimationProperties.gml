@@ -151,7 +151,7 @@ switch (AnimationToGet)
 				Frames, //Frames
 				-40, //Movement X
 				0, //Movement Y
-				80000000 //TimeToComplete
+				80000 //TimeToComplete
 				];
 				break;
 			#endregion
@@ -166,7 +166,7 @@ switch (AnimationToGet)
 				var Frame5 = [9, 12, 10, 0];
 				var Frame6 = [9, 12, 10, 0];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
-				var APArray = [80, 6, 0, Frames, 40, 0, 8000];
+				var APArray = [80, 6, 0, Frames, 40, 0, 80000];
 				break;
 			#endregion	
 			
