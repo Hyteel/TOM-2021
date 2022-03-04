@@ -9,12 +9,12 @@ ConnectedTimeDifference = 0;
 DebugMode = 0;
 RoomW = room_width/2;
 RoomH = room_height/2;
+OldInputTime = 0;
 
 
 //Debug
 LocPHead = 0;
 LocPAAT = 0;
-
 OtPHead = 0;
 OtPAAT = 0;
 

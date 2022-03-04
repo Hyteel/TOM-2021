@@ -12,9 +12,6 @@ LastAnim = 0;
 CurrentAnimation = [0, 0, 0, 0, 0, 0];
 CurrentFrame = 0;
 NextFrameTime = 0;
-NextMVMFrameTime = 0;
-AnimToMVMRatio = 10;
-CurrentAnimTimeDiv = 0;
 AttackHit = false;
 
 
