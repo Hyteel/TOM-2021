@@ -138,6 +138,7 @@ if (CurrentFrame >= CurrentAnimation[1])
 	{ 
 	NoGrav = false;
 	AttackHit = false;
+	x = PosAtEndOfAnimX;
 	if (CurrentAnimation[0] == ActiveCommand)
 		{
 		if (ActiveCommand != 0) 
@@ -152,8 +153,11 @@ if (CurrentFrame >= CurrentAnimation[1])
 		if (CurrentAnimation[0] != 0) 
 			{ 
 				LastAnim = CurrentAnimation[0]; 
+				XDif = OldXPos - x;
+				OldXPos = x;
 			}
 		}
+	PosAtEndOfAnimX = x + (CurrentAnimation[1]*TimeBetweenFrames*CurrentAnimation[4])/1000000;
 	}
 
 
@@ -177,7 +181,7 @@ if (TimerAtStart > NextFrameTime)
 			}
 		}
 	CurrentFrame += 1;
-	NextFrameTime = TimerAtStart + 50000;
+	NextFrameTime = TimerAtStart + TimeBetweenFrames;
 	}
 	
 
@@ -187,11 +191,15 @@ if !((CurrentAnimation[4] == 0) && (CurrentAnimation[5] == 0))
 	var FrameSize = array_length(CurrentAnimation[3]);
 	if (CurrentFrame <= FrameSize)
 		{
-		var Xval = CurrentAnimation[4]/FrameSize;
-		var Yval = CurrentAnimation[5]/FrameSize;
-			
-		if !(scCollisionCheck("X", Xval)) { x += Xval; }
-		if !(scCollisionCheck("Y", Yval)) { y += Yval; }
+		var Xval = CurrentAnimation[4];
+		var Yval = CurrentAnimation[5];
+		
+		var DT = delta_time/1000000;
+		var CombinedXval = Xval*DT;
+		var CombinedYval = Yval*DT;
+		
+		if !(scCollisionCheck("X", CombinedXval)) { x += CombinedXval; }
+		if !(scCollisionCheck("Y", CombinedYval)) { y += CombinedYval; }
 		}
 	}
 

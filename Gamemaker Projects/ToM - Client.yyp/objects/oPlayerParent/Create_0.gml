@@ -6,6 +6,10 @@ MaxGravity = 10;
 GravityAcceleration = 0.1;
 NoGrav = false;
 LastAnim = 0;
+OldXPos = 0;
+XDif = 0;
+TimeBetweenFrames = 50000;
+PosAtEndOfAnimX = x;
 
  
 //Animation

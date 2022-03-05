@@ -10,7 +10,8 @@ if (DebugMode == 0)
 	draw_text(room_width/16, room_height/10, LocPHead);
 	draw_text(room_width/16, (room_height/10)*2, LocPAAT);
 	draw_text(room_width/16, (room_height/10)*3, "Current Frame " + string(global.InstLocalPlayer.CurrentFrame));
-
+	draw_text(room_width/16, (room_height/10)*4, "OldX " + string(global.InstLocalPlayer.OldXPos) + ": CurrentX " + string(global.InstLocalPlayer.x));
+	draw_text(room_width/16, (room_height/10)*5, "XDIf " + string(global.InstLocalPlayer.XDif));
 	
 	draw_set_color(c_orange);
 	draw_text(room_width/2.5, room_height/10, "OT PLAYER");
@@ -22,7 +23,8 @@ if (DebugMode == 0)
 	draw_text((room_width/4)*2.5, room_height/10, OtPHead);
 	draw_text((room_width/4)*2.5, (room_height/10)*2, OtPAAT);
 	draw_text((room_width/4)*2.5, (room_height/10)*3, "Current Frame " + string(global.InstOtPlayer.CurrentFrame));
-	
+	draw_text((room_width/4)*2.5, (room_height/10)*4, "OldX " + string(global.InstOtPlayer.OldXPos) + ": CurrentX " + string(global.InstOtPlayer.x));
+	draw_text((room_width/4)*2.5, (room_height/10)*5, "XDIf " + string(global.InstOtPlayer.XDif));
 	
 	draw_set_color(c_white);
 	draw_text((room_width/4)*1.5, (room_height/6)*4, "CT : " + string(get_timer()));

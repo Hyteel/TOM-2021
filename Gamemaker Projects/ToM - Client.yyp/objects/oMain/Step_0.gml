@@ -13,7 +13,7 @@ if (Input != OldInput)
 		OldInput = Input;
 		//show_debug_message("SEND " + string(Sendofftime));
 		}
-	else if (50000 < get_timer() - Sendofftime)
+	else if (300000 < get_timer() - Sendofftime)
 		{
 		buffer_seek(global.ClientBuffer, buffer_seek_start, 0);
 		buffer_write(global.ClientBuffer, buffer_u8, Network.SendCurrentInput);

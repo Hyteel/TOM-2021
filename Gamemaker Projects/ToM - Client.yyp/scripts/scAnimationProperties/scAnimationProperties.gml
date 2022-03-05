@@ -135,23 +135,20 @@ switch (AnimationToGet)
 				var Frame1 = [
 				1, //SpriteID x >= oOtPlayer.x
 				4, //SpriteID x < oOtPlayer.x 
-				-10, //TransX
-				0 //TransY
 				];
-				var Frame2 = [1, 4, -10, 0];
-				var Frame3 = [2, 5, -10, 0];
-				var Frame4 = [2, 5, -10, 0];
-				var Frame5 = [3, 6, -10, 0];
-				var Frame6 = [3, 6, -10, 0];
+				var Frame2 = [1, 4];
+				var Frame3 = [2, 5];
+				var Frame4 = [2, 5];
+				var Frame5 = [3, 6];
+				var Frame6 = [3, 6];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
 				var APArray = [
 				70, //ID
 				6, //FrameCount
 				0, //Animtype, 0 = Movement
 				Frames, //Frames
-				-40, //Movement X
-				0, //Movement Y
-				80000 //TimeToComplete
+				-400, //MovementSpeed X
+				0, //MovementSpeed Y
 				];
 				break;
 			#endregion
@@ -166,7 +163,7 @@ switch (AnimationToGet)
 				var Frame5 = [9, 12, 10, 0];
 				var Frame6 = [9, 12, 10, 0];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
-				var APArray = [80, 6, 0, Frames, 40, 0, 80000];
+				var APArray = [80, 6, 0, Frames, 400, 0, 80000];
 				break;
 			#endregion	
 			
