@@ -138,7 +138,6 @@ if (CurrentFrame >= CurrentAnimation[1])
 	{ 
 	NoGrav = false;
 	AttackHit = false;
-	x = PosAtEndOfAnimX;
 	if (CurrentAnimation[0] == ActiveCommand)
 		{
 		if (ActiveCommand != 0) 
@@ -153,11 +152,13 @@ if (CurrentFrame >= CurrentAnimation[1])
 		if (CurrentAnimation[0] != 0) 
 			{ 
 				LastAnim = CurrentAnimation[0]; 
-				XDif = OldXPos - x;
-				OldXPos = x;
 			}
+		var File = file_text_open_append(working_directory + "\Inputs" + string(Id) + "AnimInit" + ".txt");
+		var StringToWrite = string(get_timer() +  global.InstMain.ConnectedTimeDifference) + " " + string(CurrentAnimation[0]) + "\n";
+		file_text_write_string(File, StringToWrite);
+		file_text_close(File);
 		}
-	PosAtEndOfAnimX = x + (CurrentAnimation[1]*TimeBetweenFrames*CurrentAnimation[4])/1000000;
+	//PosAtEndOfAnimX = x + (CurrentAnimation[1]*TimeBetweenFrames*CurrentAnimation[4])/1000000;
 	}
 
 

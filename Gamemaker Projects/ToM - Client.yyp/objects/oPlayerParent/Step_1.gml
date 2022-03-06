@@ -22,7 +22,7 @@ if ((get_timer() + global.InstMain.ConnectedTimeDifference > ActiveArray[0]))
 				LastCopy = false;	
 				}
 			var File = file_text_open_append(working_directory + "\Inputs" + string(Id) + "Dequeued" + ".txt");
-			var StringToWrite = string(get_timer()) + " " + CurrentAnimation[0] + "\n";
+			var StringToWrite = string(get_timer() +  global.InstMain.ConnectedTimeDifference) + " " + string(ActiveCommand) + "\n";
 			file_text_write_string(File, StringToWrite);
 			file_text_close(File);
 			}
