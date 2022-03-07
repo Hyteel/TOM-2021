@@ -3,17 +3,12 @@ var Input = scCompileInputs();
 
 if (Input != OldInput)
 	{
-	//if (Input == 0)
-	if (300000 < get_timer() - Sendofftime)
-		{
-		buffer_seek(global.ClientBuffer, buffer_seek_start, 0);
-		buffer_write(global.ClientBuffer, buffer_u8, Network.SendCurrentInput);
-		buffer_write(global.ClientBuffer, buffer_u8, Input);	
-		network_send_packet(global.ClientSocket, global.ClientBuffer, buffer_tell(global.ClientBuffer));
-		Sendofftime = get_timer();
-		OldInput = Input;
-		//show_debug_message("SEND " + string(Sendofftime));
-		}
+	buffer_seek(global.ClientBuffer, buffer_seek_start, 0);
+	buffer_write(global.ClientBuffer, buffer_u8, Network.SendCurrentInput);
+	buffer_write(global.ClientBuffer, buffer_u8, Input);	
+	network_send_packet(global.ClientSocket, global.ClientBuffer, buffer_tell(global.ClientBuffer));
+	Sendofftime = get_timer();
+	OldInput = Input;
 	}
 
 

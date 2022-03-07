@@ -1,5 +1,6 @@
 //Movement
 Id = 0;
+BasicId = 0;
 BaseGravity = 5;
 Gravity = BaseGravity;
 MaxGravity = 10;
@@ -10,6 +11,7 @@ OldXPos = 0;
 XDif = 0;
 TimeBetweenFrames = 50000;
 PosAtEndOfAnimX = x;
+HasSentRequest = false;
 
  
 //Animation

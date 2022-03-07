@@ -22,28 +22,10 @@ enum Network
 	SendCurrentInput,
 	ConfirmConnect,
 	GlobalizePos,
-	SendAttack
+	SendAttack,
+	SendRequestInput
 }
 
-//Player Commands
-enum PCommands
-{
-	MoveLeft,
-	MoveRight,
-	MoveDown,
-	MoveUp,
-	NoInput
-}
-
-//Player Commands
-enum Animations
-{
-	MoveLeft,
-	MoveRight,
-	MoveDown,
-	MoveUp,
-	NoInput
-}
 
 //Instances
 global.InstMain = instance_create_depth(0, 0, 0, oMain);

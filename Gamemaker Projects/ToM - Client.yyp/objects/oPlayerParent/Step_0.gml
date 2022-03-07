@@ -151,14 +151,23 @@ if (CurrentFrame >= CurrentAnimation[1])
 		CurrentFrame = 0;
 		if (CurrentAnimation[0] != 0) 
 			{ 
-				LastAnim = CurrentAnimation[0]; 
+				LastAnim = CurrentAnimation[0];
 			}
-		var File = file_text_open_append(working_directory + "\Inputs" + string(Id) + "AnimInit" + ".txt");
+		/*var File = file_text_open_append(working_directory + "\Inputs" + string(Id) + "AnimInit" + ".txt");
 		var StringToWrite = string(get_timer() +  global.InstMain.ConnectedTimeDifference) + " " + string(CurrentAnimation[0]) + "\n";
 		file_text_write_string(File, StringToWrite);
-		file_text_close(File);
+		file_text_close(File);*/
 		}
-	//PosAtEndOfAnimX = x + (CurrentAnimation[1]*TimeBetweenFrames*CurrentAnimation[4])/1000000;
+	if !(HasSentRequest)
+		{
+		buffer_seek(global.ClientBuffer, buffer_seek_start, 0);
+		buffer_write(global.ClientBuffer, buffer_u8, Network.SendRequestInput);
+		buffer_write(global.ClientBuffer, buffer_u8, BasicId);
+		network_send_packet(global.ClientSocket, global.ClientBuffer, buffer_tell(global.ClientBuffer));
+		HasSentRequest = true;
+		}
+	x = PosAtEndOfAnimX;
+	PosAtEndOfAnimX = x + (CurrentAnimation[1]*TimeBetweenFrames*CurrentAnimation[4])/1000000;
 	}
 
 

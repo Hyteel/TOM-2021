@@ -1,4 +1,4 @@
-if ((get_timer() + global.InstMain.ConnectedTimeDifference > ActiveArray[0]))
+/*if ((get_timer() + global.InstMain.ConnectedTimeDifference > ActiveArray[0]))
 	{
 	if (ds_queue_size(CommandQueue) > 0)
 		{
@@ -35,11 +35,12 @@ if ((get_timer() + global.InstMain.ConnectedTimeDifference > ActiveArray[0]))
 			LastCopy = true;	
 			}
 		}
-	}
+	}*/
 
 
 if ((Id == 1) || (Id == 0))
 	{
+	BasicId = Id;
 	if (Id == 0) { Id = global.InstOtPlayer; }
 	else { Id = global.InstLocalPlayer; }
 	}
