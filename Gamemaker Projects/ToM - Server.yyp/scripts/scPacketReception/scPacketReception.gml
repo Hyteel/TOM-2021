@@ -7,36 +7,59 @@ function scPacketReception(ScBuffer, ScSocket) {
 			var Extratime = 2;
 			if (ds_list_size(PlayerSockets) > 1)
 				{
-				/*//Dual Buffers	
-				var Input = buffer_read(ScBuffer, buffer_u8);
-				var CurrentTime = get_timer();
-				var TimeToSet = floor(CurrentTime/10000) + Extratime;
-					
-				buffer_seek(ServerBuffer, buffer_seek_start, 0);
-				buffer_write(ServerBuffer, buffer_u8, Network.SendCurrentInput);
-				buffer_write(ServerBuffer, buffer_bool, false);
-				buffer_write(ServerBuffer, buffer_u16, TimeToSet);
-					
-				buffer_seek(ServerBufferSameSend, buffer_seek_start, 0);
-				buffer_write(ServerBufferSameSend, buffer_u8, Network.SendCurrentInput);
-				buffer_write(ServerBufferSameSend, buffer_bool, true);
-				buffer_write(ServerBufferSameSend, buffer_u16, TimeToSet);
-					
-				buffer_write(ServerBuffer, buffer_u8, Input);		
-				buffer_write(ServerBufferSameSend, buffer_u8, Input);	
-					
-						
-				//Sendoff
-				var SameSendSocket = PlayerSockets[| scGetOppositePlayer(ScSocket, PlayerSockets)];
-				network_send_packet(SameSendSocket, ServerBuffer, buffer_tell(ServerBuffer));
-				network_send_packet(ScSocket, ServerBufferSameSend, buffer_tell(ServerBufferSameSend));	*/
-				
-				//show_debug_message("SendCurrentInput Serv");
-				
 				var StoredInput = buffer_read(ScBuffer, buffer_u8);
-				if (ScSocket == 1) {CurrentStoredInputP1 = StoredInput; }
-				else {CurrentStoredInputP2 = StoredInput; }
-				
+				if (ScSocket == 1) 
+					{
+					CurrentStoredInputP1 = StoredInput; 
+					if (P1WaitingForNew)
+						{
+						//show_debug_message("WaitingForNew P1");
+						buffer_seek(ServerBuffer, buffer_seek_start, 0);
+						buffer_write(ServerBuffer, buffer_u8, Network.SendCurrentInput);
+						buffer_write(ServerBuffer, buffer_bool, false);
+					
+						buffer_seek(ServerBufferSameSend, buffer_seek_start, 0);
+						buffer_write(ServerBufferSameSend, buffer_u8, Network.SendCurrentInput);
+						buffer_write(ServerBufferSameSend, buffer_bool, true);
+						
+						buffer_write(ServerBuffer, buffer_u8, CurrentStoredInputP1);		
+						buffer_write(ServerBufferSameSend, buffer_u8, CurrentStoredInputP1);	
+						
+						//Sendoff
+						network_send_packet(PlayerSockets[|1], ServerBuffer, buffer_tell(ServerBuffer));
+						network_send_packet(PlayerSockets[|0], ServerBufferSameSend, buffer_tell(ServerBufferSameSend));
+						show_debug_message("SendCurrentInput Client" + string(CurrentStoredInputP1));
+						InputRequestP2OtP = false;
+						InputRequestP1Loc = false;
+						OldStoredInputP1 = CurrentStoredInputP1;
+						}
+					}
+				else 
+					{
+					CurrentStoredInputP2 = StoredInput; 
+					if (P2WaitingForNew)
+						{
+						//show_debug_message("WaitingForNew P2");
+						buffer_seek(ServerBuffer, buffer_seek_start, 0);
+						buffer_write(ServerBuffer, buffer_u8, Network.SendCurrentInput);
+						buffer_write(ServerBuffer, buffer_bool, false);
+									
+						buffer_seek(ServerBufferSameSend, buffer_seek_start, 0);
+						buffer_write(ServerBufferSameSend, buffer_u8, Network.SendCurrentInput);
+						buffer_write(ServerBufferSameSend, buffer_bool, true);
+						
+						buffer_write(ServerBuffer, buffer_u8, CurrentStoredInputP2);		
+						buffer_write(ServerBufferSameSend, buffer_u8, CurrentStoredInputP2);	
+						
+						//Sendoff
+						network_send_packet(PlayerSockets[|0], ServerBuffer, buffer_tell(ServerBuffer));
+						network_send_packet(PlayerSockets[|1], ServerBufferSameSend, buffer_tell(ServerBufferSameSend));
+						//show_debug_message("SendCurrentInput Client" + string(CurrentStoredInputP2));
+						InputRequestP1OtP = false;
+						InputRequestP2Loc = false;
+						OldStoredInputP2 = CurrentStoredInputP2;
+						}
+					}
 				//show_debug_message("SENDCURRENTINPUT " + string(StoredInput));
 				
 				}
@@ -55,9 +78,7 @@ function scPacketReception(ScBuffer, ScSocket) {
 				if (PlayerId == 0) {InputRequestP2OtP = true; }
 				else {InputRequestP2Loc = true; } 
 				}
-			//show_debug_message(PlayerId);
-			//show_debug_message("SendRequestInput");
-			//show_debug_message("SOCKET " + string(ScSocket));
+			//show_debug_message("SendRequestInput " + string(PlayerId) + ", " + "SOCKET " + string(ScSocket));
 			break;
 		
 			

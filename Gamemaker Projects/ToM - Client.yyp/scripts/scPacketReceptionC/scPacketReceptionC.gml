@@ -6,17 +6,21 @@ function scPacketReceptionC(ScBuffer){
 	{
 		case Network.SendCurrentInput:
 			var Player = buffer_read(ScBuffer, buffer_bool);
-			show_debug_message("REC  " + string(TimeToExecute - global.InstMain.ConnectedTimeDifference));
+			var Input = buffer_read(ScBuffer, buffer_u8);
 			
+			var File = file_text_open_append(working_directory + "\Inputs" + string(Player) + "RecivedInputs" + ".txt");
+			var StringToWrite = string(get_timer() +  global.InstMain.ConnectedTimeDifference) + " " + string(Input) + "\n";
+			file_text_write_string(File, StringToWrite);
+			file_text_close(File);
 			
 			if (Player) 
 				{  
-				global.InstLocalPlayer.ActiveCommand = buffer_read(ScBuffer, buffer_u8);
+				global.InstLocalPlayer.ActiveCommand = Input;
 				global.InstLocalPlayer.HasSentRequest = false;
 				}
 			else 
 				{
-				global.InstOtPlayer.ActiveCommand = buffer_read(ScBuffer, buffer_u8);
+				global.InstOtPlayer.ActiveCommand = Input;
 				global.InstOtPlayer.HasSentRequest = false;
 				}
 				

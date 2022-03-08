@@ -134,30 +134,40 @@ if (Timer > SlowDownVar + 100000)
 var TimerAtStart = get_timer();
 
 //Animation Start
+//show_debug_message(string(CurrentFrame) + " : " + string(CurrentAnimation[1]));
+var File = file_text_open_append(working_directory + "\Inputs" + string(BasicId) + string(global.InstMain.Identification) + "CombinedInfo" + ".txt");
+var StringToWrite = string(get_timer() +  global.InstMain.ConnectedTimeDifference) + " : " + string(CurrentFrame) + " : " + string(CurrentAnimation[1]) + " : " + string(ActiveCommand) + " : " + string(CurrentAnimation[0]) + "\n";
+file_text_write_string(File, StringToWrite);
+file_text_close(File);
+
+//show_debug_message(string(CurrentFrame) + " " + string(CurrentAnimation[1]));
 if (CurrentFrame >= CurrentAnimation[1]) 
 	{ 
+	/*var File = file_text_open_append(working_directory + "\Inputs" + string(BasicId) + string(global.InstMain.Identification) + "AnimDone" + ".txt");
+	var StringToWrite = string(get_timer() +  global.InstMain.ConnectedTimeDifference) + " " + string(ActiveCommand) + "\n";
+	file_text_write_string(File, StringToWrite);
+	file_text_close(File);*/
 	NoGrav = false;
 	AttackHit = false;
+	
 	if (CurrentAnimation[0] == ActiveCommand)
-		{
-		if (ActiveCommand != 0) 
-			{
-			CurrentFrame = 0;
-			}
+		{	
+		CurrentFrame = 0;	
 		}
 	else
 		{
-		CurrentAnimation = scGetAnimProp(ActiveCommand); 
 		CurrentFrame = 0;
 		if (CurrentAnimation[0] != 0) 
 			{ 
 				LastAnim = CurrentAnimation[0];
 			}
-		/*var File = file_text_open_append(working_directory + "\Inputs" + string(Id) + "AnimInit" + ".txt");
+		CurrentAnimation = scGetAnimProp(ActiveCommand); 
+		/*var File = file_text_open_append(working_directory + "\Inputs" + string(BasicId) + string(global.InstMain.Identification) + "AnimInit" + ".txt");
 		var StringToWrite = string(get_timer() +  global.InstMain.ConnectedTimeDifference) + " " + string(CurrentAnimation[0]) + "\n";
 		file_text_write_string(File, StringToWrite);
 		file_text_close(File);*/
 		}
+		
 	if !(HasSentRequest)
 		{
 		buffer_seek(global.ClientBuffer, buffer_seek_start, 0);
@@ -166,8 +176,8 @@ if (CurrentFrame >= CurrentAnimation[1])
 		network_send_packet(global.ClientSocket, global.ClientBuffer, buffer_tell(global.ClientBuffer));
 		HasSentRequest = true;
 		}
-	x = PosAtEndOfAnimX;
-	PosAtEndOfAnimX = x + (CurrentAnimation[1]*TimeBetweenFrames*CurrentAnimation[4])/1000000;
+	//x = PosAtEndOfAnimX;
+	//PosAtEndOfAnimX = x + (CurrentAnimation[1]*TimeBetweenFrames*CurrentAnimation[4])/1000000;
 	}
 
 
