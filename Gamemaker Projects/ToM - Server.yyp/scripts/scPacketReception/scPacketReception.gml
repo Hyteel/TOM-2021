@@ -31,24 +31,33 @@ function scPacketReception(ScBuffer, ScSocket) {
 				network_send_packet(SameSendSocket, ServerBuffer, buffer_tell(ServerBuffer));
 				network_send_packet(ScSocket, ServerBufferSameSend, buffer_tell(ServerBufferSameSend));	*/
 				
-				if (ScSocket == 0) {CurrentStoredInputP1 = buffer_read(ScBuffer, buffer_u8); }
-				else {CurrentStoredInputP2 = buffer_read(ScBuffer, buffer_u8); }
+				//show_debug_message("SendCurrentInput Serv");
+				
+				var StoredInput = buffer_read(ScBuffer, buffer_u8);
+				if (ScSocket == 1) {CurrentStoredInputP1 = StoredInput; }
+				else {CurrentStoredInputP2 = StoredInput; }
+				
+				//show_debug_message("SENDCURRENTINPUT " + string(StoredInput));
 				
 				}
 			break;
 		
 		
 		case Network.SendRequestInput:
-			if (ScSocket == 0) 
+			var PlayerId = buffer_read(ScBuffer, buffer_u8);
+			if (ScSocket == 1) 
 				{ 
-				if (buffer_read(ScBuffer, buffer_u8) == 0) {InputRequestP1OtP = true; }
+				if (PlayerId == 0) {InputRequestP1OtP = true; }
 				else {InputRequestP1Loc = true; } 
 				}
 			else 
 				{
-				if (buffer_read(ScBuffer, buffer_u8) == 0) {InputRequestP2OtP = true; }
+				if (PlayerId == 0) {InputRequestP2OtP = true; }
 				else {InputRequestP2Loc = true; } 
 				}
+			//show_debug_message(PlayerId);
+			//show_debug_message("SendRequestInput");
+			//show_debug_message("SOCKET " + string(ScSocket));
 			break;
 		
 			

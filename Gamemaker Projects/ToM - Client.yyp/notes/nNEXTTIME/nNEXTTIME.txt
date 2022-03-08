@@ -21,7 +21,10 @@ Clients -> [Request] -> Server (Check if already has sent)
 Server -> [Input] -> Clients
 
 
+#Fix 0 loop problem, check in server if last input is the same and if not send. Ie. Store inputs and wait for change to send them even if request has been sent by both clients
+#Input gets sent, but when do animation start? Server -> [Inputs] -> Clients
 
+#Fix movement, ie. less choppy
 
 
 
