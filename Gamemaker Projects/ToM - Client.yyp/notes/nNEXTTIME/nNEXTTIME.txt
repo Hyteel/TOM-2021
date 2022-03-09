@@ -4,7 +4,4 @@ Server -> [Input] -> Clients
 
 
 
-Reversed movement, otp get loc
-loc moves correct whilst otp is laggy
-
-Lag is due to Inputs getting recived at different speeds, delay inputs so they cant be spammed
+Set speed for animations, animations completing at different times causes problems

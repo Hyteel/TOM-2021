@@ -8,6 +8,7 @@ function scPacketReception(ScBuffer, ScSocket) {
 			if (ds_list_size(PlayerSockets) > 1)
 				{
 				var StoredInput = buffer_read(ScBuffer, buffer_u8);
+				show_debug_message("INPUT " + string(StoredInput));
 				if (ScSocket == 1) 
 					{
 					CurrentStoredInputP1 = StoredInput; 

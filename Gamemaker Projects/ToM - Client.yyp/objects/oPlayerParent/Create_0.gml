@@ -9,7 +9,7 @@ NoGrav = false;
 LastAnim = 0;
 OldXPos = 0;
 XDif = 0;
-TimeBetweenFrames = 50000;
+TimeBetweenFrames = 500000;
 PosAtEndOfAnimX = x;
 HasSentRequest = false;
 
