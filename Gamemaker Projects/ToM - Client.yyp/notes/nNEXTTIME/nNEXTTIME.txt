@@ -4,4 +4,12 @@ Server -> [Input] -> Clients
 
 
 
-Set speed for animations, animations completing at different times causes problems
+PROBLEM Set speed for animations, animations completing at different times causes problems
+
+
+Server send time to both clients
+Time indicates endtime for animation
+Both clients will end their animations at that time
+
+
+GOOD ENOUGH SYNC

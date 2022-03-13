@@ -7,6 +7,7 @@ function scPacketReceptionC(ScBuffer){
 		case Network.SendCurrentInput:
 			var Player = buffer_read(ScBuffer, buffer_bool);
 			var Input = buffer_read(ScBuffer, buffer_u8);
+			var RecivedTime = get_timer();
 			
 			var File = file_text_open_append(working_directory + "\Inputs" + string(Player) + "RecivedInputs" + ".txt");
 			var StringToWrite = string(get_timer() +  global.InstMain.ConnectedTimeDifference) + " " + string(Input) + "\n";
@@ -17,11 +18,13 @@ function scPacketReceptionC(ScBuffer){
 				{  
 				global.InstLocalPlayer.ActiveCommand = Input;
 				global.InstLocalPlayer.HasSentRequest = false;
+				global.InstLocalPlayer.NextAnimTime = RecivedTime;
 				}
 			else 
 				{
 				global.InstOtPlayer.ActiveCommand = Input;
 				global.InstOtPlayer.HasSentRequest = false;
+				global.InstOtPlayer.NextAnimTime = RecivedTime;
 				}
 				
 			break;

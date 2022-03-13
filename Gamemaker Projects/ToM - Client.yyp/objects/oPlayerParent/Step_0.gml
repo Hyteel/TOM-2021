@@ -141,12 +141,9 @@ file_text_write_string(File, StringToWrite);
 file_text_close(File);
 
 //show_debug_message(string(CurrentFrame) + " " + string(CurrentAnimation[1]));
-if (CurrentFrame >= CurrentAnimation[1]) 
+//if (CurrentFrame >= CurrentAnimation[1])
+if (TimerAtStart > AnimTime)
 	{ 
-	/*var File = file_text_open_append(working_directory + "\Inputs" + string(BasicId) + string(global.InstMain.Identification) + "AnimDone" + ".txt");
-	var StringToWrite = string(get_timer() +  global.InstMain.ConnectedTimeDifference) + " " + string(ActiveCommand) + "\n";
-	file_text_write_string(File, StringToWrite);
-	file_text_close(File);*/
 	NoGrav = false;
 	AttackHit = false;
 	
@@ -162,10 +159,6 @@ if (CurrentFrame >= CurrentAnimation[1])
 				LastAnim = CurrentAnimation[0];
 			}
 		CurrentAnimation = scGetAnimProp(ActiveCommand); 
-		/*var File = file_text_open_append(working_directory + "\Inputs" + string(BasicId) + string(global.InstMain.Identification) + "AnimInit" + ".txt");
-		var StringToWrite = string(get_timer() +  global.InstMain.ConnectedTimeDifference) + " " + string(CurrentAnimation[0]) + "\n";
-		file_text_write_string(File, StringToWrite);
-		file_text_close(File);*/
 		}
 		
 	if !(HasSentRequest)
@@ -176,8 +169,15 @@ if (CurrentFrame >= CurrentAnimation[1])
 		network_send_packet(global.ClientSocket, global.ClientBuffer, buffer_tell(global.ClientBuffer));
 		HasSentRequest = true;
 		}
-	//x = PosAtEndOfAnimX;
-	//PosAtEndOfAnimX = x + (CurrentAnimation[1]*TimeBetweenFrames*CurrentAnimation[4])/1000000;
+		
+	if (CurrentAnimation[0] != 0)
+		{
+			AnimTime = NextAnimTime + 500000;
+			NextAnimTime = AnimTime;
+			var AnimTimeDifference = AnimTime - TimerAtStart;
+			x = PosAtEndOfAnimX;
+			PosAtEndOfAnimX = x + (AnimTimeDifference*CurrentAnimation[4])/1000000;
+		}
 	}
 
 
@@ -200,7 +200,8 @@ if (TimerAtStart > NextFrameTime)
 			else { if (GetFrame[4]) { scHitscan(-1, GetFrame[5], GetFrame[6], GetFrame[7], GetFrame[8], GetFrame[9], GetFrame[10]); }}
 			}
 		}
-	CurrentFrame += 1;
+	if (CurrentFrame + 1 > CurrentAnimation[1] - 1) {CurrentFrame = 0}
+	else { CurrentFrame += 1;}
 	NextFrameTime = TimerAtStart + TimeBetweenFrames;
 	}
 	

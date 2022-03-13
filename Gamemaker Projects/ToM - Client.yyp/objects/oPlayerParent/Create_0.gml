@@ -9,9 +9,11 @@ NoGrav = false;
 LastAnim = 0;
 OldXPos = 0;
 XDif = 0;
-TimeBetweenFrames = 500000;
+TimeBetweenFrames = 40000;
 PosAtEndOfAnimX = x;
 HasSentRequest = false;
+AnimTime = 0;
+NextAnimTime = 0;
 
  
 //Animation
