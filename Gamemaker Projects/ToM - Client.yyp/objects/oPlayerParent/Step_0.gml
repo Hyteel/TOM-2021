@@ -174,9 +174,13 @@ if (TimerAtStart > AnimTime)
 		{
 			AnimTime = NextAnimTime + 500000;
 			NextAnimTime = AnimTime;
-			var AnimTimeDifference = AnimTime - TimerAtStart;
-			x = PosAtEndOfAnimX;
-			PosAtEndOfAnimX = x + (AnimTimeDifference*CurrentAnimation[4])/1000000;
+			//var AnimTimeDifference = AnimTime - TimerAtStart;
+			//x = PosAtEndOfAnimX;
+			
+			//if !(scCollisionCheck("X", PosAtEndOfAnimX)) { x += PosAtEndOfAnimX; }
+			//if !(scCollisionCheck("Y", CombinedYval)) { y += CombinedYval; }
+			
+			//PosAtEndOfAnimX = (AnimTimeDifference*CurrentAnimation[4])/1000000;
 		}
 	}
 
