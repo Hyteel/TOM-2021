@@ -1,16 +1,17 @@
 function scPacketReception(ScBuffer, ScSocket) {
 	MsgType = buffer_read(ScBuffer, buffer_u8);
-
+	var CurrentTime = get_timer();
+	
 	switch (MsgType)
 	{
 		case Network.SendCurrentInput:
-			var Extratime = 2;
-			if (ds_list_size(PlayerSockets) > 1)
+			if (ds_list_size(PlayerSockets) > 1) 
 				{
 				var StoredInput = buffer_read(ScBuffer, buffer_u8);
 				show_debug_message("INPUT " + string(StoredInput));
-				if (ScSocket == 1) 
+				if ((ScSocket == 1) && ((LastRecivedInputP1 + TimeBetweenInputs < CurrentTime) || (StoredInput == 0)))
 					{
+					if (StoredInput != 0) { LastRecivedInputP1 = CurrentTime; }
 					CurrentStoredInputP1 = StoredInput; 
 					if (P1WaitingForNew)
 						{
@@ -35,8 +36,9 @@ function scPacketReception(ScBuffer, ScSocket) {
 						OldStoredInputP1 = CurrentStoredInputP1;
 						}
 					}
-				else 
+				else if ((ScSocket == 2) && ((LastRecivedInputP2 + TimeBetweenInputs < CurrentTime) || (StoredInput == 0)))
 					{
+					if (StoredInput) { LastRecivedInputP2 = CurrentTime; }
 					CurrentStoredInputP2 = StoredInput; 
 					if (P2WaitingForNew)
 						{
@@ -61,7 +63,6 @@ function scPacketReception(ScBuffer, ScSocket) {
 						OldStoredInputP2 = CurrentStoredInputP2;
 						}
 					}
-				//show_debug_message("SENDCURRENTINPUT " + string(StoredInput));
 				
 				}
 			break;
@@ -79,29 +80,23 @@ function scPacketReception(ScBuffer, ScSocket) {
 				if (PlayerId == 0) {InputRequestP2OtP = true; }
 				else {InputRequestP2Loc = true; } 
 				}
-			//show_debug_message("SendRequestInput " + string(PlayerId) + ", " + "SOCKET " + string(ScSocket));
 			break;
 		
 			
 		case Network.SendAttack:
-			var Extratime = 2;
 			if (ds_list_size(PlayerSockets) > 1)
 				{
 				//Dual Buffers	
 				var Input = buffer_read(ScBuffer, buffer_u8);
-				var CurrentTime = get_timer();
-				var TimeToSet = floor(CurrentTime/10000) + Extratime;
 				var Damage = buffer_read(ScBuffer, buffer_u8);
 					
 				buffer_seek(ServerBuffer, buffer_seek_start, 0);
 				buffer_write(ServerBuffer, buffer_u8, Network.SendAttack);
 				buffer_write(ServerBuffer, buffer_bool, true);
-				buffer_write(ServerBuffer, buffer_u16, TimeToSet);
 					
 				buffer_seek(ServerBufferSameSend, buffer_seek_start, 0);
 				buffer_write(ServerBufferSameSend, buffer_u8, Network.SendAttack);
 				buffer_write(ServerBufferSameSend, buffer_bool, false);
-				buffer_write(ServerBufferSameSend, buffer_u16, TimeToSet);
 					
 				buffer_write(ServerBuffer, buffer_u8, Input);		
 				buffer_write(ServerBufferSameSend, buffer_u8, Input);	

@@ -9,10 +9,10 @@ function scPacketReceptionC(ScBuffer){
 			var Input = buffer_read(ScBuffer, buffer_u8);
 			var RecivedTime = get_timer();
 			
-			var File = file_text_open_append(working_directory + "\Inputs" + string(Player) + "RecivedInputs" + ".txt");
+			/*var File = file_text_open_append(working_directory + "\Inputs" + string(Player) + "RecivedInputs" + ".txt");
 			var StringToWrite = string(get_timer() +  global.InstMain.ConnectedTimeDifference) + " " + string(Input) + "\n";
 			file_text_write_string(File, StringToWrite);
-			file_text_close(File);
+			file_text_close(File);*/
 			
 			if (Player) 
 				{  
@@ -33,14 +33,24 @@ function scPacketReceptionC(ScBuffer){
 		case Network.SendAttack:
 			show_debug_message("RECIVEDSENDATTACK");
 			var Player = buffer_read(ScBuffer, buffer_bool);
-			var TimeToExecute = buffer_read(ScBuffer, buffer_u16)*10000;
-			var CombineArray = 0;
-			CombineArray[0] = TimeToExecute;
-			CombineArray[1] = buffer_read(ScBuffer, buffer_u8) + 1000;
-			CombineArray[2] = buffer_read(ScBuffer, buffer_u8);
+			var AttackAnim = buffer_read(ScBuffer, buffer_u8) + 1000;
+			var AttackDmg = buffer_read(ScBuffer, buffer_u8);
+			var RecivedTime = get_timer();
 			
-			if (Player) {  ds_queue_enqueue(global.InstLocalPlayer.CommandQueue, CombineArray); }
-			else { ds_queue_enqueue(global.InstOtPlayer.CommandQueue, CombineArray); }
+			if (Player) 
+				{  
+				global.InstLocalPlayer.AnimTime = 0; 
+				global.InstLocalPlayer.ActiveCommand = AttackAnim; 
+				global.InstLocalPlayer.Health -= AttackDmg; 
+				global.InstLocalPlayer.NextAnimTime = RecivedTime;
+				}
+			else 
+				{ 
+				global.InstOtPlayer.AnimTime = 0; 
+				global.InstOtPlayer.ActiveCommand = AttackAnim; 
+				global.InstOtPlayer.Health -= AttackDmg;  
+				global.InstOtPlayer.NextAnimTime = RecivedTime;
+				}
 			break;
 		
 		

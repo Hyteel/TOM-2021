@@ -156,14 +156,36 @@ switch (AnimationToGet)
 			
 			#region RunRight
 			case 80: 
-				var Frame1 = [7, 10, 10, 0];
-				var Frame2 = [7, 10, 10, 0];
-				var Frame3 = [8, 11, 10, 0];
-				var Frame4 = [8, 11, 10, 0];
-				var Frame5 = [9, 12, 10, 0];
-				var Frame6 = [9, 12, 10, 0];
+				var Frame1 = [7, 10];
+				var Frame2 = [7, 10];
+				var Frame3 = [8, 11];
+				var Frame4 = [8, 11];
+				var Frame5 = [9, 12];
+				var Frame6 = [9, 12];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
-				var APArray = [80, 6, 0, Frames, 400, 0, 80000];
+				var APArray = [80, 6, 0, Frames, 400, 0];
+				break;
+			#endregion	
+			
+			
+			#region Jump
+			case 30: 
+				if (scCollisionCheck("Y", 1))
+					{
+					var Frame1 = [41, 41];
+					var Frame2 = [41, 41];
+					var Frame3 = [42, 42];
+					var Frame4 = [42, 42];
+					var Frame5 = [43, 43];
+					var Frame6 = [43, 43];
+					var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
+					var APArray = [80, 6, 0, Frames, 0, -2200];
+					NoGrav = true;
+					}
+				else
+					{
+					var APArray = scGetAnimProp(0);
+					}
 				break;
 			#endregion	
 			
@@ -180,8 +202,9 @@ switch (AnimationToGet)
 				var Frame8 = [30, 30, -10, -20];
 				var Frame9 = [31, 31, -10, -20];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8, Frame9];
-				var APArray = [1001, 9, 0, Frames, 0, 0, 8000];
+				var APArray = [1001, 9, 0, Frames, -800, -400];
 				NoGrav = true;
+				ActiveCommand = 0;
 				break;
 			#endregion	
 			
@@ -198,8 +221,9 @@ switch (AnimationToGet)
 				var Frame8 = [39, 39, 10, -20];
 				var Frame9 = [40, 40, 10, -20];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8, Frame9];
-				var APArray = [1011, 9, 0, Frames, 0, 0, 8000];
+				var APArray = [1011, 9, 0, Frames, 800, -400];
 				NoGrav = true;
+				ActiveCommand = 0;
 				break;
 			#endregion	
 			
@@ -223,7 +247,7 @@ switch (AnimationToGet)
 				var Frame2 = [17, 20, 0, 0, true, 40, 0, 10, 10, 1, 10];
 				var Frame3 = [18, 21, 0, 0, true, 40, 0, 10, 10, 1, 10];
 				var Frames = [Frame1, Frame2, Frame3];
-				var APArray = [1, 3, 1, Frames, 0, 0, 8000];
+				var APArray = [1, 3, 1, Frames, 0, 0];
 				break;
 			#endregion
 		}

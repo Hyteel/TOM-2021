@@ -19,6 +19,10 @@ InputRequestP1Loc = false;
 InputRequestP2Loc = false;
 InputRequestP1OtP = false;
 InputRequestP2OtP = false;
+LastRecivedInputP1 = 0;
+LastRecivedInputP2 = 0;
+TimeBetweenInputs = 200000;
+
 
 //Enum
 enum Network

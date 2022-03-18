@@ -135,10 +135,10 @@ var TimerAtStart = get_timer();
 
 //Animation Start
 //show_debug_message(string(CurrentFrame) + " : " + string(CurrentAnimation[1]));
-var File = file_text_open_append(working_directory + "\Inputs" + string(BasicId) + string(global.InstMain.Identification) + "CombinedInfo" + ".txt");
+/*var File = file_text_open_append(working_directory + "\Inputs" + string(BasicId) + string(global.InstMain.Identification) + "CombinedInfo" + ".txt");
 var StringToWrite = string(get_timer() +  global.InstMain.ConnectedTimeDifference) + " : " + string(CurrentFrame) + " : " + string(CurrentAnimation[1]) + " : " + string(ActiveCommand) + " : " + string(CurrentAnimation[0]) + "\n";
 file_text_write_string(File, StringToWrite);
-file_text_close(File);
+file_text_close(File);*/
 
 //show_debug_message(string(CurrentFrame) + " " + string(CurrentAnimation[1]));
 //if (CurrentFrame >= CurrentAnimation[1])
@@ -172,7 +172,7 @@ if (TimerAtStart > AnimTime)
 		
 	if (CurrentAnimation[0] != 0)
 		{
-			AnimTime = NextAnimTime + 500000;
+			AnimTime = NextAnimTime + 250000;
 			NextAnimTime = AnimTime;
 			//var AnimTimeDifference = AnimTime - TimerAtStart;
 			//x = PosAtEndOfAnimX;
