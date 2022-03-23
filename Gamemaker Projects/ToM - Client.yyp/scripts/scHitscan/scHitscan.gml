@@ -6,11 +6,6 @@ function scHitscan(Dir, HitBoxX, HitBoxY, HitBoxH, HitBoxW, KnockBackIntensity, 
 	HitBoxY + (bbox_top + 32) + HitBoxH,
 	oOtPlayer, false, true);
 	
-	//show_debug_message(string(HitBoxX*Dir + (bbox_right - 32)));
-	//show_debug_message(string(HitBoxY + (bbox_top + 32)));
-	//show_debug_message(string(HitBoxX*Dir + HitBoxW*Dir + (bbox_right - 32)));
-	//show_debug_message(string(HitBoxY + (bbox_top + 32) + HitBoxH));
-	
 	if (Dir < 0) { Dir = 0; }
 	
 	if (Inst != noone)

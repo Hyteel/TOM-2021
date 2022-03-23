@@ -1,7 +1,7 @@
 //NEW2 INPUT SYS
 var Input = scCompileInputs();
 
-if (Input != OldInput)
+if (Input != OldInput) //&& (get_timer() >= Sendofftime + 1000000)) DOES NOT WORK
 	{
 	buffer_seek(global.ClientBuffer, buffer_seek_start, 0);
 	buffer_write(global.ClientBuffer, buffer_u8, Network.SendCurrentInput);

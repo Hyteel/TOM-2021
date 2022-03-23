@@ -1,16 +1,25 @@
 //Movement
 Id = 0;
+BasicId = 0;
 BaseGravity = 5;
 Gravity = BaseGravity;
 MaxGravity = 10;
 GravityAcceleration = 0.1;
+NoGrav = false;
+LastAnim = 0;
+OldXPos = 0;
+XDif = 0;
+TimeBetweenFrames = 40000;
+PosAtEndOfAnimX = x;
+HasSentRequest = false;
+AnimTime = 0;
+NextAnimTime = 0;
 
-
+ 
 //Animation
-CurrentAnimation = [0, 0];
+CurrentAnimation = [0, 0, 0, 0, 0, 0];
 CurrentFrame = 0;
-SlowDownVar = 0;
-SlowDownConstant = 100000;
+NextFrameTime = 0;
 AttackHit = false;
 
 

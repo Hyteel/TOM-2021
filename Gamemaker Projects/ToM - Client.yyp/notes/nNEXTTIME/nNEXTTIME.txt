@@ -1,16 +1,15 @@
- at gml_Script_scHitscan (line 3) - 	else { var TrueRange = CurrentAnimation[9]; var BBOX = bbox_right; }
+Client -> [Input] -> Server 
+Clients -> [Request] -> Server (Check if already has sent)
+Server -> [Input] -> Clients
 
 
 
-
-SENDATTACK!!! 
-
+PROBLEM Set speed for animations, animations completing at different times causes problems
 
 
+Server send time to both clients
+Time indicates endtime for animation
+Both clients will end their animations at that time
 
 
-
-Implement directioncheck BEFORE animation, split animations
-Standardize the attack/movement arrays
-Implement non simplified animations
-Better attack collision 
+GOOD ENOUGH SYNC

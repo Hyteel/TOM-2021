@@ -131,43 +131,70 @@ if (Timer > SlowDownVar + 100000)
 #endregion
 
 //New Movement #2
+var TimerAtStart = get_timer();
+
 //Animation Start
-if (CurrentFrame >= CurrentAnimation[1]) 
+//show_debug_message(string(CurrentFrame) + " : " + string(CurrentAnimation[1]));
+/*var File = file_text_open_append(working_directory + "\Inputs" + string(BasicId) + string(global.InstMain.Identification) + "CombinedInfo" + ".txt");
+var StringToWrite = string(get_timer() +  global.InstMain.ConnectedTimeDifference) + " : " + string(CurrentFrame) + " : " + string(CurrentAnimation[1]) + " : " + string(ActiveCommand) + " : " + string(CurrentAnimation[0]) + "\n";
+file_text_write_string(File, StringToWrite);
+file_text_close(File);*/
+
+//show_debug_message(string(CurrentFrame) + " " + string(CurrentAnimation[1]));
+//if (CurrentFrame >= CurrentAnimation[1])
+if (TimerAtStart > AnimTime)
 	{ 
+	NoGrav = false;
 	AttackHit = false;
+	
 	if (CurrentAnimation[0] == ActiveCommand)
-		{
-		if (ActiveCommand != 0) 
-			{
-			CurrentFrame = 0;
-			}
+		{	
+		CurrentFrame = 0;	
 		}
 	else
 		{
-		CurrentAnimation = scGetAnimProp(ActiveCommand); 
 		CurrentFrame = 0;
+		if (CurrentAnimation[0] != 0) 
+			{ 
+				LastAnim = CurrentAnimation[0];
+			}
+		CurrentAnimation = scGetAnimProp(ActiveCommand); 
+		}
+		
+	if !(HasSentRequest)
+		{
+		buffer_seek(global.ClientBuffer, buffer_seek_start, 0);
+		buffer_write(global.ClientBuffer, buffer_u8, Network.SendRequestInput);
+		buffer_write(global.ClientBuffer, buffer_u8, BasicId);
+		network_send_packet(global.ClientSocket, global.ClientBuffer, buffer_tell(global.ClientBuffer));
+		HasSentRequest = true;
+		}
+		
+	if (CurrentAnimation[0] != 0)
+		{
+			AnimTime = NextAnimTime + 250000;
+			NextAnimTime = AnimTime;
+			//var AnimTimeDifference = AnimTime - TimerAtStart;
+			//x = PosAtEndOfAnimX;
+			
+			//if !(scCollisionCheck("X", PosAtEndOfAnimX)) { x += PosAtEndOfAnimX; }
+			//if !(scCollisionCheck("Y", CombinedYval)) { y += CombinedYval; }
+			
+			//PosAtEndOfAnimX = (AnimTimeDifference*CurrentAnimation[4])/1000000;
 		}
 	}
 
 
 //Animation
-var Timer = get_timer();
-
-if (Timer > SlowDownVar + SlowDownConstant)
+//show_debug_message(NextFrameTime);
+if (TimerAtStart > NextFrameTime) 
 	{
-	SlowDownVar = Timer
 	if (CurrentAnimation[0] == 0)
 		{
 		image_index = 0;
 		}
 	else
 		{
-		var Xval = GetFrame[2];
-		var Yval = GetFrame[3];
-			
-		if !(scCollisionCheck("X", Xval)) { x += Xval; }
-		if !(scCollisionCheck("Y", Yval)) { y += Yval; }
-			
 		if (x < oOtPlayer.x) { image_index = GetFrame[1]; }
 		else { image_index = GetFrame[0]; }	
 		
@@ -177,12 +204,32 @@ if (Timer > SlowDownVar + SlowDownConstant)
 			else { if (GetFrame[4]) { scHitscan(-1, GetFrame[5], GetFrame[6], GetFrame[7], GetFrame[8], GetFrame[9], GetFrame[10]); }}
 			}
 		}
-	CurrentFrame += 1;
+	if (CurrentFrame + 1 > CurrentAnimation[1] - 1) {CurrentFrame = 0}
+	else { CurrentFrame += 1;}
+	NextFrameTime = TimerAtStart + TimeBetweenFrames;
 	}
 	
-	
+
+//Movement
+if !((CurrentAnimation[4] == 0) && (CurrentAnimation[5] == 0))
+	{
+	var FrameSize = array_length(CurrentAnimation[3]);
+	if (CurrentFrame <= FrameSize)
+		{
+		var Xval = CurrentAnimation[4];
+		var Yval = CurrentAnimation[5];
+		
+		var DT = delta_time/1000000;
+		var CombinedXval = Xval*DT;
+		var CombinedYval = Yval*DT;
+		
+		if !(scCollisionCheck("X", CombinedXval)) { x += CombinedXval; }
+		if !(scCollisionCheck("Y", CombinedYval)) { y += CombinedYval; }
+		}
+	}
+
 //Gravity
-if !(scCollisionCheck("Y", Gravity)) 
+if (!(scCollisionCheck("Y", Gravity)) && !(NoGrav))
 	{ 
 	y += Gravity; 
 	if (Gravity < MaxGravity) { Gravity += GravityAcceleration; }
@@ -191,7 +238,5 @@ else
 	{
 	Gravity = BaseGravity;
 	}
-
-
 
 
