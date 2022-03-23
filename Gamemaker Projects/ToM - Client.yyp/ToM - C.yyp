@@ -11,6 +11,7 @@
     {"id":{"name":"scCollisionCheck","path":"scripts/scCollisionCheck/scCollisionCheck.yy",},"order":4,},
     {"id":{"name":"oMPHandlerC","path":"objects/oMPHandlerC/oMPHandlerC.yy",},"order":1,},
     {"id":{"name":"tsCollision","path":"tilesets/tsCollision/tsCollision.yy",},"order":0,},
+    {"id":{"name":"sbgMainFight","path":"sprites/sbgMainFight/sbgMainFight.yy",},"order":6,},
     {"id":{"name":"oLocalPlayer","path":"objects/oLocalPlayer/oLocalPlayer.yy",},"order":1,},
     {"id":{"name":"oMain","path":"objects/oMain/oMain.yy",},"order":2,},
     {"id":{"name":"scAnimationProperties","path":"scripts/scAnimationProperties/scAnimationProperties.yy",},"order":5,},

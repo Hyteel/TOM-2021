@@ -13,3 +13,23 @@ Both clients will end their animations at that time
 
 
 GOOD ENOUGH SYNC
+
+
+
+//PostSyncWork
+
+#Code
+Fix Jump
+Audio
+Basic gameplay mechanics
+
+
+#Other work
+Background
+Ui
+Camera
+
+
+#Animations
+Animations (Code)
+Animations (Visuals)
