@@ -23,7 +23,7 @@ function scCollisionCheck(Axis, Movement){
 			{
 			if ((tilemap_get_at_pixel(CollisionTileMap, bbox_left, bbox_top + Movement) != 0) || (tilemap_get_at_pixel(CollisionTileMap, bbox_right, bbox_top + Movement) != 0))
 				{
-				y = floor((bbox_bottom + Movement)/16) * 16 - (bbox_top - bbox_bottom);
+				y = floor((bbox_top + Movement)/16) * 16 ;
 				return(true);
 				}
 			}
@@ -36,7 +36,7 @@ function scCollisionCheck(Axis, Movement){
 			{
 			if ((tilemap_get_at_pixel(CollisionTileMap, bbox_left - Movement, bbox_bottom - 1) != 0) || (tilemap_get_at_pixel(CollisionTileMap, bbox_left - Movement, bbox_top + 1) != 0))
 				{
-				x = floor((bbox_left - Movement)/16) * 16 + 16;
+				x = floor((bbox_left - Movement)/16) * 16 - (bbox_right - bbox_left) + 16;
 				return(true);
 				}
 			}
@@ -49,7 +49,7 @@ function scCollisionCheck(Axis, Movement){
 			{
 			if ((tilemap_get_at_pixel(CollisionTileMap, bbox_right + Movement, bbox_bottom - 1) != 0) || (tilemap_get_at_pixel(CollisionTileMap, bbox_right + Movement, bbox_top + 1) != 0))
 				{
-				x = floor((bbox_right + Movement)/16) * 16 - (bbox_right - bbox_left) - 1;
+				x = floor((bbox_right + Movement)/16) * 16 - 17;
 				return(true);
 				}
 			}

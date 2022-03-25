@@ -170,8 +170,9 @@ switch (AnimationToGet)
 			
 			#region Jump
 			case 30: 
-				if (scCollisionCheck("Y", 1))
+				if (Landed)
 					{
+					show_debug_message("ACTUAL JUMP");
 					var Frame1 = [41, 41];
 					var Frame2 = [41, 41];
 					var Frame3 = [42, 42];
@@ -179,8 +180,9 @@ switch (AnimationToGet)
 					var Frame5 = [43, 43];
 					var Frame6 = [43, 43];
 					var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
-					var APArray = [80, 6, 0, Frames, 0, -2200];
+					var APArray = [80, 6, 0, Frames, 0, -1200];
 					NoGrav = true;
+					Landed = false;
 					}
 				else
 					{

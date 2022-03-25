@@ -144,6 +144,7 @@ file_text_close(File);*/
 //if (CurrentFrame >= CurrentAnimation[1])
 if (TimerAtStart > AnimTime)
 	{ 
+	show_debug_message("NEXTCALL " + string(get_timer()));
 	NoGrav = false;
 	AttackHit = false;
 	
@@ -174,13 +175,6 @@ if (TimerAtStart > AnimTime)
 		{
 			AnimTime = NextAnimTime + 250000;
 			NextAnimTime = AnimTime;
-			//var AnimTimeDifference = AnimTime - TimerAtStart;
-			//x = PosAtEndOfAnimX;
-			
-			//if !(scCollisionCheck("X", PosAtEndOfAnimX)) { x += PosAtEndOfAnimX; }
-			//if !(scCollisionCheck("Y", CombinedYval)) { y += CombinedYval; }
-			
-			//PosAtEndOfAnimX = (AnimTimeDifference*CurrentAnimation[4])/1000000;
 		}
 	}
 
@@ -225,17 +219,23 @@ if !((CurrentAnimation[4] == 0) && (CurrentAnimation[5] == 0))
 		
 		if !(scCollisionCheck("X", CombinedXval)) { x += CombinedXval; }
 		if !(scCollisionCheck("Y", CombinedYval)) { y += CombinedYval; }
+		else { NoGrav = false; CurrentAnimation[5] = 0; }
 		}
 	}
 
 //Gravity
-if (!(scCollisionCheck("Y", Gravity)) && !(NoGrav))
+if (!(scCollisionCheck("Y", Gravity)))
 	{ 
-	y += Gravity; 
-	if (Gravity < MaxGravity) { Gravity += GravityAcceleration; }
+	if !(NoGrav)
+		{
+		y += Gravity;
+		//show_debug_message("GRAVITY " + string(get_timer()));
+		if (Gravity < MaxGravity) { Gravity += GravityAcceleration; }
+		}
 	}
 else
 	{
+	Landed = true;
 	Gravity = BaseGravity;
 	}
 

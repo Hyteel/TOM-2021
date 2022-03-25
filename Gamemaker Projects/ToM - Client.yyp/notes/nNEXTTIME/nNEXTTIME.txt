@@ -16,20 +16,31 @@ GOOD ENOUGH SYNC
 
 
 
+
+
+Jump
+When jump animation check if touching ground, if yes then disable gravity and enable yaxis movement anim. Else do anim 0. Add this check to movement anims aswell
+Each tick, check if collision above, if yes then enable gravity and set yaxis movement to 0
+When anim done enable gravity
+
+
 //PostSyncWork
 
 #Code
 Fix Jump
+Fix Collision
 Audio
 Basic gameplay mechanics
 
 
 #Other work
-Background
+Background//
 Ui
-Camera
+Camera//?
 
 
 #Animations
 Animations (Code)
 Animations (Visuals)
+
+

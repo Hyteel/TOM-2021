@@ -14,6 +14,7 @@ PosAtEndOfAnimX = x;
 HasSentRequest = false;
 AnimTime = 0;
 NextAnimTime = 0;
+Landed = true;
 
  
 //Animation
