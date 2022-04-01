@@ -1,0 +1,38 @@
+Vänster 
+Höger
+Upp
+Höger
+Upp vänster
+Upp höger
+Vänster q
+Vänster w
+Vänster e
+Vänster r
+Höger q
+Höger w
+Höger e
+Höger r
+Upp q
+Upp w 
+Upp e
+Upp r
+Ner q
+Ner W
+Ner e
+Ner r
+Upp vänster q
+Upp vänster w
+Upp vänster e
+Upp vänster r
+Upp höger q
+Upp höger w
+Upp höger e
+Upp höger r
+Ned vänster q
+Ned vänster w
+Ned vänster e
+Ned vänster r
+Ned höger q
+Ned höger w
+Ned höger e
+Ned höger r
