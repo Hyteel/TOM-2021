@@ -122,10 +122,12 @@ switch (AnimationToGet)
 			#region 0
 			case 0: //Nothing
 				var APArray = [0, 0, 0, 0, 0, 0, 0];
+				LastAnimation = 0;
 				break;
 				
 			default:
 				var APArray = [0, 0, 0, 0, 0, 0, 0];
+				LastAnimation = 0;
 				break;
 			#endregion
 				
@@ -150,6 +152,7 @@ switch (AnimationToGet)
 				-400, //MovementSpeed X
 				0, //MovementSpeed Y
 				];
+				LastAnimation = 70;
 				break;
 			#endregion
 				
@@ -164,13 +167,14 @@ switch (AnimationToGet)
 				var Frame6 = [9, 12];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
 				var APArray = [80, 6, 0, Frames, 400, 0];
+				LastAnimation = 80;
 				break;
 			#endregion	
 			
 			
 			#region Jump
 			case 30: 
-				if (Landed)
+				if ((Landed) && (get_timer() > JumpDelay + 500000) && (LastAnimation != 30))
 					{
 					//show_debug_message("ACTUAL JUMP");
 					var Frame1 = [41, 41];
@@ -183,10 +187,12 @@ switch (AnimationToGet)
 					var APArray = [80, 6, 0, Frames, 0, -1200];
 					NoGrav = true;
 					Landed = false;
+					JumpDelay = get_timer();
+					LastAnimation = 30;
 					}
 				else
 					{
-					var APArray = scGetAnimProp(0);
+					var APArray = [0, 0, 0, 0, 0, 0, 0];
 					}
 				break;
 			#endregion	
@@ -207,6 +213,7 @@ switch (AnimationToGet)
 				var APArray = [1001, 9, 0, Frames, -800, -400];
 				NoGrav = true;
 				ActiveCommand = 0;
+				LastAnimation = 1001;
 				break;
 			#endregion	
 			
@@ -226,6 +233,7 @@ switch (AnimationToGet)
 				var APArray = [1011, 9, 0, Frames, 800, -400];
 				NoGrav = true;
 				ActiveCommand = 0;
+				LastAnimation = 1011;
 				break;
 			#endregion	
 			
@@ -233,24 +241,32 @@ switch (AnimationToGet)
 			//Attacks
 			#region Jab
 			case 1: 
-				var Frame1 = [
-				16, //SpriteID
-				19, //-SpriteID
-				0, //TransX 
-				0, //TransY
-				false, //AttackFrame
-				0, //HitboxX
-				0, //HitboxY
-				0, //HitboxH
-				0, //HitboxW
-				0, //KnockBackIntensity
-				0 //Damage
-				];
-				var Frame2 = [17, 20, 0, 0, true, 40, 0, 10, 10, 1, 10];
-				var Frame3 = [18, 21, 0, 0, true, 40, 0, 10, 10, 1, 10];
-				var Frames = [Frame1, Frame2, Frame3];
-				var APArray = [1, 3, 1, Frames, 0, 0];
-				break;
+				if (LastAnimation != 1)
+					{
+					var Frame1 = [
+					16, //SpriteID
+					19, //-SpriteID
+					0, //TransX 
+					0, //TransY
+					false, //AttackFrame
+					0, //HitboxX
+					0, //HitboxY
+					0, //HitboxH
+					0, //HitboxW
+					0, //KnockBackIntensity
+					0 //Damage
+					];
+					var Frame2 = [17, 20, 0, 0, true, 40, 0, 10, 10, 1, 10];
+					var Frame3 = [18, 21, 0, 0, true, 40, 0, 10, 10, 1, 10];
+					var Frames = [Frame1, Frame2, Frame3];
+					var APArray = [1, 3, 1, Frames, 0, 0];
+					LastAnimation = 1;
+					break;
+					}
+				else
+					{
+					var APArray = [0, 0, 0, 0, 0, 0, 0];
+					}
 			#endregion
 		}
 		

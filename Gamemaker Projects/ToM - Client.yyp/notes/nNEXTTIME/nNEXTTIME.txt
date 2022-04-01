@@ -44,3 +44,9 @@ Animations (Code)
 Animations (Visuals)
 
 
+
+
+//NEW
+Increase res
+Fix Collision
+Fix jump acceleration

@@ -15,6 +15,8 @@ HasSentRequest = false;
 AnimTime = 0;
 NextAnimTime = 0;
 Landed = true;
+JumpDelay = 0;
+LastAnimation = 0;
 
  
 //Animation
