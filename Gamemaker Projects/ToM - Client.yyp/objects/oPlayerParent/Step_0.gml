@@ -144,7 +144,7 @@ file_text_close(File);*/
 //if (CurrentFrame >= CurrentAnimation[1])
 if (TimerAtStart > AnimTime)
 	{ 
-	show_debug_message("NEXTCALL " + string(get_timer()));
+	//show_debug_message("NEXTCALL " + string(get_timer()));
 	NoGrav = false;
 	AttackHit = false;
 	

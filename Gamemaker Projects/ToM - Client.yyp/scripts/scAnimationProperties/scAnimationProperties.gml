@@ -172,7 +172,7 @@ switch (AnimationToGet)
 			case 30: 
 				if (Landed)
 					{
-					show_debug_message("ACTUAL JUMP");
+					//show_debug_message("ACTUAL JUMP");
 					var Frame1 = [41, 41];
 					var Frame2 = [41, 41];
 					var Frame3 = [42, 42];
