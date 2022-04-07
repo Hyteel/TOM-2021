@@ -142,7 +142,7 @@ file_text_close(File);*/
 
 //show_debug_message(string(CurrentFrame) + " " + string(CurrentAnimation[1]));
 //if (CurrentFrame >= CurrentAnimation[1])
-if (TimerAtStart > AnimTime)
+if ((TimerAtStart > AnimTime) && !(Dead))
 	{ 
 	//show_debug_message("NEXTCALL " + string(get_timer()));
 	NoGrav = false;

@@ -3,7 +3,7 @@
   "glyphOperations": 0,
   "interpreter": 0,
   "pointRounding": 0,
-  "fontName": "Bahnschrift Condensed",
+  "fontName": "Bahnschrift",
   "styleName": "Regular",
   "size": 20.0,
   "bold": false,

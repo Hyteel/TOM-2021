@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sLocalPlayer",
-    "path": "sprites/sLocalPlayer/sLocalPlayer.yy",
+    "name": "sLocalPlayerOLD",
+    "path": "sprites/sLocalPlayerOLD/sLocalPlayerOLD.yy",
   },
   "solid": false,
   "visible": true,

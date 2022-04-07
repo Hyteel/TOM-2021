@@ -30,3 +30,6 @@ var ViewMat = matrix_build_lookat(RoomW/2, RoomH/2, -10, RoomW/2, RoomH/2, 0, 0,
 var ProjMat = matrix_build_projection_ortho(1024, 768, 1.0, 3200.0);
 camera_set_view_mat(view_camera[0], ViewMat);
 camera_set_proj_mat(view_camera[0], ProjMat);
+
+MinWidth = 1024;
+MinHeight = 768;

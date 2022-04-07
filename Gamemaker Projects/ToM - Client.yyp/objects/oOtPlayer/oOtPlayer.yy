@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sOtPlayer",
-    "path": "sprites/sOtPlayer/sOtPlayer.yy",
+    "name": "sOtPlayerOLD",
+    "path": "sprites/sOtPlayerOLD/sOtPlayerOLD.yy",
   },
   "solid": false,
   "visible": true,

@@ -38,3 +38,28 @@ if (DebugMode == 0)
 	draw_text((room_width/4)*1.5, (room_height/6)*1, "QueueSize OtP : " + string(ds_queue_size(global.InstOtPlayer.CommandQueue)));
 	draw_text((room_width/4)*1.5, (room_height/6)*1.5, "QueueSize LOC : " + string(ds_queue_size(global.InstLocalPlayer.CommandQueue)));
 	}
+	
+	
+if ((global.InstLocalPlayer.Dead) || (global.InstOtPlayer.Dead))
+	{
+	if (global.InstLocalPlayer.Dead)
+		{
+		draw_set_font(fEnd);
+		draw_set_color(c_black);
+		draw_text(display_get_gui_width()/2 - 50, display_get_gui_height()/2, "P2 WINS")
+		}
+	else
+		{
+		draw_set_font(fEnd);
+		draw_set_color(c_black);
+		draw_text(display_get_gui_width()/2 - 50, display_get_gui_height()/2, "P1 WINS")
+		}
+	}
+else 
+	{
+	draw_set_font(fMain);
+	draw_set_color(c_blue);
+	draw_text(100, 100, "HP P1 : " + string(global.InstLocalPlayer.Health));
+	draw_set_color(c_red);
+	draw_text(display_get_gui_width() - 225, 100, "HP P2 : " + string(global.InstOtPlayer.Health));
+	}

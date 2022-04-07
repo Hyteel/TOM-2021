@@ -256,8 +256,8 @@ switch (AnimationToGet)
 					0, //KnockBackIntensity
 					0 //Damage
 					];
-					var Frame2 = [17, 20, 0, 0, true, 40, 0, 10, 10, 1, 10];
-					var Frame3 = [18, 21, 0, 0, true, 40, 0, 10, 10, 1, 10];
+					var Frame2 = [17, 20, 0, 0, true, 10, 0, 50, 50, 1, 10];
+					var Frame3 = [18, 21, 0, 0, true, 10, 0, 50, 50, 1, 10];
 					var Frames = [Frame1, Frame2, Frame3];
 					var APArray = [1, 3, 1, Frames, 0, 0];
 					LastAnimation = 1;

@@ -28,6 +28,7 @@ AttackHit = false;
 
 //Stats
 Health = 100;
+Dead = false;
 
 
 //Commandbackend
