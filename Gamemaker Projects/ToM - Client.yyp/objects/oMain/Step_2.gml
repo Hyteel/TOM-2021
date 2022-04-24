@@ -9,3 +9,5 @@ var ViewMat = matrix_build_lookat(CameraPosX, CameraPosY, -10, CameraPosX, Camer
 var ProjMat = matrix_build_projection_ortho(CurrentWidth, CurrentHeight, 1.0, 3200.0);
 camera_set_view_mat(view_camera[0], ViewMat);
 camera_set_proj_mat(view_camera[0], ProjMat)
+var ViewMat = matrix_build_lookat(CameraPosX, CameraPosY, -10, CameraPosX, CameraPosY, 0, 0, 1, 0);
+camera_set_view_mat(view_camera[0], ViewMat);
