@@ -149,7 +149,7 @@ switch (AnimationToGet)
 				6, //FrameCount
 				0, //Animtype, 0 = Movement
 				Frames, //Frames
-				-400, //MovementSpeed X
+				-300, //MovementSpeed X
 				0, //MovementSpeed Y
 				];
 				LastAnimation = 70;
@@ -169,7 +169,7 @@ switch (AnimationToGet)
 				var Frame5 = [3, 6];
 				var Frame6 = [3, 6];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
-				var APArray = [80, 6, 0, Frames, 400, 0];
+				var APArray = [80, 6, 0, Frames, 300, 0];
 				LastAnimation = 80;
 				break;
 			#endregion	
@@ -177,55 +177,42 @@ switch (AnimationToGet)
 			
 			#region Jump
 			case 30: 
-				/*if ((Landed) && (get_timer() > JumpDelay + 500000) && (LastAnimation != 30))
+				if (Landed)
 					{
-					var Frame1 = [41, 47];
-					var Frame2 = [42, 48];
-					var Frame3 = [43, 49];
-					var Frame4 = [44, 50];
-					var Frame5 = [45, 51];
-					var Frame6 = [46, 52];
-					var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
+					var Frame1 = [8, 14];
+					var Frame2 = [8, 14];
+					var Frame3 = [9, 15];
+					var Frame4 = [9, 15];
+					var Frame5 = [10, 16];
+					var Frame6 = [10, 16];
+					var Frame7 = [11, 17];
+					var Frame8 = [11, 17];
+					var Frame9 = [12, 18];
+					var Frame10 = [12, 18];
+					var Frame11 = [13, 19];
+					var Frame12 = [13, 19];
+					var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8, Frame9, Frame10, Frame11, Frame12];
 					var APArray = [80, 6, 0, Frames, 0, -1200];
-					NoGrav = true;
-					Landed = false;
-					JumpDelay = get_timer();
-					LastAnimation = 30;
 					}
 				else
 					{
 					var APArray = [0, 0, 0, 0, 0, 0, 0];
-					}*/
-				var Frame1 = [8, 14];
-				var Frame2 = [8, 14];
-				var Frame3 = [9, 15];
-				var Frame4 = [9, 15];
-				var Frame5 = [10, 16];
-				var Frame6 = [10, 16];
-				var Frame7 = [11, 17];
-				var Frame8 = [11, 17];
-				var Frame9 = [12, 18];
-				var Frame10 = [12, 18];
-				var Frame11 = [13, 19];
-				var Frame12 = [13, 19];
-				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8, Frame9, Frame10, Frame11, Frame12];
-				var APArray = [80, 6, 0, Frames, 0, -1200];
+					}
 				break;
 			#endregion	
 			
 			
 			#region KnockBack Intensity 1 Left
 			case 1001: 
-				var Frame1 = [23, 23, -10, -50];
-				var Frame2 = [24, 24, -10, -50];
-				var Frame3 = [25, 25, -10, -20];
-				var Frame4 = [26, 26, -10, -20];
-				var Frame5 = [27, 27, -10, -20];
-				var Frame6 = [28, 28, -10, -20];
-				var Frame7 = [29, 29, -10, -20];
-				var Frame8 = [30, 30, -10, -20];
-				var Frame9 = [31, 31, -10, -20];
-				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8, Frame9];
+				var Frame1 = [10, 16];
+				var Frame2 = [10, 16];
+				var Frame3 = [11, 17];
+				var Frame4 = [11, 17];
+				var Frame5 = [10, 16];
+				var Frame6 = [10, 16];
+				var Frame7 = [11, 17];
+				var Frame8 = [11, 17];
+				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8];
 				var APArray = [1001, 9, 0, Frames, -800, -400];
 				NoGrav = true;
 				ActiveCommand = 0;
@@ -236,16 +223,15 @@ switch (AnimationToGet)
 			
 			#region KnockBack Intensity 1 Right
 			case 1011: 
-				var Frame1 = [32, 32, 10, -50];
-				var Frame2 = [33, 33, 10, -50];
-				var Frame3 = [34, 34, 10, -20];
-				var Frame4 = [35, 35, 10, -20];
-				var Frame5 = [36, 36, 10, -20];
-				var Frame6 = [37, 37, 10, -20];
-				var Frame7 = [38, 38, 10, -20];
-				var Frame8 = [39, 39, 10, -20];
-				var Frame9 = [40, 40, 10, -20];
-				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8, Frame9];
+				var Frame1 = [10, 16];
+				var Frame2 = [10, 16];
+				var Frame3 = [11, 17];
+				var Frame4 = [11, 17];
+				var Frame5 = [10, 16];
+				var Frame6 = [10, 16];
+				var Frame7 = [11, 17];
+				var Frame8 = [11, 17];
+				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8];
 				var APArray = [1011, 9, 0, Frames, 800, -400];
 				NoGrav = true;
 				ActiveCommand = 0;
@@ -260,8 +246,8 @@ switch (AnimationToGet)
 				if (LastAnimation != 1)
 					{
 					var Frame1 = [
-					16, //SpriteID
-					19, //-SpriteID
+					27, //SpriteID
+					21, //-SpriteID
 					0, //TransX 
 					0, //TransY
 					false, //AttackFrame
@@ -272,10 +258,13 @@ switch (AnimationToGet)
 					0, //KnockBackIntensity
 					0 //Damage
 					];
-					var Frame2 = [17, 20, 0, 0, true, 10, 0, 50, 50, 1, 10];
-					var Frame3 = [18, 21, 0, 0, true, 10, 0, 50, 50, 1, 10];
-					var Frames = [Frame1, Frame2, Frame3];
-					var APArray = [1, 3, 1, Frames, 0, 0];
+					var Frame2 = [28, 22, 0, 0, true, 5, 0, 30, 30, 1, 1];
+					var Frame3 = [29, 23, 0, 0, true, 5, 0, 30, 30, 1, 1];
+					var Frame4 = [30, 24, 0, 0, true, 5, 0, 30, 30, 1, 1];
+					var Frame5 = [31, 25, 0, 0, true, 5, 0, 30, 30, 1, 1];
+					var Frame6 = [32, 26, 0, 0, true, 5, 0, 30, 30, 1, 1];
+					var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
+					var APArray = [1, 6, 1, Frames, 0, 0];
 					LastAnimation = 1;
 					break;
 					}
@@ -283,6 +272,71 @@ switch (AnimationToGet)
 					{
 					var APArray = [0, 0, 0, 0, 0, 0, 0];
 					}
+				break;
+			#endregion
+			
+			#region Charge Left
+			case 2: 
+				if (LastAnimation != 2)
+					{
+					var Frame1 = [
+					33, //SpriteID
+					33, //-SpriteID
+					0, //TransX 
+					0, //TransY
+					false, //AttackFrame
+					0, //HitboxX
+					0, //HitboxY
+					0, //HitboxH
+					0, //HitboxW
+					0, //KnockBackIntensity
+					0 //Damage
+					];
+					var Frame2 = [34, 34, 0, 0, true, 5, 0, 30, 30, 1, 1];
+					var Frame3 = [35, 35, 0, 0, true, 5, 0, 30, 30, 1, 1];
+					var Frame4 = [36, 36, 0, 0, true, 5, 0, 30, 30, 1, 1];
+					var Frame5 = [37, 37, 0, 0, true, 5, 0, 30, 30, 1, 1];
+					var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5];
+					var APArray = [2, 5, 1, Frames, -700, 0];
+					LastAnimation = 1;
+					}
+				else
+					{
+					var APArray = [0, 0, 0, 0, 0, 0, 0];
+					}	 
+				break;
+			#endregion
+			
+			#region Charge Left
+			case 3: 		
+				if (LastAnimation != 3)
+				{
+					var Frame1 = [
+					38, //SpriteID
+					38, //-SpriteID
+					0, //TransX 
+					0, //TransY
+					false, //AttackFrame
+					0, //HitboxX
+					0, //HitboxY
+					0, //HitboxH
+					0, //HitboxW
+					0, //KnockBackIntensity
+					0 //Damage
+					];
+					var Frame2 = [39, 39, 0, 0, true, 5, 0, 30, 30, 1, 1];
+					var Frame3 = [40, 40, 0, 0, true, 5, 0, 30, 30, 1, 1];
+					var Frame4 = [41, 41, 0, 0, true, 5, 0, 30, 30, 1, 1];
+					var Frame5 = [42, 42, 0, 0, true, 5, 0, 30, 30, 1, 1];
+					var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5];
+					var APArray = [3, 5, 1, Frames, 700, 0];
+					LastAnimation = 1;
+				}
+				else
+					{
+					var APArray = [0, 0, 0, 0, 0, 0, 0];
+					}
+				break;
 			#endregion
 		}
 		

@@ -30,6 +30,7 @@
     {"id":{"name":"sOtPlayerOLD","path":"sprites/sOtPlayerOLD/sOtPlayerOLD.yy",},"order":2,},
     {"id":{"name":"sbgMainMenu","path":"sprites/sbgMainMenu/sbgMainMenu.yy",},"order":5,},
     {"id":{"name":"oCharacterSelectButton","path":"objects/oCharacterSelectButton/oCharacterSelectButton.yy",},"order":3,},
+    {"id":{"name":"sLocPlayerIndicator","path":"sprites/sLocPlayerIndicator/sLocPlayerIndicator.yy",},"order":11,},
     {"id":{"name":"nNEXTTIME","path":"notes/nNEXTTIME/nNEXTTIME.yy",},"order":0,},
     {"id":{"name":"scListFunctions","path":"scripts/scListFunctions/scListFunctions.yy",},"order":3,},
     {"id":{"name":"scCompileInputs","path":"scripts/scCompileInputs/scCompileInputs.yy",},"order":6,},

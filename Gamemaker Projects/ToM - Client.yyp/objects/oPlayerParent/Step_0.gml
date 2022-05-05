@@ -190,6 +190,7 @@ if (TimerAtStart > NextFrameTime)
 		}
 	else
 		{
+		show_debug_message(CurrentAnimation[0])
 		if (x < oOtPlayer.x) { image_index = GetFrame[1]; }
 		else { image_index = GetFrame[0]; }	
 		
@@ -219,6 +220,7 @@ if !((CurrentAnimation[4] == 0) && (CurrentAnimation[5] == 0))
 		var CombinedYval = Yval*DT;
 		
 		if !(scCollisionCheck("X", CombinedXval)) { x += CombinedXval; }
+		else { Health -= 100;}
 		if !(scCollisionCheck("Y", CombinedYval)) { y += CombinedYval; }
 		else { NoGrav = false; CurrentAnimation[5] = 0; }
 		}
@@ -227,6 +229,7 @@ if !((CurrentAnimation[4] == 0) && (CurrentAnimation[5] == 0))
 //Gravity
 if (!(scCollisionCheck("Y", Gravity)))
 	{ 
+	Landed = false;
 	if !(NoGrav)
 		{
 		y += Gravity;

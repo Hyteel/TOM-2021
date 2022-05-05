@@ -1,6 +1,5 @@
 // Camera
 var DistanceModifier = clamp((abs(oLocalPlayer.x - oOtPlayer.x) + abs(oLocalPlayer.y - oOtPlayer.y)) / 2000, 0, 0.35) + 1;
-show_debug_message(DistanceModifier);
 var CurrentWidth = MinWidth * DistanceModifier;
 var CurrentHeight = MinHeight * DistanceModifier;
 var CameraPosX = clamp(oLocalPlayer.x, CurrentWidth/2, room_width - CurrentWidth/2 - 5);
