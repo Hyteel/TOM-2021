@@ -159,12 +159,15 @@ switch (AnimationToGet)
 			
 			#region RunRight
 			case 80: 
-				var Frame1 = [7, 10];
-				var Frame2 = [7, 10];
-				var Frame3 = [8, 11];
-				var Frame4 = [8, 11];
-				var Frame5 = [9, 12];
-				var Frame6 = [9, 12];
+				var Frame1 = [
+				1, //SpriteID x >= oOtPlayer.x
+				4, //SpriteID x < oOtPlayer.x 
+				];
+				var Frame2 = [1, 4];
+				var Frame3 = [2, 5];
+				var Frame4 = [2, 5];
+				var Frame5 = [3, 6];
+				var Frame6 = [3, 6];
 				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
 				var APArray = [80, 6, 0, Frames, 400, 0];
 				LastAnimation = 80;
@@ -174,15 +177,14 @@ switch (AnimationToGet)
 			
 			#region Jump
 			case 30: 
-				if ((Landed) && (get_timer() > JumpDelay + 500000) && (LastAnimation != 30))
+				/*if ((Landed) && (get_timer() > JumpDelay + 500000) && (LastAnimation != 30))
 					{
-					//show_debug_message("ACTUAL JUMP");
-					var Frame1 = [41, 41];
-					var Frame2 = [41, 41];
-					var Frame3 = [42, 42];
-					var Frame4 = [42, 42];
-					var Frame5 = [43, 43];
-					var Frame6 = [43, 43];
+					var Frame1 = [41, 47];
+					var Frame2 = [42, 48];
+					var Frame3 = [43, 49];
+					var Frame4 = [44, 50];
+					var Frame5 = [45, 51];
+					var Frame6 = [46, 52];
 					var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6];
 					var APArray = [80, 6, 0, Frames, 0, -1200];
 					NoGrav = true;
@@ -193,7 +195,21 @@ switch (AnimationToGet)
 				else
 					{
 					var APArray = [0, 0, 0, 0, 0, 0, 0];
-					}
+					}*/
+				var Frame1 = [8, 14];
+				var Frame2 = [8, 14];
+				var Frame3 = [9, 15];
+				var Frame4 = [9, 15];
+				var Frame5 = [10, 16];
+				var Frame6 = [10, 16];
+				var Frame7 = [11, 17];
+				var Frame8 = [11, 17];
+				var Frame9 = [12, 18];
+				var Frame10 = [12, 18];
+				var Frame11 = [13, 19];
+				var Frame12 = [13, 19];
+				var Frames = [Frame1, Frame2, Frame3, Frame4, Frame5, Frame6, Frame7, Frame8, Frame9, Frame10, Frame11, Frame12];
+				var APArray = [80, 6, 0, Frames, 0, -1200];
 				break;
 			#endregion	
 			

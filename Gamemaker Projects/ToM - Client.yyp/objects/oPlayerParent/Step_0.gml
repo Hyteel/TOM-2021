@@ -149,7 +149,7 @@ if ((TimerAtStart > AnimTime) && !(Dead))
 	AttackHit = false;
 	
 	if (CurrentAnimation[0] == ActiveCommand)
-		{	
+		{
 		CurrentFrame = 0;	
 		}
 	else
@@ -173,7 +173,7 @@ if ((TimerAtStart > AnimTime) && !(Dead))
 		
 	if (CurrentAnimation[0] != 0)
 		{
-			AnimTime = NextAnimTime + 250000;
+			AnimTime = NextAnimTime + 500000;
 			NextAnimTime = AnimTime;
 		}
 	}
@@ -185,7 +185,8 @@ if (TimerAtStart > NextFrameTime)
 	{
 	if (CurrentAnimation[0] == 0)
 		{
-		image_index = 0;
+		if (x < oOtPlayer.x) { image_index = 0; }
+		else { image_index = 19; }	
 		}
 	else
 		{
